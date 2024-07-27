@@ -1,0 +1,53 @@
+.card {
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 100%; 
+}
+
+.circle-logo {
+    width: 83px;
+    height: 83px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: right;
+}
+
+.info h5 {
+    margin: 0;
+}
+
+.info .number {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.gutter-20 {
+    margin-left: -10px;
+    margin-right: -10px;
+
+    .col-lg-3, .col-md-6, .col-sm-12 {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .info {
+        text-align: center;
+    }
+
+    .ml-3 {
+        margin-left: 0;
+    }
+}

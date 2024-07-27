@@ -1,0 +1,21 @@
+<div class="container-fluid bg-danger p-4">
+    <div class="d-flex align-items-center p-3" *ngFor="let admiuser of AdminWelcome">
+        <h1 class="nunito fs-2 text-white fw-medium mb-0 me-3 text-uppercase">Panel Administrativo</h1>
+        <p class="nunito text-white fs-4 mb-0 padd fw-medium">Bienvenido, {{admiuser.AdminUser}}</p>
+    </div>
+    <div>
+        <div class="container-fluid mt-4">
+            <div class="row gutter-20">
+                <div class="col-lg-3 col-md-6 col-sm-12 mb-4" *ngFor="let Infocard of Infocards">
+                    <app-card-info-status 
+                    [Icono]="Infocard.Icono" 
+                    [IconoColor]="Infocard.IconoColor"
+                    [FondoColor]="Infocard.IconoFondo" 
+                    [Titu]="Infocard.Titulo"
+                    [Numero]="Infocard.Numero"
+                    [Tama]="Infocard.tamano"></app-card-info-status>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
