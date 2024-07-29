@@ -1,53 +1,46 @@
-<button mat-raised-button color="primary" (click)="openAddStudentDialog()">Añadir Alumno</button>
+<button mat-raised-button color="primary" class="nunito fs-1 text-danger" (click)="openAddStudentDialog()">+</button>
 
 <mat-table [dataSource]="dataSource">
 
-  <!-- ID Column -->
   <ng-container matColumnDef="id">
-    <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
-    <mat-cell *matCellDef="let student"> {{student.id}} </mat-cell>
+    <mat-header-cell class="nunito fs-4 text-black" *matHeaderCellDef> ID </mat-header-cell>
+    <mat-cell class="nunito fs-4 text-black" *matCellDef="let student"> {{student.id}} </mat-cell>
   </ng-container>
 
-  <!-- Foto Column -->
   <ng-container matColumnDef="foto">
-    <mat-header-cell *matHeaderCellDef> Foto </mat-header-cell>
+    <mat-header-cell class="nunito fs-4 text-black" *matHeaderCellDef> Foto </mat-header-cell>
     <mat-cell *matCellDef="let student">
       <img [src]="student.foto" alt="foto" width="50" height="50" class="round-image">
     </mat-cell>
   </ng-container>
 
-  <!-- Nombre Column -->
   <ng-container matColumnDef="nombre">
-    <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
-    <mat-cell *matCellDef="let student"> {{truncateText(student.nombre)}} </mat-cell>
+    <mat-header-cell class="nunito fs-4 text-black" *matHeaderCellDef> Nombre </mat-header-cell>
+    <mat-cell class="nunito fs-4 text-black fw-medium" *matCellDef="let student"> {{truncateText(student.nombre)}} </mat-cell>
   </ng-container>
 
-  <!-- Apellido Column -->
   <ng-container matColumnDef="apellido">
-    <mat-header-cell *matHeaderCellDef> Apellido </mat-header-cell>
-    <mat-cell *matCellDef="let student"> {{truncateText(student.apellido)}} </mat-cell>
+    <mat-header-cell class="nunito fs-4 text-black fw-medium" *matHeaderCellDef> Apellido </mat-header-cell>
+    <mat-cell class="nunito fs-4 text-black fw-medium" *matCellDef="let student"> {{truncateText(student.apellido)}} </mat-cell>
   </ng-container>
 
-  <!-- Fecha Column -->
   <ng-container matColumnDef="fecha">
-    <mat-header-cell *matHeaderCellDef> Fecha </mat-header-cell>
-    <mat-cell *matCellDef="let student"> {{student.fecha | date:'dd/MM/yyyy'}} </mat-cell>
+    <mat-header-cell class="nunito fs-4 text-black fw-medium" *matHeaderCellDef> Fecha </mat-header-cell>
+    <mat-cell class="nunito fs-4 text-black fw-medium" *matCellDef="let student"> {{student.fecha | date:'dd/MM/yyyy'}} </mat-cell>
   </ng-container>
 
-  <!-- Actions Column -->
   <ng-container matColumnDef="actions">
-    <mat-header-cell *matHeaderCellDef> Acciones </mat-header-cell>
+    <mat-header-cell class="nunito fs-4 text-black fw-medium" *matHeaderCellDef> Acciones </mat-header-cell>
     <mat-cell *matCellDef="let student">
       <button mat-icon-button (click)="openEditStudentDialog(student)">
-        <mat-icon>edit</mat-icon>
+        <mat-icon style="color: rgb(82, 157, 228);">edit</mat-icon>
       </button>
       <button mat-icon-button (click)="deleteStudent(student.id)">
-        <mat-icon>delete</mat-icon>
+        <mat-icon style="color: rgb(179, 41, 41);">delete</mat-icon>
       </button>
     </mat-cell>
   </ng-container>
 
-  <!-- Header and Rows -->
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 </mat-table>

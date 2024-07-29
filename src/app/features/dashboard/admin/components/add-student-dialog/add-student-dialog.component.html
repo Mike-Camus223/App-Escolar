@@ -1,28 +1,45 @@
-<h1 mat-dialog-title>{{ isEditMode ? 'Editar Alumno' : 'Añadir Alumno' }}</h1>
+<h1 mat-dialog-title>{{ isEdit ? 'Editar Alumno' : 'Añadir Alumno' }}</h1>
 <div mat-dialog-content>
-  <mat-form-field appearance="fill">
-    <mat-label>Nombre</mat-label>
-    <input matInput [(ngModel)]="student.nombre">
-  </mat-form-field>
+  <form [formGroup]="studentForm" (ngSubmit)="onSave()">
 
-  <mat-form-field appearance="fill">
-    <mat-label>Apellido</mat-label>
-    <input matInput [(ngModel)]="student.apellido">
-  </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre</mat-label>
+      <input matInput formControlName="nombre" placeholder="Nombre">
+      <mat-error *ngIf="studentForm.get('nombre')?.invalid && studentForm.get('nombre')?.touched">
+        <mat-icon *ngIf="studentForm.get('nombre')?.errors?.['required']">error</mat-icon>
+        <mat-icon *ngIf="studentForm.get('nombre')?.errors?.['pattern']">error</mat-icon>
+        {{ getError('nombre') }}
+      </mat-error>
+    </mat-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Fecha de Nacimiento</mat-label>
-    <input matInput [matDatepicker]="picker" [(ngModel)]="student.fecha">
-    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Apellido</mat-label>
+      <input matInput formControlName="apellido" placeholder="Apellido">
+      <mat-error *ngIf="studentForm.get('apellido')?.invalid && studentForm.get('apellido')?.touched">
+        <mat-icon *ngIf="studentForm.get('apellido')?.errors?.['required']">error</mat-icon>
+        <mat-icon *ngIf="studentForm.get('apellido')?.errors?.['pattern']">error</mat-icon>
+        {{ getError('apellido') }}
+      </mat-error>
+    </mat-form-field>
 
-  <mat-form-field appearance="fill">
-    <mat-label>Foto</mat-label>
-    <input matInput [(ngModel)]="student.foto">
-  </mat-form-field>
-</div>
-<div mat-dialog-actions>
-  <button mat-button (click)="onNoClick()">Cancelar</button>
-  <button mat-button (click)="onSubmit()">{{ isEditMode ? 'Guardar' : 'Añadir' }}</button>
+    <mat-form-field appearance="fill">
+      <mat-label>Foto URL</mat-label>
+      <input matInput formControlName="foto" placeholder="URL de la foto" [attr.disabled]="true">
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Fecha de Nacimiento</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="fecha" placeholder="Fecha de Nacimiento">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-error *ngIf="studentForm.get('fecha')?.invalid && studentForm.get('fecha')?.touched">
+        Este campo es obligatorio
+      </mat-error>
+    </mat-form-field>
+
+    <div mat-dialog-actions>
+      <button mat-button (click)="onNoClick()">Cancelar</button>
+      <button mat-raised-button color="primary" type="submit">{{ isEdit ? 'Guardar' : 'Añadir' }}</button>
+    </div>
+  </form>
 </div>

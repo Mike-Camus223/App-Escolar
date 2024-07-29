@@ -1,17 +1,16 @@
 <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav mode="side" opened>
-      <mat-nav-list>
-        <mat-list-item *ngFor="let link of links">
-          <mat-icon>{{link.icon}}</mat-icon>
-          <span>{{link.nombre}}</span>
-        </mat-list-item>
-      </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content>
-      <div class="content">
-        <!-- Aquí va el contenido principal -->
-        <app-students-list-base></app-students-list-base>
-      </div>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-  
+  <mat-sidenav mode="side" opened>
+    <mat-nav-list>
+      <mat-list-item *ngFor="let link of links">
+        <mat-icon>{{link.icon}}</mat-icon>
+        <span>{{link.nombre}}</span>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="content p-4">
+      <app-perfil-conteo-admi></app-perfil-conteo-admi>
+      <app-students-list-base></app-students-list-base>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

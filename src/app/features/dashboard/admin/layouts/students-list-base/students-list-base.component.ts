@@ -60,7 +60,7 @@ export class StudentsListBaseComponent {
 
   updateStudent(updatedStudent: Student): void {
     this.dataSource.data = this.dataSource.data.map(student =>
-      student.id === updatedStudent.id ? updatedStudent : student
+      student.id === updatedStudent.id ? { ...updatedStudent } : student
     );
   }
 

@@ -1,16 +1,12 @@
-/* Add Student Dialog Styles */
-.mat-dialog-content {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-  
-  .mat-dialog-actions {
-    display: flex;
-    justify-content: flex-end;
-  }
-  
-  button {
-    margin-left: 8px;
-  }
-  
+mat-form-field {
+  width: 100%;
+}
+
+mat-error {
+  color: red;
+}
+
+mat-icon {
+  color: red;
+  vertical-align: middle;
+}
