@@ -7,6 +7,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   templateUrl: './add-student-dialog.component.html',
   styleUrls: ['./add-student-dialog.component.scss']
 })
+
+
 export class AddStudentDialogComponent {
   studentForm: FormGroup;
   isEdit: boolean = false;

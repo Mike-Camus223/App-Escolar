@@ -2,14 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { AddStudentDialogComponent } from '../../components/add-student-dialog/add-student-dialog.component';
-
-export interface Student {
-  id: number;
-  foto: string;
-  nombre: string;
-  apellido: string;
-  fecha: Date;
-}
+import { Student } from '../../../../../core/models/student.interface';
 
 @Component({
   selector: 'app-students-list-base',
@@ -20,7 +13,10 @@ export class StudentsListBaseComponent {
   displayedColumns: string[] = ['id', 'foto', 'nombre', 'apellido', 'fecha', 'actions'];
   dataSource = new MatTableDataSource<Student>([
     { id: 1, foto: 'assets/photos/photo1.jpg', nombre: 'Gatito', apellido: 'Naranjoso', fecha: new Date('2001-05-15') },
-    { id: 2, foto: 'assets/photos/photo2.jpg', nombre: 'Gatito', apellido: 'Agresivo', fecha: new Date('2002-08-22') }
+    { id: 2, foto: 'assets/photos/photo2.jpg', nombre: 'Gatito', apellido: 'Agresivo', fecha: new Date('2002-08-22') },
+    { id: 3, foto: 'assets/photos/photo3.jpg', nombre: 'Gatito', apellido: 'Disociado', fecha: new Date('1991-02-07') },
+    { id: 4, foto: 'assets/photos/photo4.jpg', nombre: 'Gatito', apellido: 'De Pana', fecha: new Date('2010-04-15') },
+    { id: 5, foto: 'assets/photos/photo5.jpg', nombre: 'Gatito', apellido: 'Miron', fecha: new Date('2005-04-12') }
   ]);
 
   private nextId: number = this.getNextId();

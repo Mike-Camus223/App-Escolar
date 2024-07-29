@@ -20,6 +20,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { AddStudentDialogComponent } from './components/add-student-dialog/add-student-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatNativeDateModule } from '@angular/material/core';
+import { InscriptionBasePageComponent } from './layouts/inscription-base-page/inscription-base-page.component';
 
 @NgModule({
   imports: [
@@ -49,7 +50,8 @@ import { MatNativeDateModule } from '@angular/material/core';
     PerfilConteoAdmiComponent,
     CardInfoStatusComponent,
     StudentsListBaseComponent,
-    AddStudentDialogComponent
+    AddStudentDialogComponent,
+    InscriptionBasePageComponent
   ],
   exports: [
     DasAdmiBaseComponent,
