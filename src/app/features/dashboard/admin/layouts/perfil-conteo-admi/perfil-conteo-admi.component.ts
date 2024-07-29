@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PerfilAdminModel } from '../../../../core/models/PerfilAdminModel.interface';
+import { PerfilAdminModel } from '../../../../../core/models/PerfilAdminModel.interface';
 
 @Component({
   selector: 'app-perfil-conteo-admi',

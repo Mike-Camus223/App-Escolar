@@ -1,0 +1,101 @@
+<div id="sidebar" class="bg-dark text-white p-3" [ngClass]="{'collapsed': isSidebarCollapsed}">
+    <button class="btn btn-dark" (click)="toggleSidebar()">
+        <i class="bi bi-list"></i>
+    </button>
+    <ul class="nav flex-column mt-3">
+        <li class="nav-item">
+            <a class="nav-link text-white" data-bs-toggle="collapse" href="#cuentasCollapse" role="button"
+                aria-expanded="false" aria-controls="cuentasCollapse">
+                <i class="bi bi-person-fill"></i> <span class="sidebar-text nunito fs-4"
+                    *ngIf="!isSidebarCollapsed || isMobileView">Cuentas</span>
+            </a>
+            <div class="collapse" id="cuentasCollapse">
+                <ul class="nav flex-column ms-3">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" routerLink="/cuentas1" routerLinkActive="active">
+                            <i class="bi bi-file-earmark"></i> <span class="sidebar-text nunito fs-4"
+                                *ngIf="!isSidebarCollapsed || isMobileView">Resumen de cuenta</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" routerLink="/cuentas2" routerLinkActive="active">
+                            <i class="bi bi-file-earmark"></i> <span class="sidebar-text nunito fs-4"
+                                *ngIf="!isSidebarCollapsed || isMobileView">Cuenta en USD</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" data-bs-toggle="collapse" href="#transactionCollapse" role="button"
+                aria-expanded="false" aria-controls="transactionCollapse">
+                <i class="bi bi-currency-exchange"></i><span class="sidebar-text nunito fs-4"
+                    *ngIf="!isSidebarCollapsed || isMobileView">Transacciones</span>
+            </a>
+            <div class="collapse" id="transactionCollapse">
+                <ul class="nav flex-column ms-3">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" routerLink="/resource1" routerLinkActive="active">
+                            <i class="bi bi-file-earmark"></i> <span class="sidebar-text nunito fs-4"
+                                *ngIf="!isSidebarCollapsed || isMobileView">Consultar transacciones</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" routerLink="/resource2" routerLinkActive="active">
+                            <i class="bi bi-file-earmark"></i> <span class="sidebar-text nunito fs-4"
+                                *ngIf="!isSidebarCollapsed || isMobileView">Transferencia de fondos</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" routerLink="/resource2" routerLinkActive="active">
+                            <i class="bi bi-file-earmark"></i> <span class="sidebar-text nunito fs-4"
+                                *ngIf="!isSidebarCollapsed || isMobileView">Pago de facturas</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-white" data-bs-toggle="collapse" href="#serviceCollapse" role="button"
+                aria-expanded="false" aria-controls="serviceCollapse">
+                <i class="bi bi-tools"></i><span class="sidebar-text nunito fs-4"
+                    *ngIf="!isSidebarCollapsed || isMobileView">Servicios</span>
+            </a>
+            <div class="collapse" id="serviceCollapse">
+                <ul class="nav flex-column ms-3">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" routerLink="/resource1" routerLinkActive="active">
+                            <i class="bi bi-file-earmark"></i> <span class="sidebar-text nunito fs-4"
+                                *ngIf="!isSidebarCollapsed || isMobileView">Estado de cuenta</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" routerLink="/resource2" routerLinkActive="active">
+                            <i class="bi bi-file-earmark"></i> <span class="sidebar-text nunito fs-4"
+                                *ngIf="!isSidebarCollapsed || isMobileView">Crear nueva cuenta</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" routerLink="/resource2" routerLinkActive="active">
+                            <i class="bi bi-credit-card"></i> <span class="sidebar-text nunito fs-4"
+                                *ngIf="!isSidebarCollapsed || isMobileView">Obtener tarjeta de crédito</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" routerLink="/resource2" routerLinkActive="active">
+                            <i class="bi bi-credit-card-2-front-fill"></i> <span class="sidebar-text nunito fs-4"
+                                *ngIf="!isSidebarCollapsed || isMobileView">Reemplazo de tarjeta</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" routerLink="/resource2" routerLinkActive="active">
+                            <i class="bi bi-graph-up-arrow"></i> <span class="sidebar-text nunito fs-4"
+                                *ngIf="!isSidebarCollapsed || isMobileView">Inversiones</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+</div>
+

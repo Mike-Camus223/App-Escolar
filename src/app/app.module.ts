@@ -7,12 +7,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { SharedModule } from './shared/shared.module';
-import { DashboardModule } from './dashboard/dashboard.module';
 import { FeaturesModule } from './features/features.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -20,8 +19,7 @@ import { FeaturesModule } from './features/features.module';
     MatButtonModule,
     MatCardModule,
     SharedModule,
-    DashboardModule,
-    FeaturesModule
+    FeaturesModule,
   ],
   providers: [
     provideAnimationsAsync()
