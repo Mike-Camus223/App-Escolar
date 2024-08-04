@@ -1,0 +1,14 @@
+<div class="container mt-4">
+    <h1 class="nunito fs-2 fs-medium text-black">Lista de Cursos</h1>
+    <div class="row">
+      <div class="col-lg-4 col-md-6 col-sm-12 mb-4" *ngFor="let curso of cursos">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ curso.nombreCurso }}</h5>
+            <button class="btn btn-primary" (click)="verDetalles(curso)">Ver Más Detalles</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

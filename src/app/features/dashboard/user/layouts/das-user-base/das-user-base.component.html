@@ -1,0 +1,30 @@
+<mat-sidenav-container class="sidenav-container">
+    <mat-sidenav mode="side" opened>
+      <mat-nav-list class="d-flex flex-column gap-4">
+        <mat-list-item *ngFor="let link of MonoLinks" 
+          [routerLink]="link.direction"
+          routerLinkActive="active-link">
+          <mat-icon class="nav-icon fs-1" [ngClass]="link.ColorClass ? link.ColorClass : ''">{{ link.Icono }}</mat-icon>
+          <span class="nav-text nunito fs-4 fw-medium text-black">{{ link.nombre }}</span>
+        </mat-list-item>
+        <mat-expansion-panel  class="bg-trans win" *ngFor="let link of ListaLinks">
+          <mat-expansion-panel-header>
+            <mat-icon class="nav-icon fs-1" [ngClass]="link.ColorClass ? link.ColorClass : ''">{{ link.Icono }}</mat-icon>
+            <span class="nav-text nunito fs-4 fw-medium text-black">{{ link.nombre }}</span>
+          </mat-expansion-panel-header>
+          <mat-nav-list>
+            <mat-list-item *ngFor="let subLink of link.Sublinks" [routerLink]="subLink.direction">
+              <mat-icon class="nav-icon fs-1">{{ subLink.Icono }}</mat-icon>
+              <span class="nav-text nunito fs-4 fw-medium text-black">{{ subLink.nombre }}</span>
+            </mat-list-item>
+          </mat-nav-list>
+        </mat-expansion-panel>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="bg-silver">
+      <div class="p-4">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  

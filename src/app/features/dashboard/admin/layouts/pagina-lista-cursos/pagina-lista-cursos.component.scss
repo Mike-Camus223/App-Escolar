@@ -1,0 +1,21 @@
+.mat-card {
+    margin-bottom: 20px;
+  }
+  
+  .mat-table {
+    width: 100%;
+  }
+  
+  .mat-header-cell {
+    font-weight: bold;
+  }
+  
+  .mat-cell {
+    text-align: center;
+  }
+  
+  .mat-cell {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }

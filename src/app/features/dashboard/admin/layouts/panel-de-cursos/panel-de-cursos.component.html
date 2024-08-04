@@ -1,0 +1,147 @@
+<div class="bg-white p-4">
+    <div class="container mt-4">
+        <div class="container-fluid">
+            <h1 class="nunito fs-2 fs-medium text-black">
+                Crear un nuevo curso
+            </h1>
+            <form [formGroup]="cursoForm" (ngSubmit)="onSubmit()">
+              <div class="container">
+                <div class="row">
+
+                  <div class="col-lg-6">
+                    <mat-card>
+                      <mat-card-header>
+                        <mat-card-title>Información del Profesor</mat-card-title>
+                      </mat-card-header>
+                      <mat-card-content>
+                        <div class="form-group">
+                          <mat-form-field class="w-100" appearance="fill" >
+                            <mat-label>Nombre del Profesor</mat-label>
+                            <input matInput formControlName="nombreProfesor">
+                            <mat-error *ngIf="cursoForm.get('nombreProfesor')?.hasError('required')">
+                              El nombre del profesor es obligatorio.
+                            </mat-error>
+                            <mat-error *ngIf="cursoForm.get('nombreProfesor')?.hasError('pattern')">
+                              El nombre solo puede contener letras y espacios.
+                            </mat-error>
+                          </mat-form-field>
+                          
+                          <mat-form-field class="w-100" appearance="fill" >
+                            <mat-label>Género</mat-label>
+                            <mat-select formControlName="genero">
+                              <mat-option value="hombre">Hombre</mat-option>
+                              <mat-option value="mujer">Mujer</mat-option>
+                              <mat-option value="otro">Otro</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="cursoForm.get('genero')?.hasError('required')">
+                              El género es obligatorio.
+                            </mat-error>
+                          </mat-form-field>
+            
+                          <mat-form-field class="w-100" appearance="fill" >
+                            <mat-label>ID del Profesor</mat-label>
+                            <input matInput formControlName="id" type="text">
+                            <mat-error *ngIf="cursoForm.get('id')?.hasError('required')">
+                              El ID del profesor es obligatorio.
+                            </mat-error>
+                            <mat-error *ngIf="cursoForm.get('id')?.hasError('pattern')">
+                              El ID debe contener solo números.
+                            </mat-error>
+                          </mat-form-field>
+            
+                          <mat-form-field class="w-100" appearance="fill" >
+                            <mat-label>Teléfono</mat-label>
+                            <input matInput formControlName="telefono" type="text">
+                            <mat-error *ngIf="cursoForm.get('telefono')?.hasError('required')">
+                              El teléfono es obligatorio.
+                            </mat-error>
+                            <mat-error *ngIf="cursoForm.get('telefono')?.hasError('pattern')">
+                              El teléfono debe contener solo números.
+                            </mat-error>
+                          </mat-form-field>
+                        </div>
+                      </mat-card-content>
+                    </mat-card>
+                  </div>
+            
+                  <div class="col-lg-6">
+                    <mat-card>
+                      <mat-card-header>
+                        <mat-card-title>Información del Curso</mat-card-title>
+                      </mat-card-header>
+                      <mat-card-content>
+                        <div class="form-group">
+                          <mat-form-field class="w-100" appearance="fill" >
+                            <mat-label>Agregar Curso</mat-label>
+                            <input matInput formControlName="nombreCurso" placeholder="Nombre del curso">
+                            <mat-error *ngIf="cursoForm.get('nombreCurso')?.hasError('required')">
+                              El nombre del curso es obligatorio.
+                            </mat-error>
+                          </mat-form-field>
+            
+                          <mat-form-field class="w-100" appearance="fill" >
+                            <mat-label>ID del Curso</mat-label>
+                            <input matInput formControlName="idCurso" type="text">
+                            <mat-error *ngIf="cursoForm.get('idCurso')?.hasError('required')">
+                              El ID del curso es obligatorio.
+                            </mat-error>
+                            <mat-error *ngIf="cursoForm.get('idCurso')?.hasError('pattern')">
+                              El ID debe contener solo números.
+                            </mat-error>
+                          </mat-form-field>
+            
+                          <mat-form-field class="w-100" appearance="fill" >
+                            <mat-label>Fecha</mat-label>
+                            <input matInput [matDatepicker]="picker" formControlName="fecha" type="date">
+                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                            <mat-datepicker #picker></mat-datepicker>
+                            <mat-error *ngIf="cursoForm.get('fecha')?.hasError('required')">
+                              La fecha es obligatoria.
+                            </mat-error>
+                          </mat-form-field>
+            
+                          <mat-form-field class="w-100" appearance="fill" >
+                            <mat-label>Correo Electrónico</mat-label>
+                            <input matInput formControlName="email" type="email">
+                            <mat-error *ngIf="cursoForm.get('email')?.hasError('required')">
+                              El correo electrónico es obligatorio.
+                            </mat-error>
+                            <mat-error *ngIf="cursoForm.get('email')?.hasError('email')">
+                              El correo electrónico debe ser válido.
+                            </mat-error>
+                          </mat-form-field>
+            
+                          <mat-form-field class="w-100" appearance="fill" >
+                            <mat-label>Tiempo o Hora</mat-label>
+                            <input matInput formControlName="tiempo" placeholder="Ejemplo: 10:00 a 14:00">
+                            <mat-error *ngIf="cursoForm.get('tiempo')?.hasError('required')">
+                              El tiempo o la hora es obligatorio.
+                            </mat-error>
+                          </mat-form-field>
+            
+                          <mat-form-field class="w-100" appearance="fill" >
+                            <mat-label>Salón</mat-label>
+                            <input matInput formControlName="salon" placeholder="Ejemplo: A, B, C">
+                            <mat-error *ngIf="cursoForm.get('salon')?.hasError('required')">
+                              El salón es obligatorio.
+                            </mat-error>
+                          </mat-form-field>
+
+                          <mat-form-field class="w-100" appearance="fill">
+                            <mat-label>Descripcion</mat-label>
+                            <input matInput formControlName="Descri" placeholder="Descripcion del curso">
+                            <mat-error *ngIf="cursoForm.get('Descri')?.hasError('required')">
+                              la descripcion es obligatoria
+                            </mat-error>
+                          </mat-form-field>
+                        </div>
+                      </mat-card-content>
+                    </mat-card>
+                  </div>
+                </div>
+                <button mat-raised-button color="primary" type="submit">Guardar Curso</button>
+              </div>
+            </form>     
+        </div>
+    </div>
+</div>

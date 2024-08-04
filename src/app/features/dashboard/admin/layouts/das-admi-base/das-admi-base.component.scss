@@ -5,21 +5,21 @@
 }
 
 mat-sidenav {
-  width: 250px; 
+  width: 250px;
   background: #f4f4f4;
   padding: 16px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 mat-sidenav-content {
-  flex: 1; 
+  flex: 1;
 }
 
 @media (max-width: 768px) {
   mat-sidenav {
-    width: 200px; 
+    width: 200px;
   }
-  
+
   mat-sidenav-content {
     width: 100%;
   }
@@ -27,4 +27,84 @@ mat-sidenav-content {
 
 .bg-silver {
   background-color: #dddee2;
+}
+
+mat-list-item {
+  background-color: transparent; 
+  border: none; 
+  padding: 8px; 
+  margin: 0; 
+  
+  .nav-text, .nav-icon {
+    color: #000; 
+  }
+
+  
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.1); 
+  }
+
+  &.active-link {
+    background-color: rgba(0, 0, 0, 0.1); 
+  }
+}
+
+mat-expansion-panel-header {
+  background-color: transparent; 
+  border: none; 
+  padding: 8px; 
+  
+  .mat-expansion-panel-header-title {
+    color: #000; 
+  }
+}
+
+mat-expansion-panel {
+  padding: 0;
+  .mat-expansion-panel-content {
+    background-color: transparent; 
+    border: none; 
+  }
+}
+
+.nav-icon {
+  padding-top: 2.1px;
+  margin-right: 10px;
+}
+
+.ColorIcono {
+  background: linear-gradient(45deg,
+      rgb(241, 81, 81) 50%,
+      rgb(194, 85, 194) 50% 100%,
+      rgb(89, 58, 199) 50% 75%,
+      rgb(101, 166, 196) 75% 100%);
+  background-position: 0 0, 0 50%, 50% 0, 50% 50%;
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.Icono2 {
+  color: rgb(255, 82, 14);
+}
+
+.Icono3 {
+  color: rgb(197, 36, 36);
+}
+
+.Icono4 {
+  color: #14c431;
+}
+
+.bg-trans {
+  background: transparent;
+}
+
+.mat-expansion-panel:not([class*=mat-elevation-z]) {
+  box-shadow: none;
+}
+
+
+mat-expansion-panel .body {
+  padding: 0px 0px 0px 0px;
 }

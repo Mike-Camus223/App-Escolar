@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>{{ data.nombreCurso }}</h2>
+<mat-dialog-content>
+  <p><strong>Descripción:</strong> {{ data.Descri }}</p>
+  <p><strong>Nombre del Profesor:</strong> {{ data.nombreProfesor }}</p>
+  <p><strong>Horario:</strong> {{ data.tiempo }}</p>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button (click)="onClose()">Cerrar</button>
+  <button mat-button color="primary" (click)="inscribirse()">Inscribirse</button>
+</mat-dialog-actions>
