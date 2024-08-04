@@ -5,57 +5,57 @@
       <mat-card-content>
         <mat-table [dataSource]="cursos" class="mat-elevation-z4">
           <ng-container matColumnDef="idCurso">
-            <mat-header-cell *matHeaderCellDef> ID del Curso </mat-header-cell>
-            <mat-cell *matCellDef="let curso"> {{ curso.idCurso }} </mat-cell>
+            <mat-header-cell class="nunito fs-4 text-black" *matHeaderCellDef> Curso ID </mat-header-cell>
+            <mat-cell class="nunito fs-4 text-black" *matCellDef="let curso"> {{ curso.idCurso }} </mat-cell>
           </ng-container>
           <ng-container matColumnDef="nombreCurso">
-            <mat-header-cell *matHeaderCellDef> Nombre del Curso </mat-header-cell>
-            <mat-cell *matCellDef="let curso"> {{ curso.nombreCurso }} </mat-cell>
+            <mat-header-cell class="nunito fs-4 text-black" *matHeaderCellDef> Nombre del Curso </mat-header-cell>
+            <mat-cell class="nunito fs-4 text-black" *matCellDef="let curso"> {{ curso.nombreCurso }} </mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="nombreProfesor">
-            <mat-header-cell *matHeaderCellDef> Nombre del Profesor </mat-header-cell>
-            <mat-cell *matCellDef="let curso"> {{ curso.nombreProfesor }} </mat-cell>
+            <mat-header-cell class="nunito fs-4 text-black" *matHeaderCellDef> Nombre del Profesor </mat-header-cell>
+            <mat-cell class="nunito fs-4 text-black" *matCellDef="let curso"> {{ curso.nombreProfesor }} </mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="genero">
-            <mat-header-cell *matHeaderCellDef> Género </mat-header-cell>
-            <mat-cell *matCellDef="let curso"> {{ curso.genero }} </mat-cell>
+            <mat-header-cell class="nunito fs-4 text-black" *matHeaderCellDef> Género </mat-header-cell>
+            <mat-cell class="nunito fs-4 text-black" *matCellDef="let curso"> {{ curso.genero }} </mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="idProfesor">
-            <mat-header-cell *matHeaderCellDef> ID del Profesor </mat-header-cell>
-            <mat-cell *matCellDef="let curso"> {{ curso.id }} </mat-cell>
+            <mat-header-cell class="nunito fs-4 text-black" *matHeaderCellDef> ID del Profesor </mat-header-cell>
+            <mat-cell class="nunito fs-4 text-black" *matCellDef="let curso"> {{ curso.id }} </mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="telefono">
-            <mat-header-cell *matHeaderCellDef> Teléfono </mat-header-cell>
-            <mat-cell *matCellDef="let curso"> {{ curso.telefono }} </mat-cell>
+            <mat-header-cell class="nunito fs-4 text-black" *matHeaderCellDef> Teléfono </mat-header-cell>
+            <mat-cell class="nunito fs-4 text-black" *matCellDef="let curso"> {{ curso.telefono }} </mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="fecha">
-            <mat-header-cell *matHeaderCellDef> Fecha </mat-header-cell>
-            <mat-cell *matCellDef="let curso"> {{ curso.fecha | date }} </mat-cell>
+            <mat-header-cell class="nunito fs-4 text-black" *matHeaderCellDef> Fecha </mat-header-cell>
+            <mat-cell class="nunito fs-4 text-black" *matCellDef="let curso"> {{ curso.fecha | date }} </mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="email">
-            <mat-header-cell *matHeaderCellDef> Correo Electrónico </mat-header-cell>
-            <mat-cell *matCellDef="let curso"> {{ curso.email }} </mat-cell>
+            <mat-header-cell class="nunito fs-4 text-black" *matHeaderCellDef> Correo Electrónico </mat-header-cell>
+            <mat-cell class="nunito fs-4 text-black" *matCellDef="let curso"> {{ curso.email }} </mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="tiempo">
-            <mat-header-cell *matHeaderCellDef> Tiempo o Hora </mat-header-cell>
-            <mat-cell *matCellDef="let curso"> {{ curso.tiempo }} </mat-cell>
+            <mat-header-cell class="nunito fs-4 text-black" *matHeaderCellDef> Tiempo o Hora </mat-header-cell>
+            <mat-cell class="nunito fs-4 text-black" *matCellDef="let curso"> {{ curso.tiempo }} </mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="salon">
-            <mat-header-cell *matHeaderCellDef> Salón </mat-header-cell>
-            <mat-cell *matCellDef="let curso"> {{ curso.salon }} </mat-cell>
+            <mat-header-cell class="nunito fs-4 text-black" *matHeaderCellDef> Salón </mat-header-cell>
+            <mat-cell class="nunito fs-4 text-black" *matCellDef="let curso"> {{ curso.salon }} </mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="Descri">
-            <mat-header-cell *matHeaderCellDef> Descripcion </mat-header-cell>
-            <mat-cell *matCellDef="let curso"> {{ curso.Descri | limitadorLetras:23}} </mat-cell>
+            <mat-header-cell class="nunito fs-4 text-black" *matHeaderCellDef>Descripcion</mat-header-cell>
+            <mat-cell class="nunito fs-4 text-black" *matCellDef="let curso"> {{ curso.Descri | limitadorLetras:23}} </mat-cell>
           </ng-container>
 
           <ng-container matColumnDef="acciones">
