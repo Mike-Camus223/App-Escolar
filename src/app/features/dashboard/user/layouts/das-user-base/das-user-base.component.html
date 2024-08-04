@@ -5,17 +5,17 @@
           [routerLink]="link.direction"
           routerLinkActive="active-link">
           <mat-icon class="nav-icon fs-1" [ngClass]="link.ColorClass ? link.ColorClass : ''">{{ link.Icono }}</mat-icon>
-          <span class="nav-text nunito fs-4 fw-medium text-black">{{ link.nombre }}</span>
+          <span class="nav-text nunito fs-4 fw-medium text-white">{{ link.nombre }}</span>
         </mat-list-item>
         <mat-expansion-panel  class="bg-trans win" *ngFor="let link of ListaLinks">
           <mat-expansion-panel-header>
             <mat-icon class="nav-icon fs-1" [ngClass]="link.ColorClass ? link.ColorClass : ''">{{ link.Icono }}</mat-icon>
-            <span class="nav-text nunito fs-4 fw-medium text-black">{{ link.nombre }}</span>
+            <span class="nav-text nunito fs-4 fw-medium text-white multi">{{ link.nombre }}</span>
           </mat-expansion-panel-header>
           <mat-nav-list>
             <mat-list-item *ngFor="let subLink of link.Sublinks" [routerLink]="subLink.direction">
               <mat-icon class="nav-icon fs-1">{{ subLink.Icono }}</mat-icon>
-              <span class="nav-text nunito fs-4 fw-medium text-black">{{ subLink.nombre }}</span>
+              <span class="nav-text nunito fs-4 fw-medium text-white">{{ subLink.nombre }}</span>
             </mat-list-item>
           </mat-nav-list>
         </mat-expansion-panel>
