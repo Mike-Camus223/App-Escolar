@@ -1,6 +1,64 @@
 img {
-  border-radius: 50%; // Hace que la imagen sea redonda
-  width: 36px; // Ajusta el tamaño de la imagen según sea necesario
+  border-radius: 50%; 
+  width: 36px; 
   height: 36px;
-  object-fit: cover; // Asegura que la imagen se ajuste dentro del círculo sin distorsión
+  object-fit: cover; 
 }
+
+
+mat-table {
+  width: 100%;
+}
+
+mat-cell, .mat-header-cell {
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+}
+
+mat-header-cell {
+  min-width: 270px; 
+}
+
+mat-cell {
+  min-width: 270px; 
+}
+
+.table-container {
+  overflow-x: auto; 
+  -webkit-overflow-scrolling: touch; 
+}
+
+.mat-table {
+  width: max-content; 
+}
+
+.table-container {
+  width: 100%; 
+  scrollbar-width: none; 
+  max-width: 100%;
+}
+
+.id-column {
+  min-width: 70px;
+  text-align: center;
+}
+
+.borrar-column {
+  min-width: 115px;
+  text-align: center;
+}
+
+.foto-column {
+  min-width: 70px;
+  text-align: center;
+}
+
+.fix-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+}
+

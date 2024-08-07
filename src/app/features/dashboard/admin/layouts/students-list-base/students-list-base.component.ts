@@ -10,6 +10,7 @@ import { Student } from '../../../../../core/models/student.interface';
   styleUrls: ['./students-list-base.component.scss']
 })
 export class StudentsListBaseComponent {
+  
   displayedColumns: string[] = ['id', 'foto', 'nombre', 'apellido', 'fecha', 'actions'];
   dataSource = new MatTableDataSource<Student>([
     { id: 1, foto: 'assets/photos/photo1.jpg', nombre: 'Gatito', apellido: 'Naranjoso', fecha: new Date('2001-05-15') },
@@ -62,10 +63,6 @@ export class StudentsListBaseComponent {
 
   deleteStudent(id: number): void {
     this.dataSource.data = this.dataSource.data.filter(student => student.id !== id);
-  }
-
-  truncateText(text: string): string {
-    return text.length > 10 ? text.substring(0, 10) + '...' : text;
   }
 
   private getNextId(): number {

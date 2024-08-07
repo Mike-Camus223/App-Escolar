@@ -3,80 +3,100 @@
     <h1 class="nunito fs-2 fs-medium text-black">Lista de Cursos</h1>
     <mat-card class="mat-elevation-z4">
       <mat-card-content>
-        <mat-table [dataSource]="cursos" class="mat-elevation-z4">
-          <ng-container matColumnDef="idCurso">
-            <mat-header-cell class="nunito fs-4 text-black" *matHeaderCellDef> Curso ID </mat-header-cell>
-            <mat-cell class="nunito fs-4 text-black" *matCellDef="let curso"> {{ curso.idCurso }} </mat-cell>
-          </ng-container>
-          <ng-container matColumnDef="nombreCurso">
-            <mat-header-cell class="nunito fs-4 text-black" *matHeaderCellDef> Nombre del Curso </mat-header-cell>
-            <mat-cell class="nunito fs-4 text-black" *matCellDef="let curso"> {{ curso.nombreCurso }} </mat-cell>
-          </ng-container>
+        <div class="table-container">
+          <mat-table [dataSource]="cursos" class="mat-elevation-z4">
+            <ng-container matColumnDef="idCurso">
+              <mat-header-cell class="nunito fs-4
+              text-white bg-success border border-light id-celda fix-cell" *matHeaderCellDef>ID Curso</mat-header-cell>
+              <mat-cell class="bg-success-subtle nunito fs-4 text-black border-bottom border-top border-start border-light  bg-success-subtle id-celda" *matCellDef="let curso">#{{curso.idCurso}}</mat-cell>
+            </ng-container>
+            <ng-container matColumnDef="nombreCurso">
+              <mat-header-cell class="nunito fs-4
+              text-white bg-success border border-light fix-cell" *matHeaderCellDef><span>Nombre del</span><span>Curso</span></mat-header-cell>
+              <mat-cell class="nunito fs-4 text-black border-bottom border-top border-light bg-success-subtle" *matCellDef="let curso"> {{ curso.nombreCurso | limitadorLetras: 11}} </mat-cell>
+            </ng-container>
+  
+            <ng-container matColumnDef="nombreProfesor">
+              <mat-header-cell class="nunito fs-4
+              text-white bg-success border border-light fix-cell" *matHeaderCellDef> <span>Nombre del</span><span>Profesor</span></mat-header-cell>
+              <mat-cell class="nunito fs-4 text-black border-bottom border-top border-light bg-success-subtle" *matCellDef="let curso"> {{ curso.nombreProfesor | limitadorLetras: 11 }} </mat-cell>
+            </ng-container>
+  
+            <ng-container matColumnDef="genero">
+              <mat-header-cell class="nunito fs-4
+              text-white bg-success border border-light fix-cell" *matHeaderCellDef> Género </mat-header-cell>
+              <mat-cell class="nunito fs-4 text-black border-bottom border-top border-light bg-success-subtle" *matCellDef="let curso"> {{ curso.genero }} </mat-cell>
+            </ng-container>
 
-          <ng-container matColumnDef="nombreProfesor">
-            <mat-header-cell class="nunito fs-4 text-black" *matHeaderCellDef> Nombre del Profesor </mat-header-cell>
-            <mat-cell class="nunito fs-4 text-black" *matCellDef="let curso"> {{ curso.nombreProfesor }} </mat-cell>
-          </ng-container>
+            <ng-container matColumnDef="separador">
+              <mat-cell class="bg-success border-light border" *matHeaderCellDef=""></mat-cell>
+              <mat-cell class="bg-success border-light border" *matCellDef="let curso"></mat-cell>
+            </ng-container>
 
-          <ng-container matColumnDef="genero">
-            <mat-header-cell class="nunito fs-4 text-black" *matHeaderCellDef> Género </mat-header-cell>
-            <mat-cell class="nunito fs-4 text-black" *matCellDef="let curso"> {{ curso.genero }} </mat-cell>
-          </ng-container>
+            <ng-container matColumnDef="idProfesor">
+              <mat-header-cell class="nunito fs-4
+              text-white bg-success border border-light id-celda" *matHeaderCellDef><span>ID</span><span>Profesor</span></mat-header-cell>
+              <mat-cell class="nunito fs-4 text-black border-bottom border-top border-light bg-success-subtle id-celda" *matCellDef="let curso">#{{ curso.id }}</mat-cell>
+            </ng-container>
+  
+            <ng-container matColumnDef="telefono">
+              <mat-header-cell class="nunito fs-4
+              text-white bg-success border border-light fix-cell" *matHeaderCellDef> Teléfono </mat-header-cell>
+              <mat-cell class="nunito fs-4 text-black border-bottom border-top border-light bg-success-subtle" *matCellDef="let curso"> {{ curso.telefono }} </mat-cell>
+            </ng-container>
+  
+            <ng-container matColumnDef="fecha">
+              <mat-header-cell class="nunito fs-4
+              text-white bg-success border border-light fix-cell" *matHeaderCellDef> Fecha </mat-header-cell>
+              <mat-cell class="nunito fs-4 text-black border-bottom border-top border-light bg-success-subtle" *matCellDef="let curso"> {{ curso.fecha | date }} </mat-cell>
+            </ng-container>
+  
+            <ng-container matColumnDef="email">
+              <mat-header-cell class="nunito fs-4
+              text-white bg-success border border-light fix-cell" *matHeaderCellDef><span>Correo</span><span>Electrónico</span></mat-header-cell>
+              <mat-cell class="nunito fs-4 text-black border-bottom border-top border-light bg-success-subtle" *matCellDef="let curso"> {{ curso.email | limitadorLetras:11 }} </mat-cell>
+            </ng-container>
+  
+            <ng-container matColumnDef="tiempo">
+              <mat-header-cell class="nunito fs-4
+              text-white bg-success border border-light fix-cell" *matHeaderCellDef> Tiempo u Hora </mat-header-cell>
+              <mat-cell class="nunito fs-4 text-black border-bottom border-top border-light bg-success-subtle" *matCellDef="let curso"> {{ curso.tiempo }} </mat-cell>
+            </ng-container>
+  
+            <ng-container matColumnDef="salon">
+              <mat-header-cell class="nunito fs-4
+              text-white bg-success border border-light fix-cell" *matHeaderCellDef> Salón </mat-header-cell>
+              <mat-cell class="nunito fs-4 text-black border-bottom border-top border-light bg-success-subtle" *matCellDef="let curso"> {{ curso.salon }} </mat-cell>
+            </ng-container>
+  
+            <ng-container matColumnDef="Descri">
+              <mat-header-cell class="nunito fs-4
+              text-white bg-success border border-light fix-cell" *matHeaderCellDef>Descripción</mat-header-cell>
+              <mat-cell class="nunito fs-4 text-black border-bottom border-top border-light bg-success-subtle" *matCellDef="let curso"> {{ curso.Descri | limitadorLetras:10}} </mat-cell>
+            </ng-container>
+  
+            <ng-container matColumnDef="acciones">
+              <mat-header-cell class="celda-borrar bg-success border-light border" *matHeaderCellDef></mat-header-cell>
+              <mat-cell class="celda-borrar border-bottom border-top border-end border-light bg-success-subtle" *matCellDef="let curso">
+                <button mat-icon-button (click)="borrarCurso(curso)">
+                  <mat-icon style="color: rgb(179, 41, 41);">delete</mat-icon>
+                </button>
+              </mat-cell>
+            </ng-container>
 
-          <ng-container matColumnDef="idProfesor">
-            <mat-header-cell class="nunito fs-4 text-black" *matHeaderCellDef> ID del Profesor </mat-header-cell>
-            <mat-cell class="nunito fs-4 text-black" *matCellDef="let curso"> {{ curso.id }} </mat-cell>
-          </ng-container>
-
-          <ng-container matColumnDef="telefono">
-            <mat-header-cell class="nunito fs-4 text-black" *matHeaderCellDef> Teléfono </mat-header-cell>
-            <mat-cell class="nunito fs-4 text-black" *matCellDef="let curso"> {{ curso.telefono }} </mat-cell>
-          </ng-container>
-
-          <ng-container matColumnDef="fecha">
-            <mat-header-cell class="nunito fs-4 text-black" *matHeaderCellDef> Fecha </mat-header-cell>
-            <mat-cell class="nunito fs-4 text-black" *matCellDef="let curso"> {{ curso.fecha | date }} </mat-cell>
-          </ng-container>
-
-          <ng-container matColumnDef="email">
-            <mat-header-cell class="nunito fs-4 text-black" *matHeaderCellDef> Correo Electrónico </mat-header-cell>
-            <mat-cell class="nunito fs-4 text-black" *matCellDef="let curso"> {{ curso.email }} </mat-cell>
-          </ng-container>
-
-          <ng-container matColumnDef="tiempo">
-            <mat-header-cell class="nunito fs-4 text-black" *matHeaderCellDef> Tiempo o Hora </mat-header-cell>
-            <mat-cell class="nunito fs-4 text-black" *matCellDef="let curso"> {{ curso.tiempo }} </mat-cell>
-          </ng-container>
-
-          <ng-container matColumnDef="salon">
-            <mat-header-cell class="nunito fs-4 text-black" *matHeaderCellDef> Salón </mat-header-cell>
-            <mat-cell class="nunito fs-4 text-black" *matCellDef="let curso"> {{ curso.salon }} </mat-cell>
-          </ng-container>
-
-          <ng-container matColumnDef="Descri">
-            <mat-header-cell class="nunito fs-4 text-black" *matHeaderCellDef>Descripcion</mat-header-cell>
-            <mat-cell class="nunito fs-4 text-black" *matCellDef="let curso"> {{ curso.Descri | limitadorLetras:23}} </mat-cell>
-          </ng-container>
-
-          <ng-container matColumnDef="acciones">
-            <mat-header-cell *matHeaderCellDef></mat-header-cell>
-            <mat-cell *matCellDef="let curso">
-              <button mat-icon-button (click)="borrarCurso(curso)">
-                <mat-icon>delete</mat-icon>
-              </button>
-            </mat-cell>
-          </ng-container>
-
-          <mat-header-row *matHeaderRowDef="columnasMostrar"></mat-header-row>
-          <mat-row *matRowDef="let row; columns: columnasMostrar;"></mat-row>
-        </mat-table>
-        <ng-template #noCursos>
-          <mat-card class="mat-elevation-z4">
-            <mat-card-content>
-              <p>No hay cursos disponibles.</p>
-            </mat-card-content>
-          </mat-card>
-        </ng-template>
+            
+  
+            <mat-header-row *matHeaderRowDef="columnasMostrar"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: columnasMostrar;"></mat-row>
+          </mat-table>
+          <ng-template #noCursos>
+            <mat-card class="mat-elevation-z4">
+              <mat-card-content>
+                <p>No hay cursos disponibles.</p>
+              </mat-card-content>
+            </mat-card>
+          </ng-template>
+        </div>
       </mat-card-content>
     </mat-card>
   </div>

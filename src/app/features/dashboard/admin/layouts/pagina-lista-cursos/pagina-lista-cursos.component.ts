@@ -16,6 +16,7 @@ export class PaginaListaCursosComponent implements OnInit {
     'nombreCurso', 
     'nombreProfesor', 
     'genero', 
+    'separador',
     'idProfesor', 
     'telefono', 
     'fecha', 

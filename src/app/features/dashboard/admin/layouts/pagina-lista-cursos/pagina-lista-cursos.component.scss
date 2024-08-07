@@ -1,21 +1,62 @@
-.mat-card {
-    margin-bottom: 20px;
-  }
-  
-  .mat-table {
-    width: 100%;
-  }
-  
-  .mat-header-cell {
-    font-weight: bold;
-  }
-  
-  .mat-cell {
-    text-align: center;
-  }
-  
-  .mat-cell {
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+.mat-table {
+  width: 100%;
+}
+
+mat-cell, .mat-header-cell {
+  white-space: nowrap; 
+  overflow: hidden; 
+  text-overflow: ellipsis; 
+}
+
+mat-header-cell {
+  min-width: 150px; 
+}
+
+mat-cell {
+  min-width: 150px; 
+}
+
+.table-container {
+  overflow-x: auto; 
+  -webkit-overflow-scrolling: touch; 
+}
+
+.mat-table {
+  width: max-content; 
+}
+
+.table-container {
+  width: 100%; 
+  scrollbar-width: none; 
+  max-width: 100%;
+}
+
+.celda-borrar {
+  min-width: 70px;
+  text-align: center;
+}
+
+.id-celda {
+  min-width: 100px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.fix-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.separador-celda {
+  background-color: rgb(131, 185, 185);
+  min-width: 120px;
+  border-bottom-color: rgb(100, 148, 148);
+}
+

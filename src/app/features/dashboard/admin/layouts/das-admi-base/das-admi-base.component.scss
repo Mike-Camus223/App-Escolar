@@ -6,7 +6,7 @@
 
 mat-sidenav {
   width: 250px;
-  background-color: #387F39;
+  background-color: #379777;
   padding: 16px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   border-top-right-radius: 0;
@@ -16,6 +16,7 @@ mat-sidenav {
 mat-sidenav-content {
   flex: 1;
 }
+
 
 @media (max-width: 768px) {
   mat-sidenav {
@@ -38,38 +39,39 @@ mat-sidenav-content {
 
 
 mat-list-item {
-  background-color: transparent; 
-  border: none; 
-  padding: 8px; 
-  margin: 0; 
-  
+  background-color: transparent;
+  border: none;
+  padding: 8px;
+  margin: 0;
 
 
-  
+
+
   &:hover {
-    background-color: rgba(0, 0, 0, 0.1); 
+    background-color: rgba(0, 0, 0, 0.1);
   }
 
   &.active-link {
-    background-color: rgba(0, 0, 0, 0.1); 
+    background-color: rgba(0, 0, 0, 0.1);
   }
 }
 
 mat-expansion-panel-header {
-  background-color: transparent; 
-  border: none; 
-  padding: 8px; 
-  
+  background-color: transparent;
+  border: none;
+  padding: 8px;
+
   .mat-expansion-panel-header-title {
-    color: #000; 
+    color: #000;
   }
 }
 
 mat-expansion-panel {
   padding: 0;
+
   .mat-expansion-panel-content {
-    background-color: transparent; 
-    border: none; 
+    background-color: transparent;
+    border: none;
   }
 }
 
@@ -110,7 +112,15 @@ mat-expansion-panel {
   box-shadow: none;
 }
 
+mat-expansion-panel-body {
+  padding: 10px 10px 10px 10px;
 
-mat-expansion-panel .body {
-  padding: 0px 0px 0px 0px;
+}
+
+.mat-expansion {
+  &-panel {
+    &-body {
+      padding: 10px 10px 10px 10px;
+    }
+  }
 }
