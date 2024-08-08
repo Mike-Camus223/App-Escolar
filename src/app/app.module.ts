@@ -6,7 +6,6 @@ import { MatCardModule } from '@angular/material/card';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { SharedModule } from './shared/shared.module';
 import { FeaturesModule } from './features/features.module';
 
 @NgModule({
@@ -18,7 +17,6 @@ import { FeaturesModule } from './features/features.module';
     AppRoutingModule,
     MatButtonModule,
     MatCardModule,
-    SharedModule,
     FeaturesModule,
   ],
   providers: [

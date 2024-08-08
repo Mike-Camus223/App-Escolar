@@ -1,0 +1,9 @@
+<div class="chip-base" aria-label="Class Curses selection">
+    <div *ngIf="DataCurso" class="nunito chip-item p-1 fw-medium" [ngClass]="{
+        'programacion': DataCurso.tipoCurso === 'Programación',
+        'diseno': DataCurso.tipoCurso === 'Diseño UX/UI',
+        'data': DataCurso.tipoCurso === 'Data'
+      }">
+        {{ DataCurso.tipoCurso }}
+    </div>
+</div>

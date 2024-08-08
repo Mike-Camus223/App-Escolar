@@ -7,7 +7,7 @@ import { ConfirmacionInscripcionDialogComponent } from '../../components/confirm
 @Component({
   selector: 'app-ver-cursos-user',
   templateUrl: './ver-cursos-user.component.html',
-  styleUrl: './ver-cursos-user.component.scss'
+  styleUrl: './ver-cursos-user.component.scss',
 })
 export class VerCursosUserComponent implements OnInit {
 

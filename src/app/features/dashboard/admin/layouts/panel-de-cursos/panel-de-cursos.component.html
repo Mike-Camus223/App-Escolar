@@ -90,9 +90,9 @@
                             </mat-error>
                           </mat-form-field>
             
-                          <mat-form-field class="w-100" appearance="fill" >
+                          <mat-form-field class="w-100" appearance="fill">
                             <mat-label>Fecha</mat-label>
-                            <input matInput [matDatepicker]="picker" formControlName="fecha" type="date">
+                            <input matInput [matDatepicker]="picker" formControlName="fecha">
                             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                             <mat-datepicker #picker></mat-datepicker>
                             <mat-error *ngIf="cursoForm.get('fecha')?.hasError('required')">
@@ -116,6 +116,29 @@
                             <input matInput formControlName="tiempo" placeholder="Ejemplo: 10:00 a 14:00">
                             <mat-error *ngIf="cursoForm.get('tiempo')?.hasError('required')">
                               El tiempo o la hora es obligatorio.
+                            </mat-error>
+                          </mat-form-field>
+
+                          <mat-form-field class="w-100" appearance="fill" >
+                            <mat-label>Precio del curso</mat-label>
+                            <input matInput formControlName="precioCurso" type="text">
+                            <mat-error *ngIf="cursoForm.get('precioCurso')?.hasError('required')">
+                              Agrege un precio al curso.
+                            </mat-error>
+                            <mat-error *ngIf="cursoForm.get('precioCurso')?.hasError('pattern')">
+                              El precio debe contener solo números.
+                            </mat-error>
+                          </mat-form-field>
+
+                          <mat-form-field class="w-100" appearance="fill" >
+                            <mat-label>Clasificación de Curso</mat-label>
+                            <mat-select formControlName="tipoCurso">
+                              <mat-option value="Programación">Programación</mat-option>
+                              <mat-option value="Diseño UX/UI">Diseño UX/UI</mat-option>
+                              <mat-option value="Data">Data</mat-option>
+                            </mat-select>
+                            <mat-error *ngIf="cursoForm.get('tipoCurso')?.hasError('required')">
+                              La clasificación de Cursos es obligatorio.
                             </mat-error>
                           </mat-form-field>
             

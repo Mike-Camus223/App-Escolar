@@ -21,7 +21,9 @@ export class PaginaListaCursosComponent implements OnInit {
     'telefono', 
     'fecha', 
     'email', 
-    'tiempo', 
+    'tiempo',
+    'precio',
+    'tipoCurso',
     'salon',
     'Descri', 
     'acciones'

@@ -17,8 +17,7 @@ export class PanelDeCursosComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private cursoService: CursoService,
-    private dialog: MatDialog
-  ) {
+    private dialog: MatDialog){
     this.cursoForm = this.fb.group({
       nombreProfesor: ['', [Validators.required, Validators.pattern('^[a-zA-Z\s]+$')]],
       genero: ['', Validators.required],
@@ -29,6 +28,8 @@ export class PanelDeCursosComponent implements OnInit {
       fecha: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       tiempo: ['', Validators.required],
+      precioCurso: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
+      tipoCurso: ['', Validators.required],
       salon: ['', Validators.required],
       Descri: ['', Validators.required],
     });

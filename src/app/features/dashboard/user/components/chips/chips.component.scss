@@ -1,0 +1,29 @@
+.chip-base {
+    .chip-item {
+      width: 90px;
+      text-align: center;
+      border-radius: 10px;
+      font-family: "Nunito Sans", sans-serif;
+      font-size: 10px;
+      font-weight: 400;
+      line-height: 20px;
+      letter-spacing: 0px;
+      border: none;
+  
+      &.programacion {
+        background-color: #5e4549;
+        color: #ffa0c0;
+      }
+  
+      &.diseno {
+        background-color: #00796b;
+        color: #e0f7fa;
+      }
+  
+      &.data {
+        background-color: #524919;
+        color: #ffea74;
+      }
+    }
+  }
+  

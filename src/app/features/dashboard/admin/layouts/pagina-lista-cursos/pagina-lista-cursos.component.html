@@ -62,6 +62,18 @@
               text-white bg-success border border-light fix-cell" *matHeaderCellDef> Tiempo u Hora </mat-header-cell>
               <mat-cell class="nunito fs-4 text-black border-bottom border-top border-light bg-success-subtle" *matCellDef="let curso"> {{ curso.tiempo }} </mat-cell>
             </ng-container>
+
+            <ng-container matColumnDef="precio">
+              <mat-header-cell class="nunito fs-4
+              text-white bg-success border border-light fix-cell" *matHeaderCellDef>Precio del Curso</mat-header-cell>
+              <mat-cell class="nunito fs-4 text-black border-bottom border-top border-light bg-success-subtle" *matCellDef="let curso">${{ curso.precioCurso}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="tipoCurso">
+              <mat-header-cell class="nunito fs-4
+              text-white bg-success border border-light fix-cell" *matHeaderCellDef>Clasificación de los Cursos</mat-header-cell>
+              <mat-cell class="nunito fs-4 text-black border-bottom border-top border-light bg-success-subtle" *matCellDef="let curso">{{ curso.tipoCurso}}</mat-cell>
+            </ng-container>
   
             <ng-container matColumnDef="salon">
               <mat-header-cell class="nunito fs-4

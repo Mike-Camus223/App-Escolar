@@ -25,6 +25,9 @@ import { SharedModule } from '../../../shared/shared.module';
 import { DetalleCursoDialogComponent } from './components/detalle-curso-dialog/detalle-curso-dialog.component';
 import { VerCursosUserComponent } from './layouts/ver-cursos-user/ver-cursos-user.component';
 import { ConfirmacionInscripcionDialogComponent } from './components/confirmacion-inscripcion-dialog/confirmacion-inscripcion-dialog.component';
+import { MatChipsModule } from '@angular/material/chips';
+import { ChipsComponent } from './components/chips/chips.component';
+import { DivisaArgPipe } from '../../../shared/pipes/divisa-arg.pipe';
 
 
 @NgModule({
@@ -32,7 +35,9 @@ import { ConfirmacionInscripcionDialogComponent } from './components/confirmacio
     DasUserBaseComponent,
     VerCursosUserComponent,
     DetalleCursoDialogComponent,
-    ConfirmacionInscripcionDialogComponent
+    ConfirmacionInscripcionDialogComponent,
+    ChipsComponent,
+    DivisaArgPipe
   ],
   imports: [
     CommonModule,
@@ -58,8 +63,8 @@ import { ConfirmacionInscripcionDialogComponent } from './components/confirmacio
     MatSelectModule,
     MatSnackBarModule,
     MatMenuTrigger,
+    MatChipsModule,
     AdminModule,
-    SharedModule
   ]
 })
 export class UserModule { }
