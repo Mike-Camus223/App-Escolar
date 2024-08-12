@@ -1,13 +1,6 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
-// Plus imports for other components in your app.
-
-// Include the common styles for Angular Material. We include this here so that you only
-// have to load a single css file for Angular Material in your app.
-// Be sure that you only ever include this mixin once!
-@include mat.core();
 
 // Define the theme object.
 $school-app-theme: mat.define-theme((
@@ -20,6 +13,11 @@ $school-app-theme: mat.define-theme((
     scale: 0,
   )
 ));
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -34,14 +32,13 @@ $school-app-theme: mat.define-theme((
 
 // Comment out the line below if you want to use the deprecated `color` inputs.
 // @include mat.color-variants-backwards-compatibility($school-app-theme);
-/* You can add global styles to this file, and also import other style files */
 
+// Import Bootstrap CSS (make sure this is after Angular Material @use)
+@import 'bootstrap/dist/css/bootstrap.min.css';
 
-
-
-
+// Global styles
 html {
-    font-size: 62.5%; 
+  font-size: 62.5%;
 }
 
 body, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -56,54 +53,53 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%; 
-    font: inherit;
-    vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
 }
 
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
-    display: block;
+  display: block;
 }
 
 ol, ul {
-    list-style: none;
+  list-style: none;
 }
 
 table {
-    border-collapse: collapse;
-    border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
 
 img {
-    max-width: 100%;
-    height: auto;
-    display: block;
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 body {
-    line-height: 1;
-    font-size: 1.6rem; 
+  line-height: 1;
+  font-size: 1.6rem;
 }
 
 a {
-    color: #000;
-    font-family: none;
-    font-size: 16px;
-    text-decoration: none;
+  color: #000;
+  font-family: none;
+  font-size: 16px;
+  text-decoration: none;
 }
 
 .nunito {
-    font-family: "Nunito Sans", sans-serif;
+  font-family: "Nunito Sans", sans-serif;
 }
-
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .bg-dashboard {
-background-color: #379777;
+  background-color: #379777;
 }

@@ -28,6 +28,7 @@ import { ConfirmacionInscripcionDialogComponent } from './components/confirmacio
 import { MatChipsModule } from '@angular/material/chips';
 import { ChipsComponent } from './components/chips/chips.component';
 import { DivisaArgPipe } from '../../../shared/pipes/divisa-arg.pipe';
+import { DasPageUserComponent } from './layouts/das-page-user/das-page-user.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { DivisaArgPipe } from '../../../shared/pipes/divisa-arg.pipe';
     DetalleCursoDialogComponent,
     ConfirmacionInscripcionDialogComponent,
     ChipsComponent,
-    DivisaArgPipe
+    DivisaArgPipe,
+    DasPageUserComponent
   ],
   imports: [
     CommonModule,

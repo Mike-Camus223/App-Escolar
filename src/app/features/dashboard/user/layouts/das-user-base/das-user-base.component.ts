@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-das-user-base',
@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
 export class DasUserBaseComponent {
 
   MonoLinks = [
-    { nombre: 'Dashboard', Icono: 'dashboard', direction: 'Estado', ColorClass: 'ColorIcono'}, ];
+    { nombre: 'Dashboard', Icono: 'dashboard', direction: 'Perfil', ColorClass: 'ColorIcono'}, ];
 
   ListaLinks = [
     
@@ -16,5 +16,32 @@ export class DasUserBaseComponent {
       { nombre: 'Cursos', Icono: 'book', direction: 'Cursos' }
     ]},
   ];
+
+  isSidebarCollapsed = false;
+  isMobileView = false;
+  subLink: any;
+  link: any;
+
+  constructor() {
+    this.checkViewport();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.checkViewport();
+  }
+
+  checkViewport() {
+    this.isMobileView = window.innerWidth <= 768;
+    if (this.isMobileView) {
+      this.isSidebarCollapsed = true;
+    } else {
+      this.isSidebarCollapsed = false;
+    }
+  }
+
+  toggleSidebar() {
+    this.isSidebarCollapsed = !this.isSidebarCollapsed;
+  }
 
 }

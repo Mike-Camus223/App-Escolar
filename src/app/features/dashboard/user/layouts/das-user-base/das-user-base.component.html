@@ -1,30 +1,33 @@
-<mat-sidenav-container class="sidenav-container">
-    <mat-sidenav mode="side" opened>
-      <mat-nav-list class="d-flex flex-column gap-4">
-        <mat-list-item *ngFor="let link of MonoLinks" 
-          [routerLink]="link.direction"
-          routerLinkActive="active-link">
-          <mat-icon class="nav-icon fs-1" [ngClass]="link.ColorClass ? link.ColorClass : ''">{{ link.Icono }}</mat-icon>
-          <span class="nav-text nunito fs-4 fw-medium text-white">{{ link.nombre }}</span>
-        </mat-list-item>
-        <mat-expansion-panel  class="bg-trans win" *ngFor="let link of ListaLinks">
-          <mat-expansion-panel-header>
-            <mat-icon class="nav-icon fs-1" [ngClass]="link.ColorClass ? link.ColorClass : ''">{{ link.Icono }}</mat-icon>
-            <span class="nav-text nunito fs-4 fw-medium text-white multi">{{ link.nombre }}</span>
-          </mat-expansion-panel-header>
-          <mat-nav-list>
-            <mat-list-item *ngFor="let subLink of link.Sublinks" [routerLink]="subLink.direction">
-              <mat-icon class="nav-icon fs-1">{{ subLink.Icono }}</mat-icon>
-              <span class="nav-text nunito fs-4 fw-medium text-white">{{ subLink.nombre }}</span>
-            </mat-list-item>
-          </mat-nav-list>
-        </mat-expansion-panel>
-      </mat-nav-list>
-    </mat-sidenav>
-    <mat-sidenav-content class="bg-silver">
-      <div>
-        <router-outlet></router-outlet>
+<div id="sidebar" class="text-white p-3" [ngClass]="{'collapsed': isSidebarCollapsed}">
+  <button class="btn bg-dash-button text-white" (click)="toggleSidebar()">
+      <i class="bi bi-list"></i>
+  </button>
+  <ul class="nav flex-column gap-3 mt-3">
+    <li class="nav-item monlink" *ngFor="let link of MonoLinks">
+      <a class="nav-link text-white linkactivetion" [routerLink]="link.direction" routerLinkActive="active">
+        <mat-icon [ngClass]="link.ColorClass">{{ link.Icono }}</mat-icon>
+        <span class="sidebar-text nunito fs-4" *ngIf="!isSidebarCollapsed || isMobileView">{{ link.nombre }}</span>
+      </a>
+    </li>
+    <li class="nav-item monlink" *ngFor="let link of ListaLinks">
+      <a class="nav-link text-white linkactivetion" data-bs-toggle="collapse" [attr.href]="'#' + link.nombre + 'Collapse'" role="button" aria-expanded="false" [attr.aria-controls]="link.nombre + 'Collapse'">
+        <mat-icon [ngClass]="link.ColorClass">{{ link.Icono }}</mat-icon>
+        <span class="sidebar-text nunito fs-4 " *ngIf="!isSidebarCollapsed || isMobileView">{{ link.nombre }}</span>
+      </a>
+      <div class="collapse" [id]="link.nombre + 'Collapse'">
+        <ul class="nav flex-column gap-2">
+          <li class="nav-item" *ngFor="let sublink of link.Sublinks">
+            <a class="nav-link text-white linkactivetion linkhoversecond" [routerLink]="sublink.direction" routerLinkActive="active">
+              <mat-icon>{{ sublink.Icono }}</mat-icon>
+              <span class="sidebar-text nunito fs-4" *ngIf="!isSidebarCollapsed || isMobileView">{{ sublink.nombre }}</span>
+            </a>
+          </li>
+        </ul>
       </div>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
-  
+    </li>
+  </ul>
+</div>
+
+<div id="content" [ngClass]="{'sidebar-collapsed': isSidebarCollapsed}">
+    <router-outlet></router-outlet>
+</div>

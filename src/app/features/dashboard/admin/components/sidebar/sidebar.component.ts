@@ -6,6 +6,7 @@ import { Component, HostListener } from '@angular/core';
   styleUrl: './sidebar.component.scss'
 })
 export class SidebarComponent {
+
   isSidebarCollapsed = false;
   isMobileView = false;
 
@@ -30,4 +31,5 @@ export class SidebarComponent {
   toggleSidebar() {
     this.isSidebarCollapsed = !this.isSidebarCollapsed;
   }
+
 }
