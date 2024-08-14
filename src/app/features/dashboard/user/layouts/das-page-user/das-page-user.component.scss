@@ -1,8 +1,54 @@
-img {
+
+
+  .image-container {
+    background-color: beige;
     border-radius: 50%; 
     width: 128px; 
-    height: 128px;
-    object-fit: cover; 
-    background-color: beige;
+  height: 128px;
+}
+
+img {
+  border-radius: 50%; 
+  width: 128px; 
+  height: 128px;
+  object-fit: cover; 
+}
+
+//  @media (min-width: 992px) {
+//    .image-container {
+//        max-width: 128px; 
+//    }
+//  }
+
+.perfilcontainer {
+  height: 100vh;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.perfilcontainer2 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+@media (max-width: 1200px) {
+  .perfilcontainer2 {
+      grid-template-columns: repeat(2, 1fr);
   }
-  
+}
+
+@media (max-width: 768px) {
+  .perfilcontainer2 {
+      grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .perfilcontainer2 {
+      grid-template-columns: 1fr;
+  }
+
+  .perfilcontainer2 > div {
+      width: 100%;
+  }
+}

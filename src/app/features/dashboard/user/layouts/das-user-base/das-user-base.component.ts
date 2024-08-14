@@ -1,4 +1,5 @@
 import { Component, HostListener } from '@angular/core';
+import { AuthService } from '../../../../../core/services/auth.service';
 
 @Component({
   selector: 'app-das-user-base',
@@ -22,7 +23,7 @@ export class DasUserBaseComponent {
   subLink: any;
   link: any;
 
-  constructor() {
+  constructor(private authService: AuthService) {
     this.checkViewport();
   }
 
@@ -42,6 +43,10 @@ export class DasUserBaseComponent {
 
   toggleSidebar() {
     this.isSidebarCollapsed = !this.isSidebarCollapsed;
+  }
+
+  CerraSesion() {
+    this.authService.cerrarSesion();
   }
 
 }

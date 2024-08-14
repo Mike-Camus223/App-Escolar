@@ -17,7 +17,7 @@ import { FeaturesModule } from './features/features.module';
     AppRoutingModule,
     MatButtonModule,
     MatCardModule,
-    FeaturesModule,
+    FeaturesModule
   ],
   providers: [
     provideAnimationsAsync()

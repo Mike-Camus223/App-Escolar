@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AuthModule } from './auth/auth.module';
 import { DashboardModule } from './dashboard/dashboard.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
   ],
   imports: [
     CommonModule,
+    DashboardModule,
     AuthModule,
-    DashboardModule
   ]
 })
 export class FeaturesModule { }

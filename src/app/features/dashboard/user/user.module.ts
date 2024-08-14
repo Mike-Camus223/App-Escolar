@@ -29,6 +29,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { ChipsComponent } from './components/chips/chips.component';
 import { DivisaArgPipe } from '../../../shared/pipes/divisa-arg.pipe';
 import { DasPageUserComponent } from './layouts/das-page-user/das-page-user.component';
+import { UserCardDataComponent } from './components/user-card-data/user-card-data.component';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { DasPageUserComponent } from './layouts/das-page-user/das-page-user.comp
     ConfirmacionInscripcionDialogComponent,
     ChipsComponent,
     DivisaArgPipe,
-    DasPageUserComponent
+    DasPageUserComponent,
+    UserCardDataComponent
   ],
   imports: [
     CommonModule,
@@ -66,7 +68,6 @@ import { DasPageUserComponent } from './layouts/das-page-user/das-page-user.comp
     MatSnackBarModule,
     MatMenuTrigger,
     MatChipsModule,
-    AdminModule,
   ]
 })
 export class UserModule { }

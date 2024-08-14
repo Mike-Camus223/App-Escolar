@@ -1,4 +1,5 @@
 import { Component, HostListener, ViewChild } from '@angular/core';
+import { AuthService } from '../../../../../core/services/auth.service';
 
 @Component({
   selector: 'app-das-admi-base',
@@ -31,7 +32,7 @@ export class DasAdmiBaseComponent {
   subLink: any;
   link: any;
 
-  constructor() {
+  constructor(private authService: AuthService) {
     this.checkViewport();
   }
 
@@ -51,5 +52,9 @@ export class DasAdmiBaseComponent {
 
   toggleSidebar() {
     this.isSidebarCollapsed = !this.isSidebarCollapsed;
+  }
+
+  CerrarSesion() {
+    this.authService.cerrarSesion();
   }
 }
