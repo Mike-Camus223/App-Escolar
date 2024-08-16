@@ -20,8 +20,6 @@ import { MatSidenavModule, MatDrawer } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { AdminModule } from '../admin/admin.module';
-import { SharedModule } from '../../../shared/shared.module';
 import { DetalleCursoDialogComponent } from './components/detalle-curso-dialog/detalle-curso-dialog.component';
 import { VerCursosUserComponent } from './layouts/ver-cursos-user/ver-cursos-user.component';
 import { ConfirmacionInscripcionDialogComponent } from './components/confirmacion-inscripcion-dialog/confirmacion-inscripcion-dialog.component';
