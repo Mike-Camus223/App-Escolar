@@ -6,7 +6,7 @@
 $school-app-theme: mat.define-theme((
   color: (
     theme-type: light,
-    primary: mat.$azure-palette,
+    primary: mat.$cyan-palette,
     tertiary: mat.$blue-palette,
   ),
   density: (
@@ -39,6 +39,10 @@ $school-app-theme: mat.define-theme((
 // Global styles
 html {
   font-size: 62.5%;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -97,9 +101,16 @@ a {
   font-family: "Nunito Sans", sans-serif;
 }
 
+.text-login {
+  color: #d4fdfd;
+}
+
 html, body { height: 100%; }
+
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 .bg-dashboard {
   background-color: #379777;
 }
+
+

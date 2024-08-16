@@ -1,0 +1,65 @@
+<div class="container-fluid bg-login vh-100">
+    <div class="row h-100">
+        <div class="col-xxl-6 col-md-6 d-flex justify-content-center align-items-center bg-left">
+            <div class="d-flex flex-column gap-4 justify-content-center align-items-center">
+                <div class="fondo bg-azure">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <i class="fa-sharp fa-light fa-school-lock"></i>
+                <h1 class="titulo-label text-white">University App</h1>
+                <p class="question-label text-white fs-3">Más conectado que tu WiFi de la Facu</p>
+            </div>
+        </div>
+        <div class="col-xxl-6 col-md-6 d-flex justify-content-center align-items-center">
+            <div class="w-50 ">
+                <mat-card class="card-login">
+                    <mat-card-header class="py-4 d-flex justify-content-center ">
+                        <h2 class="fs-1 nunito">Inicio de sesión</h2>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <div class="form-group">
+                            <div class="py-1">
+                                <mat-form-field class="w-100" appearance="fill">
+                                    <mat-label class="fs-4 nunito">Email</mat-label>
+                                    <input class="fs-4 nunito rounded-3" matInput formControlName="Email">
+                                    <mat-error>
+                                        Rellenar este campo es obligatorio.
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="py-1">
+                                <mat-form-field class="w-100" appearance="fill">
+                                    <mat-label class="fs-4 nunito">Contraseña</mat-label>
+                                    <input class="fs-4 nunito rounded-3" matInput [type]="ocultar ? 'password' : 'text'" formControlName="Contraseña">
+                                    <button mat-icon-button matSuffix (click)="ocultar = !ocultar" type="button">
+                                        <mat-icon>{{ocultar ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                    </button>
+                                    <mat-error>
+                                        Rellenar este campo es obligatorio.
+                                    </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="py-2 d-flex align-items-center gap-2">
+                                <mat-slide-toggle></mat-slide-toggle><span class="fs-4 nunito">Recuerdame</span>
+                            </div>
+                            <div class="py-3">
+                                <button class="fs-4 nunito w-100 rounded-3" mat-flat-button style="background-color: #1A3636;">Iniciar sesión</button>
+                            </div>
+                            <div class="container d-flex justify-content-center align-items-center col-7 p-3">
+                                <ul class="d-flex justify-content-center flex-column align-items-center gap-3">
+                                    <li>
+                                        <label for="AccountQuestion" class="nunito fw-medium fs-4"> ¿Aún no tienes una cuenta?
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <a class="link-login nunito fs-3" href="#">Crear una cuenta</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+</div>
