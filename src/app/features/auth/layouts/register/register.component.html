@@ -60,9 +60,9 @@
                             <div class="py-1">
                                 <mat-form-field class="w-100" appearance="fill">
                                     <mat-label class="fs-4 nunito">Confirmar Contraseña</mat-label>
-                                    <input class="fs-4 nunito rounded-3" matInput [type]="ocultar ? 'password' : 'text'" formControlName="ConfirmarContraseña">
-                                    <button mat-icon-button matSuffix (click)="ocultar = !ocultar" type="button">
-                                        <mat-icon>{{ocultar ? 'visibility_off' : 'visibility'}}</mat-icon>
+                                    <input class="fs-4 nunito rounded-3" matInput [type]="ocultar2 ? 'password' : 'text'" formControlName="ConfirmarContraseña">
+                                    <button mat-icon-button matSuffix (click)="ocultar2 = !ocultar2" type="button">
+                                        <mat-icon>{{ocultar2 ? 'visibility_off' : 'visibility'}}</mat-icon>
                                     </button>
                                     <mat-error>
                                         Rellenar este campo es obligatorio.

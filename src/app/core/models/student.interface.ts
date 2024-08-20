@@ -5,4 +5,5 @@ export interface Student {
     nombre: string;
     apellido: string;
     fecha: Date;
+    role: string;
   }

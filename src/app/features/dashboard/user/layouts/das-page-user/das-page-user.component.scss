@@ -1,54 +1,72 @@
-
-
-  .image-container {
-    background-color: beige;
-    border-radius: 50%; 
-    width: 128px; 
+.image-container {
+  background-color: beige;
+  border-radius: 50%;
+  width: 128px;
   height: 128px;
+  object-fit: cover;
 }
 
-img {
-  border-radius: 50%; 
-  width: 128px; 
-  height: 128px;
-  object-fit: cover; 
+
+
+ img {
+   object-fit: cover;
+   border-radius: 50%;
+   height: 100%;
+   width: 100%;
 }
 
-//  @media (min-width: 992px) {
-//    .image-container {
-//        max-width: 128px; 
-//    }
-//  }
+.win1 {
+  width: 40%;
+}
 
-.perfilcontainer {
-  height: 100vh;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.win2 {
+  width: 60%;
+}
+
+.line {
+  line-height: 1.5;
+}
+
+.max {
+  max-height: 42px;
+}
+
+.h-85 {
+  height: 850px;
 }
 
 .perfilcontainer2 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  // gap: 1rem;
 }
 
 @media (max-width: 1200px) {
   .perfilcontainer2 {
-      grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 768px) {
   .perfilcontainer2 {
-      grid-template-columns: 1fr;
+    grid-template-columns: 1fr;
   }
 }
 
-@media (max-width: 576px) {
+@media (max-width: 575px) {
+
+  .userborderima {
+    display: flex;
+    justify-content: start;
+    padding-left: 5px;
+  }
+
   .perfilcontainer2 {
-      grid-template-columns: 1fr;
+    grid-template-columns: 1fr;
   }
 
-  .perfilcontainer2 > div {
-      width: 100%;
+  .perfilcontainer2>div {
+    width: 100%;
   }
 }
+

@@ -1,33 +1,46 @@
-<div id="sidebar" class="text-white p-3" [ngClass]="{'collapsed': isSidebarCollapsed}">
-  <button class="btn bg-dash-button text-white" (click)="toggleSidebar()">
+<div id="sidebar" class="text-white p-3 d-flex flex-column" [ngClass]="{'collapsed': isSidebarCollapsed}">
+  <div class="flex-grow-1">
+    <button class="btn bg-dash-button text-white" (click)="toggleSidebar()">
       <i class="bi bi-list"></i>
-  </button>
-  <ul class="nav flex-column gap-3 mt-3">
-    <li class="nav-item monlink" *ngFor="let link of MonoLinks">
-      <a class="nav-link text-white linkactivetion" [routerLink]="link.direction" routerLinkActive="active">
-        <mat-icon [ngClass]="link.ColorClass">{{ link.Icono }}</mat-icon>
-        <span class="sidebar-text nunito fs-4" *ngIf="!isSidebarCollapsed || isMobileView">{{ link.nombre }}</span>
-      </a>
-    </li>
-    <li class="nav-item monlink" *ngFor="let link of ListaLinks">
-      <a class="nav-link text-white linkactivetion" data-bs-toggle="collapse" [attr.href]="'#' + link.nombre + 'Collapse'" role="button" aria-expanded="false" [attr.aria-controls]="link.nombre + 'Collapse'">
-        <mat-icon [ngClass]="link.ColorClass">{{ link.Icono }}</mat-icon>
-        <span class="sidebar-text nunito fs-4 " *ngIf="!isSidebarCollapsed || isMobileView">{{ link.nombre }}</span>
-      </a>
-      <div class="collapse" [id]="link.nombre + 'Collapse'">
-        <ul class="nav flex-column gap-2">
-          <li class="nav-item" *ngFor="let sublink of link.Sublinks">
-            <a class="nav-link text-white linkactivetion linkhoversecond" [routerLink]="sublink.direction" routerLinkActive="active">
-              <mat-icon>{{ sublink.Icono }}</mat-icon>
-              <span class="sidebar-text nunito fs-4" *ngIf="!isSidebarCollapsed || isMobileView">{{ sublink.nombre }}</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </li>
-  </ul>
+    </button>
+    <ul class="nav flex-column gap-3 mt-3">
+      <li class="nav-item monlink" *ngFor="let link of MonoLinks">
+        <a class="nav-link text-white linkactivetion" [routerLink]="link.direction" routerLinkActive="active">
+          <mat-icon [ngClass]="link.ColorClass">{{ link.Icono }}</mat-icon>
+          <span class="sidebar-text nunito fs-4" *ngIf="!isSidebarCollapsed || isMobileView">{{ link.nombre }}</span>
+        </a>
+      </li>
+      <li class="nav-item monlink" *ngFor="let link of ListaLinks">
+        <a class="nav-link text-white linkactivetion" data-bs-toggle="collapse"
+          [attr.href]="'#' + link.nombre + 'Collapse'" role="button" aria-expanded="false"
+          [attr.aria-controls]="link.nombre + 'Collapse'">
+          <mat-icon [ngClass]="link.ColorClass">{{ link.Icono }}</mat-icon>
+          <span class="sidebar-text nunito fs-4 " *ngIf="!isSidebarCollapsed || isMobileView">{{ link.nombre }}</span>
+        </a>
+        <div class="collapse" [id]="link.nombre + 'Collapse'">
+          <ul class="nav flex-column gap-2">
+            <li class="nav-item" *ngFor="let sublink of link.Sublinks">
+              <a class="nav-link text-white linkactivetion linkhoversecond" [routerLink]="sublink.direction"
+                routerLinkActive="active">
+                <mat-icon>{{ sublink.Icono }}</mat-icon>
+                <span class="sidebar-text nunito fs-4" *ngIf="!isSidebarCollapsed || isMobileView">{{ sublink.nombre}}</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+    <ul class="nav flex-column gap-3 mt-3 w-100 logout-section">
+      <li class="nav-item monlink">
+        <a class=" nav-link text-white linkactivetion">
+          <mat-icon>logout</mat-icon>
+          <span class="sidebar-text nunito fs-4 ms-2" *ngIf="!isSidebarCollapsed || isMobileView">Cerrar Sesión</span>
+        </a>
+      </li>
+    </ul>
+  </div>
 </div>
-
 <div id="content" [ngClass]="{'sidebar-collapsed': isSidebarCollapsed}">
-    <router-outlet></router-outlet>
+  <app-panelloginadmin></app-panelloginadmin>
+  <router-outlet></router-outlet>
 </div>

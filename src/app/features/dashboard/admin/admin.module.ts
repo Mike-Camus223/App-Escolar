@@ -32,6 +32,7 @@ import { DeleteDialogListaComponent } from './components/delete-dialog-lista/del
 import { SharedModule } from '../../../shared/shared.module';
 import { LimitadorLetrasPipe } from '../../../shared/pipes/limitador-letras.pipe';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { PanelloginadminComponent } from './components/panelloginadmin/panelloginadmin.component';
 
 @NgModule({
   imports: [
@@ -73,7 +74,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     PaginaListaCursosComponent,
     DeleteDialogListaComponent,
     LimitadorLetrasPipe,
-    SidebarComponent
+    SidebarComponent,
+    PanelloginadminComponent
   ],
 
   exports: [

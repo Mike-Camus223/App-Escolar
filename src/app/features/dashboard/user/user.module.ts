@@ -28,7 +28,9 @@ import { ChipsComponent } from './components/chips/chips.component';
 import { DivisaArgPipe } from '../../../shared/pipes/divisa-arg.pipe';
 import { DasPageUserComponent } from './layouts/das-page-user/das-page-user.component';
 import { UserCardDataComponent } from './components/user-card-data/user-card-data.component';
-
+import { ChartdonutComponent } from './components/chartdonut/chartdonut.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { UserperfiltablaComponent } from './components/userperfiltabla/userperfiltabla.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { UserCardDataComponent } from './components/user-card-data/user-card-dat
     ChipsComponent,
     DivisaArgPipe,
     DasPageUserComponent,
-    UserCardDataComponent
+    UserCardDataComponent,
+    ChartdonutComponent,
+    UserperfiltablaComponent
   ],
   imports: [
     CommonModule,
@@ -66,6 +70,7 @@ import { UserCardDataComponent } from './components/user-card-data/user-card-dat
     MatSnackBarModule,
     MatMenuTrigger,
     MatChipsModule,
+    NgApexchartsModule,
   ]
 })
 export class UserModule { }

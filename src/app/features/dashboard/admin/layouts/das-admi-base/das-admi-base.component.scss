@@ -59,10 +59,6 @@
   }
 }
 
-
-
-
-
 .bg-dash-button {
   background-color: #206850;
 }
@@ -82,6 +78,8 @@
   transition: width 0.3s ease;
   background-color: #379777;
   width: 250px;
+
+  // color background #1A3636
 
   .nav-link {
     display: flex;
@@ -130,7 +128,7 @@
 }
 
 #content {
-  background-color: #f0f1f3;
+  background-color: #e9e9e9;
   transition: margin-left 0.3s ease;
   margin-left: 250px;
 
@@ -149,3 +147,27 @@
   font-size: 1.5rem;
 }
 
+.logout-section {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  padding: 0 10px;
+}
+
+.btn {
+  border: none;
+  &:active {
+    border: none;
+    background-color: #184636
+  }
+
+  &:hover {
+    background-color: #184636
+
+  }
+
+  &:focus {
+    border: none;
+  }
+}

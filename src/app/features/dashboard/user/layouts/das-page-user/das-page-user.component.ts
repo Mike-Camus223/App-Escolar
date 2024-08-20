@@ -13,7 +13,8 @@ export class DasPageUserComponent implements OnInit {
     foto: 'assets/photos/photo1.jpg',
     nombre: 'Gatito',
     apellido: 'Naranjoso',
-    fecha: new Date('2003-05-15')
+    fecha: new Date('2003-05-15'),
+    role: "user"
   };
 
   UserInfoCards = [

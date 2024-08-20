@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrl: './register.component.scss'
 })
 export class RegisterComponent {
+
   ocultar = true
+  ocultar2 = true
 }

@@ -26,6 +26,14 @@
       </div>
     </li>
   </ul>
+  <ul class="nav flex-column gap-3 mt-3 w-100 logout-section">
+    <li class="nav-item monlink">
+      <a class=" nav-link text-white linkactivetion">
+        <mat-icon>logout</mat-icon>
+        <span class="sidebar-text nunito fs-4 ms-2" *ngIf="!isSidebarCollapsed || isMobileView">Cerrar Sesión</span>
+      </a>
+    </li>
+  </ul>
 </div>
 
 <div id="content" [ngClass]="{'sidebar-collapsed': isSidebarCollapsed}">

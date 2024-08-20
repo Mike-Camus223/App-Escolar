@@ -13,11 +13,11 @@ export class StudentsListBaseComponent {
   
   Columnas: string[] = ['id', 'foto', 'nombre', 'apellido', 'fecha', 'actions'];
   DatosFuente = new MatTableDataSource<Student>([
-    { id: 1, foto: 'assets/photos/photo1.jpg', nombre: 'Gatito', apellido: 'Naranjoso', fecha: new Date('2001-05-15') },
-    { id: 2, foto: 'assets/photos/photo2.jpg', nombre: 'Gatito', apellido: 'Agresivo', fecha: new Date('2002-08-22') },
-    { id: 3, foto: 'assets/photos/photo3.jpg', nombre: 'Gatito', apellido: 'Disociado', fecha: new Date('1991-02-07') },
-    { id: 4, foto: 'assets/photos/photo4.jpg', nombre: 'Gatito', apellido: 'De Pana', fecha: new Date('2010-04-15') },
-    { id: 5, foto: 'assets/photos/photo5.jpg', nombre: 'Gatito', apellido: 'Miron', fecha: new Date('2005-04-12') }
+    { id: 1, foto: 'assets/photos/photo1.jpg', nombre: 'Gatito', apellido: 'Naranjoso', fecha: new Date('2001-05-15'), role:"user" },
+    { id: 2, foto: 'assets/photos/photo2.jpg', nombre: 'Gatito', apellido: 'Agresivo', fecha: new Date('2002-08-22'), role:"user" },
+    { id: 3, foto: 'assets/photos/photo3.jpg', nombre: 'Gatito', apellido: 'Disociado', fecha: new Date('1991-02-07'), role:"user" },
+    { id: 4, foto: 'assets/photos/photo4.jpg', nombre: 'Gatito', apellido: 'De Pana', fecha: new Date('2010-04-15'),  role:"user" },
+    { id: 5, foto: 'assets/photos/photo5.jpg', nombre: 'Gatito', apellido: 'Miron', fecha: new Date('2005-04-12'),  role:"user" }
   ]);
 
   private nextId: number = this.getNextId();
