@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Student } from '../../../../../core/models/student.interface';
 
 @Component({
@@ -6,7 +6,17 @@ import { Student } from '../../../../../core/models/student.interface';
   templateUrl: './panelloginadmin.component.html',
   styleUrl: './panelloginadmin.component.scss'
 })
-export class PanelloginadminComponent {
+export class PanelloginadminComponent implements OnInit {
+
+  ngOnInit(): void {
+    
+  }
+
+
+
+  usuarioLoginOn: boolean=false;
+
+
 
   DatosPageUser: Student = {
     id: 1,

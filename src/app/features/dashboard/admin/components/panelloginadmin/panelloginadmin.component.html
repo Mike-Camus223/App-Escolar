@@ -1,7 +1,7 @@
-<div class="container-fluid bg-white shadow-bottom">
+<div class="container-fluid bg-white shadow-bottom navigator">
     <div class="row">
         <div class="col-12">
-            <div class="d-flex justify-content-end align-items-center gap-over p-4 mx-4">
+            <div *ngIf="!usuarioLoginOn" class="d-flex justify-content-end align-items-center gap-over p-4 mx-4">
                 <div class="d-flex gap-3 align-items-center">
                     <div class="d-flex align-items-center gap-4 dropdown flex-row-reverse" id="profileDropdown">
                       <div class="rounded-image rounded-circle MargenCircular">

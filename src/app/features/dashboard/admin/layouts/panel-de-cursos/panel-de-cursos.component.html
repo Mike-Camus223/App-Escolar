@@ -15,7 +15,7 @@
                       </mat-card-header>
                       <mat-card-content>
                         <div class="form-group">
-                          <mat-form-field class="w-100" appearance="fill" >
+                          <mat-form-field class="w-100">
                             <mat-label>Nombre del Profesor</mat-label>
                             <input matInput formControlName="nombreProfesor">
                             <mat-error *ngIf="cursoForm.get('nombreProfesor')?.hasError('required')">
@@ -26,7 +26,7 @@
                             </mat-error>
                           </mat-form-field>
                           
-                          <mat-form-field class="w-100" appearance="fill" >
+                          <mat-form-field class="w-100">
                             <mat-label>Género</mat-label>
                             <mat-select formControlName="genero">
                               <mat-option value="hombre">Hombre</mat-option>
@@ -38,7 +38,7 @@
                             </mat-error>
                           </mat-form-field>
             
-                          <mat-form-field class="w-100" appearance="fill" >
+                          <mat-form-field class="w-100">
                             <mat-label>ID del Profesor</mat-label>
                             <input matInput formControlName="id" type="text">
                             <mat-error *ngIf="cursoForm.get('id')?.hasError('required')">
@@ -49,7 +49,7 @@
                             </mat-error>
                           </mat-form-field>
             
-                          <mat-form-field class="w-100" appearance="fill" >
+                          <mat-form-field class="w-100">
                             <mat-label>Teléfono</mat-label>
                             <input matInput formControlName="telefono" type="text">
                             <mat-error *ngIf="cursoForm.get('telefono')?.hasError('required')">
@@ -71,7 +71,7 @@
                       </mat-card-header>
                       <mat-card-content>
                         <div class="form-group">
-                          <mat-form-field class="w-100" appearance="fill" >
+                          <mat-form-field class="w-100">
                             <mat-label>Agregar Curso</mat-label>
                             <input matInput formControlName="nombreCurso" placeholder="Nombre del curso">
                             <mat-error *ngIf="cursoForm.get('nombreCurso')?.hasError('required')">
@@ -79,7 +79,7 @@
                             </mat-error>
                           </mat-form-field>
             
-                          <mat-form-field class="w-100" appearance="fill" >
+                          <mat-form-field class="w-100">
                             <mat-label>ID del Curso</mat-label>
                             <input matInput formControlName="idCurso" type="text">
                             <mat-error *ngIf="cursoForm.get('idCurso')?.hasError('required')">
@@ -90,7 +90,7 @@
                             </mat-error>
                           </mat-form-field>
             
-                          <mat-form-field class="w-100" appearance="fill">
+                          <mat-form-field class="w-100">
                             <mat-label>Fecha</mat-label>
                             <input matInput [matDatepicker]="picker" formControlName="fecha">
                             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -100,7 +100,7 @@
                             </mat-error>
                           </mat-form-field>
             
-                          <mat-form-field class="w-100" appearance="fill" >
+                          <mat-form-field class="w-100">
                             <mat-label>Correo Electrónico</mat-label>
                             <input matInput formControlName="email" type="email">
                             <mat-error *ngIf="cursoForm.get('email')?.hasError('required')">
@@ -111,7 +111,7 @@
                             </mat-error>
                           </mat-form-field>
             
-                          <mat-form-field class="w-100" appearance="fill" >
+                          <mat-form-field class="w-100">
                             <mat-label>Tiempo o Hora</mat-label>
                             <input matInput formControlName="tiempo" placeholder="Ejemplo: 10:00 a 14:00">
                             <mat-error *ngIf="cursoForm.get('tiempo')?.hasError('required')">
@@ -119,7 +119,7 @@
                             </mat-error>
                           </mat-form-field>
 
-                          <mat-form-field class="w-100" appearance="fill" >
+                          <mat-form-field class="w-100">
                             <mat-label>Precio del curso</mat-label>
                             <input matInput formControlName="precioCurso" type="text">
                             <mat-error *ngIf="cursoForm.get('precioCurso')?.hasError('required')">
@@ -130,7 +130,7 @@
                             </mat-error>
                           </mat-form-field>
 
-                          <mat-form-field class="w-100" appearance="fill" >
+                          <mat-form-field class="w-100">
                             <mat-label>Clasificación de Curso</mat-label>
                             <mat-select formControlName="tipoCurso">
                               <mat-option value="Programación">Programación</mat-option>
@@ -142,7 +142,7 @@
                             </mat-error>
                           </mat-form-field>
             
-                          <mat-form-field class="w-100" appearance="fill" >
+                          <mat-form-field class="w-100">
                             <mat-label>Salón</mat-label>
                             <input matInput formControlName="salon" placeholder="Ejemplo: A, B, C">
                             <mat-error *ngIf="cursoForm.get('salon')?.hasError('required')">
@@ -150,7 +150,7 @@
                             </mat-error>
                           </mat-form-field>
 
-                          <mat-form-field class="w-100" appearance="fill">
+                          <mat-form-field class="w-100">
                             <mat-label>Descripcion</mat-label>
                             <input matInput formControlName="Descri" placeholder="Descripcion del curso">
                             <mat-error *ngIf="cursoForm.get('Descri')?.hasError('required')">

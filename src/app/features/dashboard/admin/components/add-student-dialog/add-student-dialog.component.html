@@ -1,8 +1,7 @@
 <h1 class="nunito fs-3 text-black" mat-dialog-title>{{ isEdit ? 'Editar Alumno' : 'Añadir Alumno' }}</h1>
 <div mat-dialog-content>
   <form [formGroup]="studentForm" (ngSubmit)="onSave()">
-
-    <mat-form-field class="pb-2" appearance="fill">
+    <mat-form-field class="pb-2">
       <mat-label class="nunito fs-5 text-black">Nombre</mat-label>
       <input class="nunito fs-5 text-black" matInput formControlName="nombre" placeholder="Nombre">
       <mat-error class="nunito fs-5" *ngIf="studentForm.get('nombre')?.invalid && studentForm.get('nombre')?.touched">
@@ -11,35 +10,35 @@
         {{ getError('nombre') }}
       </mat-error>
     </mat-form-field>
-
-    <mat-form-field class="pb-2" appearance="fill">
+    <mat-form-field class="pb-2">
       <mat-label class="nunito fs-5 text-black">Apellido</mat-label>
       <input class="nunito fs-5 text-black" matInput formControlName="apellido" placeholder="Apellido">
-      <mat-error class="nunito fs-5" *ngIf="studentForm.get('apellido')?.invalid && studentForm.get('apellido')?.touched">
+      <mat-error class="nunito fs-5"
+        *ngIf="studentForm.get('apellido')?.invalid && studentForm.get('apellido')?.touched">
         <mat-icon *ngIf="studentForm.get('apellido')?.errors?.['required']">error</mat-icon>
         <mat-icon *ngIf="studentForm.get('apellido')?.errors?.['pattern']">error</mat-icon>
         {{ getError('apellido') }}
       </mat-error>
     </mat-form-field>
-
-    <mat-form-field class="pb-2" appearance="fill">
+    <mat-form-field class="pb-2">
       <mat-label class="nunito fs-5 text-black">Foto de Perfil</mat-label>
-      <input class="nunito fs-5 text-black" matInput formControlName="foto" placeholder="URL de la foto" [attr.disabled]="true">
+      <input class="nunito fs-5 text-black" matInput formControlName="foto" placeholder="URL de la foto"
+        [attr.disabled]="true">
     </mat-form-field>
-
-    <mat-form-field class="pb-2" appearance="fill">
+    <mat-form-field class="pb-2">
       <mat-label class="nunito fs-5 text-black">Fecha de Nacimiento</mat-label>
-      <input class="nunito fs-5 text-black" matInput [matDatepicker]="picker" formControlName="fecha" placeholder="Fecha de Nacimiento">
+      <input class="nunito fs-5 text-black" matInput [matDatepicker]="picker" formControlName="fecha"
+        placeholder="Fecha de Nacimiento">
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-datepicker #picker></mat-datepicker>
       <mat-error class="nunito fs-5" *ngIf="studentForm.get('fecha')?.invalid && studentForm.get('fecha')?.touched">
         La fecha es invalida intente otra vez
       </mat-error>
     </mat-form-field>
-
     <div mat-dialog-actions>
       <button class="nunito fs-5" mat-button (click)="onNoClick()">Cancelar</button>
-      <button class="nunito fs-5" mat-raised-button color="primary" type="submit">{{ isEdit ? 'Guardar' : 'Añadir' }}</button>
+      <button class="nunito fs-5" mat-raised-button color="primary" type="submit">{{ isEdit ? 'Guardar' : 'Añadir'
+        }}</button>
     </div>
   </form>
 </div>

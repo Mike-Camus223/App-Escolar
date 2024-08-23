@@ -17,26 +17,35 @@
                         <h2 class="fs-1 nunito">Inicio de sesión</h2>
                     </mat-card-header>
                     <mat-card-content>
-                        <div class="form-group">
+                        <form (ngSubmit)="onSubmit()" [formGroup]="loginForm" class="form-group">
                             <div class="py-1">
-                                <mat-form-field class="w-100" appearance="fill">
-                                    <mat-label class="fs-4 nunito">Email</mat-label>
-                                    <input class="fs-4 nunito rounded-3" matInput formControlName="Email">
-                                    <mat-error>
+                                <mat-form-field class="w-100">
+                                    <mat-label class="fs-4 nunito">Correo</mat-label>
+                                    <input class="fs-4 nunito rounded-3" matInput formControlName="email">
+                                    <mat-error *ngIf="loginForm.get('email')?.hasError('required')">
                                         Rellenar este campo es obligatorio.
                                     </mat-error>
                                 </mat-form-field>
                             </div>
                             <div class="py-1">
-                                <mat-form-field class="w-100" appearance="fill">
+                                <mat-form-field class="w-100">
                                     <mat-label class="fs-4 nunito">Contraseña</mat-label>
-                                    <input class="fs-4 nunito rounded-3" matInput [type]="ocultar ? 'password' : 'text'" formControlName="Contraseña">
+                                    <input class="fs-4 nunito rounded-3" matInput [type]="ocultar ? 'password' : 'text'" formControlName="password">
                                     <button mat-icon-button matSuffix (click)="ocultar = !ocultar" type="button">
                                         <mat-icon>{{ocultar ? 'visibility_off' : 'visibility'}}</mat-icon>
                                     </button>
-                                    <mat-error>
+                                    <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
                                         Rellenar este campo es obligatorio.
                                     </mat-error>
+                                </mat-form-field>
+                            </div>
+                            <div class="py-1">
+                                <mat-form-field class="w-100">
+                                    <mat-label>Tipo de Rol</mat-label>
+                                    <mat-select formControlName="role" >
+                                        <mat-option value="ADMIN">ADMIN</mat-option>
+                                        <mat-option value="USER">USER</mat-option>
+                                    </mat-select>
                                 </mat-form-field>
                             </div>
                             <div class="py-2 d-flex align-items-center gap-2">
@@ -48,15 +57,15 @@
                             <div class="container d-flex justify-content-center align-items-center col-7 p-3">
                                 <ul class="d-flex justify-content-center flex-column align-items-center gap-3">
                                     <li>
-                                        <label for="AccountQuestion" class="nunito fw-medium fs-4"> ¿Aún no tienes una cuenta?
-                                        </label>
+                                        <h4 class="nunito fs-4"> ¿Aún no tienes una cuenta?
+                                        </h4>
                                     </li>
                                     <li>
                                         <a class="link-login nunito fs-3" routerLink="/auth/register">Crear una cuenta</a>
                                     </li>
                                 </ul>
                             </div>
-                        </div>
+                        </form>
                     </mat-card-content>
                 </mat-card>
             </div>

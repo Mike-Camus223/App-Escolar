@@ -19,7 +19,7 @@
                     <mat-card-content>
                         <div class="form-group">
                             <div class="py-1">
-                                <mat-form-field class="w-100" appearance="fill">
+                                <mat-form-field class="w-100">
                                     <mat-label class="fs-4 nunito">Nombre</mat-label>
                                     <input class="fs-4 nunito rounded-3" matInput formControlName="Nombre">
                                     <mat-error>
@@ -28,7 +28,7 @@
                                 </mat-form-field>
                             </div>
                             <div class="py-1">
-                                <mat-form-field class="w-100" appearance="fill">
+                                <mat-form-field class="w-100">
                                     <mat-label class="fs-4 nunito">Apellido</mat-label>
                                     <input class="fs-4 nunito rounded-3" matInput formControlName="Apellido">
                                     <mat-error>
@@ -37,7 +37,7 @@
                                 </mat-form-field>
                             </div>
                             <div class="py-1">
-                                <mat-form-field class="w-100" appearance="fill">
+                                <mat-form-field class="w-100">
                                     <mat-label class="fs-4 nunito">Email</mat-label>
                                     <input class="fs-4 nunito rounded-3" matInput formControlName="Email">
                                     <mat-error>
@@ -46,7 +46,7 @@
                                 </mat-form-field>
                             </div>
                             <div class="py-1">
-                                <mat-form-field class="w-100" appearance="fill">
+                                <mat-form-field class="w-100">
                                     <mat-label class="fs-4 nunito">Contraseña</mat-label>
                                     <input class="fs-4 nunito rounded-3" matInput [type]="ocultar ? 'password' : 'text'" formControlName="Contraseña">
                                     <button mat-icon-button matSuffix (click)="ocultar = !ocultar" type="button">
@@ -58,7 +58,7 @@
                                 </mat-form-field>
                             </div>
                             <div class="py-1">
-                                <mat-form-field class="w-100" appearance="fill">
+                                <mat-form-field class="w-100">
                                     <mat-label class="fs-4 nunito">Confirmar Contraseña</mat-label>
                                     <input class="fs-4 nunito rounded-3" matInput [type]="ocultar2 ? 'password' : 'text'" formControlName="ConfirmarContraseña">
                                     <button mat-icon-button matSuffix (click)="ocultar2 = !ocultar2" type="button">

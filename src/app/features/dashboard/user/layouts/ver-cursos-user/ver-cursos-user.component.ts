@@ -7,7 +7,7 @@ import { ConfirmacionInscripcionDialogComponent } from '../../components/confirm
 @Component({
   selector: 'app-ver-cursos-user',
   templateUrl: './ver-cursos-user.component.html',
-  styleUrl: './ver-cursos-user.component.scss',
+  styleUrls: ['./ver-cursos-user.component.scss'],
 })
 export class VerCursosUserComponent implements OnInit {
 
@@ -19,9 +19,21 @@ export class VerCursosUserComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.cursoService.getCursos().subscribe(cursos => {
-      this.cursos = cursos;
-    });
+    this.CargarCursos();
+  }
+
+  estaCargando = false;
+
+  CargarCursos() {
+    this.estaCargando = true;
+    this.cursoService.guardarCursos().subscribe({
+      next: (cursos) => {
+        this.cursos = cursos
+      },
+      complete: () => {
+        this.estaCargando = false;
+      }
+    })
   }
 
   verDetalles(curso: any): void {
@@ -38,7 +50,8 @@ export class VerCursosUserComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if (result) {}
+      if (result) {
+      }
     });
   }
 }

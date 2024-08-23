@@ -35,7 +35,7 @@ export class PaginaListaCursosComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.cursoService.getCursos().subscribe(cursos => {
+    this.cursoService.guardarCursos().subscribe(cursos => {
       this.cursos = cursos;
     });
   }

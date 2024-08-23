@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Student } from '../../../../../core/models/student.interface';
+import { Observable, Subscriber } from 'rxjs';
+import { OnDestroy } from '@angular/core';
+import { isSubscription, Subscription } from 'rxjs/internal/Subscription';
 
 @Component({
   selector: 'app-das-page-user',
@@ -44,12 +47,33 @@ export class DasPageUserComponent implements OnInit {
     },
   ];
 
-  constructor() { 
+  myrandomnumbersubscription?: Subscription;
 
+  constructor() {
+    // this.myrandomnumbersubscription = this.myrandomnumber$.pipe().subscribe({
+    //   next: (randomNumber) => {
+    //     console.log(randomNumber);
+    //   },
+    //   error: () => {},
+    //   complete: () => {},
+    // });
   }
 
   ngOnInit(): void {
   }
+
+  OnDestroy(): void {
+    this.myrandomnumbersubscription?.unsubscribe();
+  }
+
+
+
+  // myrandomnumber$= new Observable ((Subscriber)=> {
+  //   setInterval(() =>{
+  //     Subscriber.next(Math.random());
+  //   },20000);
+  // });
+
 }
 
 

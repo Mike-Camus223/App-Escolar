@@ -6,7 +6,8 @@ import { MatCardModule } from '@angular/material/card';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { FeaturesModule } from './features/features.module';
+import { provideNativeDateAdapter } from '@angular/material/core';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,10 @@ import { FeaturesModule } from './features/features.module';
     MatCardModule,
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    provideNativeDateAdapter(),
+    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,useValue: {appearance: 'outline'}}
+
   ],
   bootstrap: [AppComponent]
 })
