@@ -1,19 +1,34 @@
 import { Injectable } from '@angular/core';
 import { ResolveStart, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 import { DasAdmiBaseComponent } from '../../features/dashboard/admin/layouts/das-admi-base/das-admi-base.component';
+import { User} from '../models/UserType.interface';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
+  private ValidToken = '112312355'
+
+  private authUser = new BehaviorSubject <User | null>   (null);
+
+  AcessAuthUser = this.authUser.asObservable();
+
   constructor(private router: Router) { }
 
   login() {
-    localStorage.setItem('token', 'asdasdasdasdsa');
+    localStorage.setItem('token', this.ValidToken);
+    this.authUser.next({
+      email: 'example@email.com',
+      password: '12345',
+      role: 'Admin',
+    }),
     this.router.navigate(['dashboard/admin'])
   }
+
+
+ 
 
   // async login() {
   //   localStorage.setItem('token', 'asdasdasdasdsa');
@@ -51,8 +66,10 @@ export class AuthService {
     this.router.navigate(['auth','login'])
   }
 
-  ObtenerToken( ){
+  verificarToken(): Observable<boolean> {
+    const token = localStorage.getItem('token');
 
+    return of (this.ValidToken === token)
   }
 
   ObtenerUsuarioAuth(): Promise<any> {
