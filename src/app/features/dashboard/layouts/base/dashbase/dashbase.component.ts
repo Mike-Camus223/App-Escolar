@@ -16,12 +16,23 @@ export class DashbaseComponent {
 
 
   MonoLinks = [
-    { nombre: 'Dashboard', Icono: 'dashboard', direction: 'Estado', ColorClass: 'ColorIcono' },
     { nombre: 'Perfil', Icono: 'face', direction: 'Perfil', ColorClass: 'ColorIcono' }
-
   ];
 
   ListaLinks = [
+
+    {
+      nombre: 'User', Icono: 'book', direction: '', ColorClass: 'Icono3', Sublinks: [
+        { nombre: 'Ver Cursos', Icono: 'book', direction: 'VerCursos', ColorClass: 'ColorIcono' }
+      ]
+    },
+  ];
+
+  monolinkadmin = [
+    { nombre: 'Dashboard', Icono: 'dashboard', direction: 'Estado', ColorClass: 'ColorIcono' },
+  ]
+
+  ListaLinksAdmin = [
     {
       nombre: 'Estudiantes', Icono: 'school', direction: '', ColorClass: 'Icono2', Sublinks: [
         { nombre: 'Lista de Alumnos', Icono: 'school', direction: 'ListadeEstudiantes', ColorClass: 'ColorIcono' },
@@ -34,20 +45,13 @@ export class DashbaseComponent {
         { nombre: 'Lista de Cursos', Icono: 'book', direction: 'ListadeCursos', ColorClass: 'ColorIcono' }
       ]
     },
-    {
-      nombre: 'User', Icono: 'book', direction: '', ColorClass: 'Icono3', Sublinks: [
-        { nombre: 'Ver Cursos', Icono: 'book', direction: 'VerCursos', ColorClass: 'ColorIcono' }
-      ]
-    },
-  ];
+  ]
 
 
-  // authUser$: Observable<User | null>;
-
-  
+  authUser: Observable<User | null>;
 
   constructor(private authservice: AuthService) {
-    // this.authUser$ = this.authservice.au
+    this.authUser = authservice.AcessAuthUser;
    }
 
   toggleSidenav() {

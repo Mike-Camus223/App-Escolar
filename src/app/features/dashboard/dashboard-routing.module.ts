@@ -9,15 +9,16 @@ import { DasAdmiBaseComponent } from './layouts/base/das-admi-base/das-admi-base
 import { DasPageUserComponent } from './layouts/user/das-page-user/das-page-user.component';
 import { VerCursosUserComponent } from './layouts/user/ver-cursos-user/ver-cursos-user.component';
 import { DashbaseComponent } from './layouts/base/dashbase/dashbase.component';
+import { adminGuard } from '../../core/guards/admin.guard';
 
 const routes: Routes = [
   {
     path: '', component: DashbaseComponent, children: [
-      { path: 'Estado', component: AdminControlPanelComponent },
-      { path: 'ListadeEstudiantes', component: StudentsListBaseComponent },
-      { path: 'PaneldeCursos', component: PanelDeCursosComponent },
-      { path: 'PaneldeInscripciones', component: PanelDeIncripcionesComponent },
-      { path: 'ListadeCursos', component: PaginaListaCursosComponent },
+      { path: 'Estado', canActivate: [adminGuard], component: AdminControlPanelComponent },
+      { path: 'ListadeEstudiantes', canActivate: [adminGuard], component: StudentsListBaseComponent },
+      { path: 'PaneldeCursos', canActivate: [adminGuard], component: PanelDeCursosComponent },
+      { path: 'PaneldeInscripciones', canActivate: [adminGuard], component: PanelDeIncripcionesComponent },
+      { path: 'ListadeCursos', canActivate: [adminGuard], component: PaginaListaCursosComponent },
       { path: 'Perfil', component: DasPageUserComponent},
       { path: 'VerCursos', component: VerCursosUserComponent}
 

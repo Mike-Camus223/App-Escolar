@@ -18,6 +18,51 @@
             <span class="fs-4 text-login">{{ link.nombre }}</span>
           </a>
         </ng-container>
+        <div *ngIf="(authUser | async)?.role === 'Admin'">
+          <ng-container *ngFor="let link of monolinkadmin">
+            <a
+              mat-list-item
+              class="fs-4"
+              [routerLink]="link.direction"
+              routerLinkActive="active">
+              <mat-icon class="icono" [ngClass]="link.ColorClass">{{
+                link.Icono
+              }}</mat-icon>
+              <span class="fs-4 text-login">{{ link.nombre }}</span>
+            </a>
+          </ng-container>
+        </div>
+        <div *ngIf="(authUser | async)?.role === 'Admin'">
+          <ng-container *ngFor="let link of ListaLinksAdmin">
+            <mat-expansion-panel
+            style="background-color: transparent; box-shadow: none;">
+            <mat-expansion-panel-header
+            style="background-color: transparent; box-shadow: none;">
+            <mat-icon class="icono" [ngClass]="link.ColorClass">{{
+              link.Icono
+            }}</mat-icon>
+                <span class="fs-4 text-login">{{ link.nombre }}</span>
+              </mat-expansion-panel-header>
+              <ng-container *ngFor="let sublink of link.Sublinks">
+                <a
+                  mat-list-item
+                  style="display: flex; align-items: center;"
+                  [routerLink]="sublink.direction"
+                  routerLinkActive="active"
+                >
+                  <div class="d-flex">
+                    <mat-icon [ngClass]="sublink.ColorClass">{{
+                      sublink.Icono
+                    }}</mat-icon>
+                    <span class="fs-4 listalinks text-login">{{
+                      sublink.nombre
+                    }}</span>
+                  </div>
+                </a>
+              </ng-container>
+            </mat-expansion-panel>
+          </ng-container>
+        </div>
         <ng-container *ngFor="let link of ListaLinks">
           <mat-expansion-panel
             style="background-color: transparent; box-shadow: none;">

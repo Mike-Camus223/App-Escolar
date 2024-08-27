@@ -11,9 +11,8 @@ export class AuthService {
   private ValidToken = '112312355'
 
   private authUser = new BehaviorSubject <User | null>   (null);
-
   AcessAuthUser = this.authUser.asObservable();
-
+  
   constructor(private router: Router) { }
 
   login() {
@@ -67,7 +66,7 @@ export class AuthService {
 
   verificarToken(): Observable<boolean> {
     const token = localStorage.getItem('token');
-
+    
     return of (this.ValidToken === token)
   }
 
@@ -90,7 +89,7 @@ export class AuthService {
           name: 'fake taxi',
           email: 'fake@mail.com',
         });
-        // observer.error('no more gods');
+        // observer.error('errores uwunt');
         observer.complete();
       },2000);
     });
