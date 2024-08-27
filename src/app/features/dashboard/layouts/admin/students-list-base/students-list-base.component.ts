@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { AddStudentDialogComponent } from '../../components/add-student-dialog/add-student-dialog.component';
+import { AddStudentDialogComponent } from '../../../components/add-student-dialog/add-student-dialog.component'; 
 import { Student } from '../../../../../core/models/student.interface';
 
 @Component({

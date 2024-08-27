@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CursoService } from '../../../../../core/services/curso.service'; 
 import { MatDialog } from '@angular/material/dialog';
-import { DeleteDialogListaComponent } from '../../components/delete-dialog-lista/delete-dialog-lista.component';
+import { DeleteDialogListaComponent } from '../../../components/delete-dialog-lista/delete-dialog-lista.component'; 
 
 @Component({
   selector: 'app-pagina-lista-cursos',

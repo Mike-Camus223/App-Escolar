@@ -1,0 +1,71 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    style="background-color: #1A3636; border-top-right-radius: 0; border-bottom-right-radius: 0;"
+    [opened]="true"
+    #sidenav
+    mode="side">
+    <mat-nav-list class="d-flex flex-column justify-content-between h-100">
+      <div>
+        <ng-container *ngFor="let link of MonoLinks">
+          <a
+            mat-list-item
+            class="fs-4"
+            [routerLink]="link.direction"
+            routerLinkActive="active">
+            <mat-icon class="icono" [ngClass]="link.ColorClass">{{
+              link.Icono
+            }}</mat-icon>
+            <span class="fs-4 text-login">{{ link.nombre }}</span>
+          </a>
+        </ng-container>
+        <ng-container *ngFor="let link of ListaLinks">
+          <mat-expansion-panel
+            style="background-color: transparent; box-shadow: none;">
+            <mat-expansion-panel-header
+              style="background-color: transparent; box-shadow: none;">
+              <mat-icon class="icono" [ngClass]="link.ColorClass">{{
+                link.Icono
+              }}</mat-icon>
+              <span class="fs-4 text-login">{{ link.nombre }}</span>
+            </mat-expansion-panel-header>
+            <ng-container *ngFor="let sublink of link.Sublinks">
+              <a
+                mat-list-item
+                style="display: flex; align-items: center;"
+                [routerLink]="sublink.direction"
+                routerLinkActive="active"
+              >
+                <div class="d-flex">
+                  <mat-icon [ngClass]="sublink.ColorClass">{{
+                    sublink.Icono
+                  }}</mat-icon>
+                  <span class="fs-4 listalinks text-login">{{
+                    sublink.nombre
+                  }}</span>
+                </div>
+              </a>
+            </ng-container>
+          </mat-expansion-panel>
+        </ng-container>
+      </div>
+      <div>
+        <a
+          mat-list-item
+          class="fs-4"
+          (click)="cerrarSesion();"
+          style="display: flex; align-items: center;"
+        >
+          <mat-icon class="icono">logout</mat-icon>
+          <span class="fs-4 text-login">Cerrar Sesión</span>
+        </a>
+      </div>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-panelloginadmin></app-panelloginadmin>
+    <div class="main-content">
+      <div class="block-70"></div>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { CursoService } from '../../../../../core/services/curso.service';
+import { CursoService } from '../../../../core/services/curso.service'; 
 
 @Component({
   selector: 'app-chips',

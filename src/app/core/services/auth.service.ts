@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ResolveStart, Router } from '@angular/router';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { DasAdmiBaseComponent } from '../../features/dashboard/admin/layouts/das-admi-base/das-admi-base.component';
 import { User} from '../models/UserType.interface';
 
 @Injectable({

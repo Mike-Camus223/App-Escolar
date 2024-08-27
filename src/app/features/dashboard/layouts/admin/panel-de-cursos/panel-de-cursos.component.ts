@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CursoService } from '../../../../../core/services/curso.service';
-import { AlertModalComponent } from '../../components/alert-modal/alert-modal.component';
+import { AlertModalComponent } from '../../../components/alert-modal/alert-modal.component'; 
 import { MatDialog } from '@angular/material/dialog';
 
 

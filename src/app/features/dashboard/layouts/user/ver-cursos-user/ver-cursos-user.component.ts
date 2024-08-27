@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CursoService } from '../../../../../core/services/curso.service';
 import { MatDialog } from '@angular/material/dialog';
-import { DetalleCursoDialogComponent } from '../../components/detalle-curso-dialog/detalle-curso-dialog.component';
-import { ConfirmacionInscripcionDialogComponent } from '../../components/confirmacion-inscripcion-dialog/confirmacion-inscripcion-dialog.component';
+import { DetalleCursoDialogComponent } from '../../../components/detalle-curso-dialog/detalle-curso-dialog.component'; 
+import { ConfirmacionInscripcionDialogComponent } from '../../../components/confirmacion-inscripcion-dialog/confirmacion-inscripcion-dialog.component'; 
 
 @Component({
   selector: 'app-ver-cursos-user',

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Student } from '../../../../../core/models/student.interface';
+import { Student } from '../../../../core/models/student.interface'; 
+import { DashbaseComponent } from '../../layouts/base/dashbase/dashbase.component';
 
 @Component({
   selector: 'app-panelloginadmin',
@@ -12,11 +13,11 @@ export class PanelloginadminComponent implements OnInit {
     
   }
 
+  constructor(private dashboard: DashbaseComponent){
 
+  }
 
   usuarioLoginOn: boolean=false;
-
-
 
   DatosPageUser: Student = {
     id: 1,
@@ -31,5 +32,9 @@ export class PanelloginadminComponent implements OnInit {
 
   flechamovimiento() {
     this.FlechaArriba = !this.FlechaArriba;
+  }
+
+  toggleSidenav() {
+    this.dashboard.toggleSidenav();
   }
 }
