@@ -3,6 +3,7 @@ import { AuthService } from '../../../../../core/services/auth.service';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Observable } from 'rxjs';
 import { User } from '../../../../../core/models/UserType.interface';
+import { environment } from '../../../../../../environments/environment';
 
 @Component({
   selector: 'app-dashbase',
@@ -11,6 +12,8 @@ import { User } from '../../../../../core/models/UserType.interface';
 })
 export class DashbaseComponent {
   title = 'Mi Sidenav';
+
+  entornoNombre = environment.envNombre;
 
   @ViewChild('sidenav') sidenav!: MatSidenav;
 

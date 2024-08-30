@@ -17,7 +17,6 @@ export class PaginaListaCursosComponent implements OnInit {
     'nombreProfesor', 
     'genero', 
     'separador',
-    'idProfesor', 
     'telefono', 
     'fecha', 
     'email', 
@@ -37,6 +36,7 @@ export class PaginaListaCursosComponent implements OnInit {
   ngOnInit(): void {
     this.cursoService.guardarCursos().subscribe(cursos => {
       this.cursos = cursos;
+      localStorage.setItem('cursos', JSON.stringify(this.cursos));
     });
   }
 

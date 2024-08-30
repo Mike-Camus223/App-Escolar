@@ -32,13 +32,7 @@
               <mat-cell class="bg-success border-light border" *matHeaderCellDef=""></mat-cell>
               <mat-cell class="bg-success border-light border" *matCellDef="let curso"></mat-cell>
             </ng-container>
-
-            <ng-container matColumnDef="idProfesor">
-              <mat-header-cell class="nunito fs-4
-              text-white bg-success border border-light id-celda" *matHeaderCellDef><span>ID</span><span>Profesor</span></mat-header-cell>
-              <mat-cell class="nunito fs-4 text-black border-bottom border-top border-light bg-success-subtle id-celda" *matCellDef="let curso">#{{ curso.id }}</mat-cell>
-            </ng-container>
-  
+            
             <ng-container matColumnDef="telefono">
               <mat-header-cell class="nunito fs-4
               text-white bg-success border border-light fix-cell" *matHeaderCellDef> Teléfono </mat-header-cell>

@@ -75,7 +75,7 @@ export class AuthService {
       reject('another gods rejected')
       setTimeout(()=> {
         resolve ({
-          name: 'fake taxi',
+          name: 'fake user',
           email: 'fake@mail.com',
         })
       },2000);
@@ -86,7 +86,7 @@ export class AuthService {
     return new Observable((observer) =>{
       setTimeout(() =>{
         observer.next({
-          name: 'fake taxi',
+          name: 'fake user',
           email: 'fake@mail.com',
         });
         // observer.error('errores uwunt');

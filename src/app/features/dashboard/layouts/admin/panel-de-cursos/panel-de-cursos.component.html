@@ -16,6 +16,17 @@
                       <mat-card-content>
                         <div class="form-group">
                           <mat-form-field class="w-100">
+                            <mat-label>ID</mat-label>
+                            <input matInput formControlName="idCurso" type="text">
+                            <mat-error *ngIf="cursoForm.get('idCurso')?.hasError('required')">
+                              El ID del curso es obligatorio.
+                            </mat-error>
+                            <mat-error *ngIf="cursoForm.get('idCurso')?.hasError('pattern')">
+                              El ID debe contener solo números.
+                            </mat-error>
+                          </mat-form-field>
+
+                          <mat-form-field class="w-100">
                             <mat-label>Nombre del Profesor</mat-label>
                             <input matInput formControlName="nombreProfesor">
                             <mat-error *ngIf="cursoForm.get('nombreProfesor')?.hasError('required')">
@@ -35,17 +46,6 @@
                             </mat-select>
                             <mat-error *ngIf="cursoForm.get('genero')?.hasError('required')">
                               El género es obligatorio.
-                            </mat-error>
-                          </mat-form-field>
-            
-                          <mat-form-field class="w-100">
-                            <mat-label>ID del Profesor</mat-label>
-                            <input matInput formControlName="id" type="text">
-                            <mat-error *ngIf="cursoForm.get('id')?.hasError('required')">
-                              El ID del profesor es obligatorio.
-                            </mat-error>
-                            <mat-error *ngIf="cursoForm.get('id')?.hasError('pattern')">
-                              El ID debe contener solo números.
                             </mat-error>
                           </mat-form-field>
             
@@ -76,17 +76,6 @@
                             <input matInput formControlName="nombreCurso" placeholder="Nombre del curso">
                             <mat-error *ngIf="cursoForm.get('nombreCurso')?.hasError('required')">
                               El nombre del curso es obligatorio.
-                            </mat-error>
-                          </mat-form-field>
-            
-                          <mat-form-field class="w-100">
-                            <mat-label>ID del Curso</mat-label>
-                            <input matInput formControlName="idCurso" type="text">
-                            <mat-error *ngIf="cursoForm.get('idCurso')?.hasError('required')">
-                              El ID del curso es obligatorio.
-                            </mat-error>
-                            <mat-error *ngIf="cursoForm.get('idCurso')?.hasError('pattern')">
-                              El ID debe contener solo números.
                             </mat-error>
                           </mat-form-field>
             
