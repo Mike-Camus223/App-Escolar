@@ -30,11 +30,11 @@
                             <div class="py-1">
                                 <mat-form-field class="w-100">
                                     <mat-label class="fs-4 nunito">Contraseña</mat-label>
-                                    <input class="fs-4 nunito rounded-3" matInput [type]="ocultar ? 'password' : 'text'" formControlName="password">
+                                    <input class="fs-4 nunito rounded-3" matInput [type]="ocultar ? 'password' : 'text'" formControlName="contraseña">
                                     <button mat-icon-button matSuffix (click)="ocultar = !ocultar" type="button">
                                         <mat-icon>{{ocultar ? 'visibility_off' : 'visibility'}}</mat-icon>
                                     </button>
-                                    <mat-error *ngIf="loginForm.get('password')?.hasError('required')">
+                                    <mat-error *ngIf="loginForm.get('contraseña')?.hasError('required')">
                                         Rellenar este campo es obligatorio.
                                     </mat-error>
                                 </mat-form-field>
@@ -48,8 +48,7 @@
                             <div class="container d-flex justify-content-center align-items-center col-7 p-3">
                                 <ul class="d-flex justify-content-center flex-column align-items-center gap-3">
                                     <li>
-                                        <h4 class="nunito fs-4"> ¿Aún no tienes una cuenta?
-                                        </h4>
+                                        <h4 class="nunito fs-4"> ¿Aún no tienes una cuenta?</h4>
                                     </li>
                                     <li>
                                         <a class="link-login nunito fs-3" routerLink="/auth/register">Crear una cuenta</a>

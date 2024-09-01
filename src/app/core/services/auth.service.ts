@@ -5,12 +5,16 @@ import { environment } from '../../../environments/environment';
 import { User } from '../models/UserType.interface';
 import { Router } from '@angular/router';
 
+interface LoginCredentials {
+  email: string;
+  contraseña: string;
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private ValidToken = '112312355';
   private apiUrl = environment.apiUrl;
 
   private authUser = new BehaviorSubject<User | null>(null);
@@ -18,20 +22,12 @@ export class AuthService {
 
   constructor(private httpclient: HttpClient, private router: Router) { }
 
-  login() {
-    localStorage.setItem('token', this.ValidToken);
-    this.authUser.next({
-      nombre: 'example',
-      apellido: 'surname',
-      contraseña: '12345',
-      rol: 'Admin',
-      email: 'example@email.com',
-    });
-    this.router.navigate(['dashboard/admin']);
+  login(credentials: LoginCredentials): Observable<User | null> {
+    return this.httpclient.post<User | null>(`${this.apiUrl}/login`, credentials);
   }
 
   register(user: User): Observable<User> {
-    return this.httpclient.post<User>(`${environment.apiUrl}/usuarios`, user);
+    return this.httpclient.post<User>(`${this.apiUrl}/usuarios`, { ...user, rol: 'User' });
   }
 
   logout() {
@@ -39,9 +35,13 @@ export class AuthService {
     this.router.navigate(['auth', 'login']);
   }
 
+  updateAuthUser(user: User | null) {
+    this.authUser.next(user); 
+  }
+
   verificarToken(): Observable<boolean> {
     const token = localStorage.getItem('token');
-    return of(this.ValidToken === token);
+    return of(token === '112312355');
   }
 
   ObtenerUsuarioAuth(): Promise<any> {
