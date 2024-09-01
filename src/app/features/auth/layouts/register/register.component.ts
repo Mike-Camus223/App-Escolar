@@ -64,10 +64,38 @@ export class RegisterComponent {
         });
 
         this.router.navigate(['/auth/login']);
-      } catch (error) {
-        console.error('Error al registrar el usuario', error);
-        alert('error de user');
-      } finally {
+      } catch (error:any) {
+        if (error.status === 404) {
+          this.sweetalert.SendNotify({
+            title: 'Error 404',
+            text: 'Base de datos no encontrada F :/',
+            icon: 'warning',
+            confirmButtonText: 'Confirmar'
+          });
+        } else if (error.status === 500) {
+          this.sweetalert.SendNotify({
+            title: 'Error 500',
+            text: 'Error interno del server. (probablemente el server se cayo en railway F)',
+            icon: 'error',
+            confirmButtonText: 'Confirmar'
+          });
+        } else if (error.status === 400) {
+          this.sweetalert.SendNotify({
+            title: 'Error 400',
+            text: 'Solicitud erronea, Por favor verifica los datos enviados.',
+            icon: 'warning',
+            confirmButtonText: 'Confirmar'
+          });
+        } else {
+          this.sweetalert.SendNotify({
+            title: 'Error',
+            text: `Ocurrió un error inesperado (Código: ${error.status})`,
+            icon: 'error',
+            confirmButtonText: 'Confirmar'
+          });
+        }
+      } 
+      finally {
         this.isLoading = false;
       }
     }
