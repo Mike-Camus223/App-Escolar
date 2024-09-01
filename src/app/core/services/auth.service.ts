@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable, of } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { User } from '../models/UserType.interface';
 import { Router } from '@angular/router';
+import { tap } from 'rxjs/operators';
 
 interface LoginCredentials {
   email: string;
@@ -23,7 +24,14 @@ export class AuthService {
   constructor(private httpclient: HttpClient, private router: Router) { }
 
   login(credentials: LoginCredentials): Observable<User | null> {
-    return this.httpclient.post<User | null>(`${this.apiUrl}/login`, credentials);
+    return this.httpclient.post<User | null>(`${this.apiUrl}/login`, credentials).pipe(
+      tap((user: User | null) => {
+        if (user) {
+          localStorage.setItem('token', 'your-token-here');
+          this.updateAuthUser(user);
+        }
+      })
+    );
   }
 
   register(user: User): Observable<User> {
@@ -41,7 +49,7 @@ export class AuthService {
 
   verificarToken(): Observable<boolean> {
     const token = localStorage.getItem('token');
-    return of(token === '112312355');
+    return of(token === 'your-token-here'); 
   }
 
   ObtenerUsuarioAuth(): Promise<any> {
