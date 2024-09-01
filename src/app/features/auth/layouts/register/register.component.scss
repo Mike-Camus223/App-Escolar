@@ -1,68 +1,84 @@
-.bg-login {
-    background: linear-gradient(97deg, #1A3636 46.5%, #d4fdfd 46.5%);
+
+ .real {
+     width: 100%;
+     height: 100vh; 
+     overflow: hidden;
+     background-color: #d4fdfd;
+   }
+  
+.masked {
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+    z-index: 3;
+  }
+  
+svg {
+    position: absolute;
+    bottom: -43%;
+    left: 0;
 }
 
-.card-login {
-    width: 400px;
-    box-shadow: 0px 6px 13px 0px rgba(0, 0, 0, 0.4);
+.card-register {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    position: absolute;
+    z-index: 5;
+    top: 0;
+    left: 0;
+  }
+
+  mat-error {
+    display: block;
+    font-size: 0.875rem; 
+    margin-top: 0.25rem;
+  }
+  
+.gap-perso {
+    gap: 1rem;
+}
+
+.direpadding {
+  padding-top: 0.79rem;
+  padding-bottom: 0.79rem;
+}
+
+
+.mat-sort-header-container {
+    align-items: center;
+  }
+
+  .mat-stepper-horizontal {
+    margin-top: 8px;
+  }
+  
+  .mat-mdc-form-field {
+    margin-top: 16px;
+  }
+
+  .step-label-large {
+    text-align: center; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    height: 100%; 
+  }
+
+.card-registro {
+  box-shadow: 0px 6px 13px 0px rgba(0, 0, 0, 0.4);
     -webkit-box-shadow: 0px 6px 13px 0px rgba(0, 0, 0, 0.4);
     -moz-box-shadow: 0px 6px 13px 0px rgba(0, 0, 0, 0.4);
 }
 
-.mat-icon {
-    color: #1A3636;
-}
-
-.mdc-switch__track::after {
-    background-color: #1A3636;
-}
-
-.fondo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 270px;
-    height: 270px;
-    border-radius: 50%;
-}
-
-.bg-azure {
-    background-color: #d4fdfd;
-}
-
-.btn-login-button {
-    background-color: #1A3636;
-}
-
-.fa-solid {
-    color: #1A3636;
-    font-size: 15rem;
-}
-
 .link-login {
-    color: #1A3636;
-    font-family: "Nunito Sans", sans-serif;
-    font-weight: 600;
-    transition: all ease-in .20s;
+  color: #1A3636;
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 600;
+  transition: all ease-in .20s;
 }
 
 .link-login:hover {
-    color: #6aa3a3;
-}
-
-.question-label {
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-    font-weight: 600;
-    font-family: "Nunito Sans", sans-serif;
-}
-
-.titulo-label {
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-    font-weight: 600;
-    font-family: "Nunito Sans", sans-serif;
-    font-size: 3rem;
-}
-
-.button-iniciar {
-    width: 500px;
+  color: #6aa3a3;
 }

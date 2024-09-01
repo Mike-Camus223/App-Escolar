@@ -23,6 +23,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { LimitadorLetrasPipe } from './pipes/limitador-letras.pipe';
 import { DivisaArgPipe } from './pipes/divisa-arg.pipe';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatSortModule} from '@angular/material/sort';
+import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
+
 
 @NgModule({
   imports: [
@@ -49,6 +53,8 @@ import { DivisaArgPipe } from './pipes/divisa-arg.pipe';
     NgApexchartsModule,
     MatProgressSpinnerModule,
     MatSlideToggleModule,
+    MatStepperModule,
+    MatSortModule
   ],
   declarations: [
     LimitadorLetrasPipe,
@@ -79,7 +85,15 @@ import { DivisaArgPipe } from './pipes/divisa-arg.pipe';
     MatProgressSpinnerModule,
     MatSlideToggleModule,
     LimitadorLetrasPipe,
-    DivisaArgPipe
+    DivisaArgPipe,
+    MatStepperModule,
+    MatSortModule
+  ],
+  providers: [
+    {
+      provide: STEPPER_GLOBAL_OPTIONS,
+      useValue: { displayDefaultIndicatorType: false }
+    }
   ]
 })
 export class SharedModule {}

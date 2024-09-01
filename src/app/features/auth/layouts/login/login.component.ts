@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
         title: 'Error',
         text: 'Erro al Iniciar Sesion',
         icon: 'error',
-        confirmButtonText: 'confirmar',
+        confirmButtonText: 'Confirmar',
       })
     }
     else {
