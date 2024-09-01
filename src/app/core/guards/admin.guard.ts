@@ -13,7 +13,7 @@ export const adminGuard: CanActivateFn = (route, state) => {
       if(!authuser){
         return router.createUrlTree(['auth','login'])
       }
-      return authuser.role !== 'Admin'
+      return authuser.rol !== 'Admin'
       ? router.createUrlTree(['dashboard', 'Perfil'])
       : true; 
     }),

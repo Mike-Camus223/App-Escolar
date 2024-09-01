@@ -258,11 +258,11 @@
                 </mat-form-field>
                 <mat-form-field>
                   <mat-label class="nunito fs-4">Ingrese una contraseña</mat-label>
-                  <input class="nunito fs-4" matInput formControlName="contrasena" placeholder="Ingrese una contraseña" required>
-                  <mat-error *ngIf="secondFormGroup.get('contrasena')?.hasError('required')" class="nunito fs-4">
+                  <input class="nunito fs-4" matInput formControlName="contraseña" placeholder="Ingrese una contraseña" required>
+                  <mat-error *ngIf="secondFormGroup.get('contraseña')?.hasError('required')" class="nunito fs-4">
                     Rellenar este campo es obligatorio.
                   </mat-error>
-                  <mat-error *ngIf="secondFormGroup.get('contrasena')?.hasError('maxlength')" class="nunito fs-4">
+                  <mat-error *ngIf="secondFormGroup.get('contraseña')?.hasError('maxlength')" class="nunito fs-4">
                     La contraseña puede tener un máximo de 60 caracteres.
                   </mat-error>
                 </mat-form-field>
@@ -285,7 +285,7 @@
                 <p class="nunito fs-4"><strong>Nombre:</strong> {{ firstFormGroup.get('nombre')?.value }}</p>
                 <p class="nunito fs-4"><strong>Apellido:</strong> {{ firstFormGroup.get('apellido')?.value }}</p>
                 <p class="nunito fs-4"><strong>Correo:</strong> {{ secondFormGroup.get('email')?.value }}</p>
-                <p class="nunito fs-4"><strong>Contraseña:</strong> {{ secondFormGroup.get('contrasena')?.value }}</p>
+                <p class="nunito fs-4"><strong>Contraseña:</strong> {{ secondFormGroup.get('contraseña')?.value }}</p>
                 <mat-spinner *ngIf="isLoading" diameter="40"></mat-spinner>
               </div>
               <div class="d-flex gap-4 pt-2">

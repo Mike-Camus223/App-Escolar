@@ -1,101 +1,71 @@
 import { Injectable } from '@angular/core';
-import { ResolveStart, Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { User} from '../models/UserType.interface';
+import { environment } from '../../../environments/environment';
+import { User } from '../models/UserType.interface';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private ValidToken = '112312355'
+  private ValidToken = '112312355';
+  private apiUrl = environment.apiUrl;
 
-  private authUser = new BehaviorSubject <User | null>   (null);
+  private authUser = new BehaviorSubject<User | null>(null);
   AcessAuthUser = this.authUser.asObservable();
-  
-  constructor(private router: Router) { }
+
+  constructor(private httpclient: HttpClient, private router: Router) { }
 
   login() {
     localStorage.setItem('token', this.ValidToken);
     this.authUser.next({
+      nombre: 'example',
+      apellido: 'surname',
+      contraseña: '12345',
+      rol: 'Admin',
       email: 'example@email.com',
-      password: '12345',
-      role: 'Admin',
-    }),
-    this.router.navigate(['dashboard/admin'])
+    });
+    this.router.navigate(['dashboard/admin']);
   }
 
-
- 
-
-  // async login() {
-  //   localStorage.setItem('token', 'asdasdasdasdsa');
-  //   this.router.navigate(['dashboard/admin'])
-
-  //   await this.ObtenerUsuarioAuth()
-  //   .then((usuario)=> {
-  //     console.log("login")
-  //   })
-  //   .catch((err) => {
-  //     alert("another god rejected");
-  //   })
-  //   .finally(()=> {
-  //     console.log("end")
-  //   });
-  // }
-
-  // login() {
-  //   this.ObtenerUsuarioObservable().subscribe({
-  //     next: (usuario) => {
-  //       console.log(usuario)
-  //     },
-  //     error: (error) => {
-  //       console.log("ocurrio algo xd", error),
-  //       alert("error");
-  //     },
-  //     complete: () =>{
-  //       alert("secompleto");
-  //     },
-  //   })
-  // }
+  register(user: User): Observable<User> {
+    // return this.httpclient.post<User>(`${this.apiUrl}/usuarios`, user);
+    return this.httpclient.post<User>(`${environment.apiUrl}/usuarios`, user);
+  }
 
   logout() {
     localStorage.removeItem('token');
-    this.router.navigate(['auth','login'])
+    this.router.navigate(['auth', 'login']);
   }
 
   verificarToken(): Observable<boolean> {
     const token = localStorage.getItem('token');
-    
-    return of (this.ValidToken === token)
+    return of(this.ValidToken === token);
   }
 
   ObtenerUsuarioAuth(): Promise<any> {
     return new Promise((resolve, reject) => {
-      reject('another gods rejected')
-      setTimeout(()=> {
-        resolve ({
+      reject('another gods rejected');
+      setTimeout(() => {
+        resolve({
           name: 'fake user',
           email: 'fake@mail.com',
-        })
-      },2000);
-    })
+        });
+      }, 2000);
+    });
   }
 
   ObtenerUsuarioObservable(): Observable<any> {
-    return new Observable((observer) =>{
-      setTimeout(() =>{
+    return new Observable((observer) => {
+      setTimeout(() => {
         observer.next({
           name: 'fake user',
           email: 'fake@mail.com',
         });
-        // observer.error('errores uwunt');
         observer.complete();
-      },2000);
+      }, 2000);
     });
   }
-
-
-
 }
-

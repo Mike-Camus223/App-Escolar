@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SweetalertService } from '../../../../core/services/sweetalert.service';
+import { AuthService } from '../../../../core/services/auth.service';
+import { User } from '../../../../core/models/UserType.interface';
 
 @Component({
   selector: 'app-register',
@@ -20,6 +22,7 @@ export class RegisterComponent {
   constructor(
     private _formBuilder: FormBuilder,
     private sweetalert: SweetalertService,
+    private authService: AuthService,
     private router: Router
   ) {
     this.firstFormGroup = this._formBuilder.group({
@@ -28,7 +31,7 @@ export class RegisterComponent {
     });
     this.secondFormGroup = this._formBuilder.group({
       email: ['', [Validators.required, Validators.email, Validators.maxLength(60)]],
-      contrasena: ['', [Validators.required, Validators.maxLength(60)]]
+      contraseña: ['', [Validators.required, Validators.maxLength(60)]]
     });
   }
 
@@ -37,13 +40,21 @@ export class RegisterComponent {
   Oninput(): void {
     this.secondFormGroup.get('email')?.reset();
   }
-  
+
   async onSubmit() {
     if (this.firstFormGroup.valid && this.secondFormGroup.valid) {
       this.isLoading = true;
 
+      const userData: User = {
+        nombre: this.firstFormGroup.get('nombre')?.value,
+        apellido: this.firstFormGroup.get('apellido')?.value,
+        contraseña: this.secondFormGroup.get('contraseña')?.value,  
+        rol: 'User',
+        email: this.secondFormGroup.get('email')?.value
+      };
+
       try {
-        await new Promise<void>((resolve) => setTimeout(resolve, 1000));
+        await this.authService.register(userData).toPromise();
 
         await this.sweetalert.SendNotify({
           title: 'Registro Exitoso',
@@ -54,6 +65,8 @@ export class RegisterComponent {
 
         this.router.navigate(['/auth/login']);
       } catch (error) {
+        console.error('Error al registrar el usuario', error);
+        alert('error de user');
       } finally {
         this.isLoading = false;
       }

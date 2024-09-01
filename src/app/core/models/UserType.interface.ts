@@ -1,13 +1,17 @@
 export type UserRole = 'Admin' | 'User' | 'Teacher' | 'Parent';
 
 export interface User {
-    email: string;
-    password: string;
-    role: UserRole
+    nombre: string,
+    apellido: string,
+    contraseña: string,
+    rol: UserRole
+    email: string,
 }
 
 export interface Admin {
-    email:string;
-    password: string;
-    role: UserRole
+    nombre: string,
+    apellido: string,
+    contraseña: string,
+    rol: UserRole
+    email: string,
 }

@@ -18,7 +18,7 @@
             <span class="fs-4 text-login">{{ link.nombre }}</span>
           </a>
         </ng-container>
-        <div *ngIf="(authUser | async)?.role === 'Admin'">
+        <div *ngIf="(authUser | async)?.rol === 'Admin'">
           <ng-container *ngFor="let link of monolinkadmin">
             <a
               mat-list-item
@@ -32,7 +32,7 @@
             </a>
           </ng-container>
         </div>
-        <div *ngIf="(authUser | async)?.role === 'Admin'">
+        <div *ngIf="(authUser | async)?.rol === 'Admin'">
           <ng-container *ngFor="let link of ListaLinksAdmin">
             <mat-expansion-panel
             style="background-color: transparent; box-shadow: none;">
