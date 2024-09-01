@@ -3,7 +3,7 @@ import { AuthService } from '../../../../../core/services/auth.service';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Observable } from 'rxjs';
 import { User } from '../../../../../core/models/UserType.interface';
-import { environment } from '../../../../../../environments/environment';
+import { environment } from '../../../../../../environments/environment.prod';
 
 @Component({
   selector: 'app-dashbase',

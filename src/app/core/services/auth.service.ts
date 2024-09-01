@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable, of } from 'rxjs';
-import { environment } from '../../../environments/environment';
+import { environment } from '../../../environments/environment.prod';
 import { User } from '../models/UserType.interface';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
@@ -50,29 +50,5 @@ export class AuthService {
   verificarToken(): Observable<boolean> {
     const token = localStorage.getItem('token');
     return of(token === 'your-token-here'); 
-  }
-
-  ObtenerUsuarioAuth(): Promise<any> {
-    return new Promise((resolve, reject) => {
-      reject('another gods rejected');
-      setTimeout(() => {
-        resolve({
-          name: 'fake user',
-          email: 'fake@mail.com',
-        });
-      }, 2000);
-    });
-  }
-
-  ObtenerUsuarioObservable(): Observable<any> {
-    return new Observable((observer) => {
-      setTimeout(() => {
-        observer.next({
-          name: 'fake user',
-          email: 'fake@mail.com',
-        });
-        observer.complete();
-      }, 2000);
-    });
   }
 }
