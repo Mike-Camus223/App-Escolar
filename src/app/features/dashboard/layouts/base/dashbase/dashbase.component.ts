@@ -26,9 +26,10 @@ export class DashbaseComponent {
 
     {
       nombre: 'User', Icono: 'book', direction: '', ColorClass: 'Icono3', Sublinks: [
-        { nombre: 'Ver Cursos', Icono: 'book', direction: 'VerCursos', ColorClass: 'ColorIcono' }
+        { nombre: 'Ver Cursos', Icono: 'book', direction: 'VerCursos', ColorClass: 'ColorIcono' },
+        { nombre: 'Lista de Cursos', Icono: 'book', direction: 'ListadeCursos', ColorClass: 'ColorIcono' }
       ]
-    },
+    }
   ];
 
   monolinkadmin = [

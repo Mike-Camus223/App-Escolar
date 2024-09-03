@@ -1,7 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { CursoService } from '../../../../../core/services/curso.service'; 
+import { CursoService } from '../../../../../core/services/curso.service';
 import { MatDialog } from '@angular/material/dialog';
-import { DeleteDialogListaComponent } from '../../../components/delete-dialog-lista/delete-dialog-lista.component'; 
+import { confirmAlertsweet, confirmsuccessweet } from '../../../../../core/models/confirmsweet.interface';
+import { SweetAlertResult } from 'sweetalert2';
+import { SweetalertService } from '../../../../../core/services/sweetalert.service';
+import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../../../../environments/environment.prod';
+import { Curso } from '../../../../../core/models/curso.interface';
+
 
 @Component({
   selector: 'app-pagina-lista-cursos',
@@ -12,25 +18,27 @@ export class PaginaListaCursosComponent implements OnInit {
 
   cursos: any[] = [];
   columnasMostrar: string[] = [
-    'idCurso', 
-    'nombreCurso', 
-    'nombreProfesor', 
-    'genero', 
-    'separador',
-    'telefono', 
-    'fecha', 
-    'email', 
+    'vercurso',
+    'idCurso',
+    'nombreCurso',
+    'nombreProfesor',
+    'genero',
+    'telefono',
+    'fecha',
+    'email',
     'tiempo',
     'precio',
     'tipoCurso',
     'salon',
-    'Descri', 
+    'Descri',
     'acciones'
   ];
 
   constructor(
     private cursoService: CursoService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private sweetalertService: SweetalertService,
+    private httpclient: HttpClient
   ) { }
 
   ngOnInit(): void {
@@ -40,17 +48,47 @@ export class PaginaListaCursosComponent implements OnInit {
     });
   }
 
-  borrarCurso(curso: any): void {
-    const dialogRef = this.dialog.open(DeleteDialogListaComponent, {
-      width: '400px',
-      data: { nombreCurso: curso.nombreCurso }
-    });
+  borrarCurso(curso: Curso): void {
+    const alertOptions: confirmAlertsweet = {
+      title: '¿Estás seguro?',
+      text: `¿Realmente quieres eliminar el curso ${curso.nombreCurso}?`,
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Sí, ¡elimínalo!',
+    };
 
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        this.cursos = this.cursos.filter(c => c !== curso);
-        localStorage.setItem('cursos', JSON.stringify(this.cursos));
+    const secondOption: confirmsuccessweet = {
+      title: 'Eliminación exitosa',
+      text: `El curso ${curso.nombreCurso} ha sido eliminado con éxito.`,
+      icon: 'success'
+    }
+
+    this.sweetalertService.ConfirmNotify(alertOptions, secondOption).then((result: SweetAlertResult<any>) => {
+      if (result.isConfirmed) {
+        this.httpclient.delete<void>(`${environment.apiUrl}/cursos/${curso.idCurso}`)
+          .subscribe({
+            next: () => {
+              console.log(`Curso con ID ${curso.idCurso} eliminado`);
+            },
+            error: (err) => {
+              this.sweetalertService.ErrorNotify({
+                title:'Error',
+                text: 'Error al eliminar el curso:',
+                icon: 'error',
+                confirmButtonText: 'Confirmar'
+              });
+            }
+          });
       }
+    }).catch((error) => {
+      this.sweetalertService.ErrorNotify({
+        title:'Error',
+        text: 'Error en la confirmación:',
+        icon: 'error',
+        confirmButtonText: 'Confirmar'
+      });
     });
   }
 }

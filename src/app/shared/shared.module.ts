@@ -87,7 +87,7 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
     LimitadorLetrasPipe,
     DivisaArgPipe,
     MatStepperModule,
-    MatSortModule
+    MatSortModule,
   ],
   providers: [
     {

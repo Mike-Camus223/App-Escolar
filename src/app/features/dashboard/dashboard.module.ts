@@ -56,7 +56,7 @@ import { DashbaseComponent } from './layouts/base/dashbase/dashbase.component';
     UserCardDataComponent,
     ChartdonutComponent,
     UserperfiltablaComponent,
-    DashbaseComponent
+    DashbaseComponent,
   ],
   exports: [
     DasAdmiBaseComponent,

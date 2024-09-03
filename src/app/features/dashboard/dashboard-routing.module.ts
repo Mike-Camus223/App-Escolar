@@ -8,17 +8,18 @@ import { DasPageUserComponent } from './layouts/user/das-page-user/das-page-user
 import { VerCursosUserComponent } from './layouts/user/ver-cursos-user/ver-cursos-user.component';
 import { DashbaseComponent } from './layouts/base/dashbase/dashbase.component';
 import { adminGuard } from '../../core/guards/admin.guard';
+import { PaginaListaCursosComponent } from './layouts/admin/pagina-lista-cursos/pagina-lista-cursos.component';
 
 const routes: Routes = [
   {
     path: '', component: DashbaseComponent, children: [
-      { path: 'Estado', canActivate: [adminGuard], component: AdminControlPanelComponent },
-      { path: 'ListadeEstudiantes', canActivate: [adminGuard], component: StudentsListBaseComponent },
-      { path: 'PaneldeCursos', canActivate: [adminGuard], component: PanelDeCursosComponent },
-      { path: 'PaneldeInscripciones', canActivate: [adminGuard], component: PanelDeIncripcionesComponent },
-      { path: 'ListadeCursos', canActivate: [adminGuard], component: VerCursosUserComponent },
+      { path: 'Estado', component: AdminControlPanelComponent },
+      { path: 'ListadeEstudiantes', component: StudentsListBaseComponent },
+      { path: 'PaneldeCursos', component: PanelDeCursosComponent },
+      { path: 'PaneldeInscripciones', component: PanelDeIncripcionesComponent },
+      { path: 'ListadeCursos', component: PaginaListaCursosComponent },
       { path: 'Perfil', component: DasPageUserComponent},
-      { path: 'VerCursos', component: VerCursosUserComponent}
+      { path: 'VerCursos', component: VerCursosUserComponent},
     ]
   },
   { path: '', redirectTo: '/dashboard/Estado', pathMatch: 'full' },
