@@ -20,4 +20,8 @@ export class CursoService {
   guardarCursos(): Observable<Curso[]> {
     return this.httpclient.get<Curso[]>(`${environment.apiUrl}/cursos`);
   }
+
+  updateCurso(idCurso: string, cursoData: Curso) {
+    return this.httpclient.put<void>(`${environment.apiUrl}/cursos/${idCurso}`, cursoData);
+  }
 }

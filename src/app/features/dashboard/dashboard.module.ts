@@ -16,7 +16,6 @@ import { UserCardDataComponent } from './components/user-card-data/user-card-dat
 import { UserperfiltablaComponent } from './components/userperfiltabla/userperfiltabla.component';
 import { AdminControlPanelComponent } from './layouts/admin/admin-control-panel/admin-control-panel.component';
 import { PaginaListaCursosComponent } from './layouts/admin/pagina-lista-cursos/pagina-lista-cursos.component';
-import { PanelDeCursosComponent } from './layouts/admin/panel-de-cursos/panel-de-cursos.component';
 import { PanelDeIncripcionesComponent } from './layouts/admin/panel-de-incripciones/panel-de-incripciones.component';
 import { PerfilConteoAdmiComponent } from './layouts/admin/perfil-conteo-admi/perfil-conteo-admi.component';
 import { StudentsListBaseComponent } from './layouts/admin/students-list-base/students-list-base.component';
@@ -25,6 +24,7 @@ import { DasPageUserComponent } from './layouts/user/das-page-user/das-page-user
 import { DasUserBaseComponent } from './layouts/user/das-user-base/das-user-base.component';
 import { VerCursosUserComponent } from './layouts/user/ver-cursos-user/ver-cursos-user.component';
 import { DashbaseComponent } from './layouts/base/dashbase/dashbase.component';
+import { DialogAddCursosComponent } from './layouts/admin/dialog-add-cursos/dialog-add-cursos.component';
 
 
 @NgModule({
@@ -40,7 +40,6 @@ import { DashbaseComponent } from './layouts/base/dashbase/dashbase.component';
     StudentsListBaseComponent,
     AddStudentDialogComponent,
     AdminControlPanelComponent,
-    PanelDeCursosComponent,
     PanelDeIncripcionesComponent,
     AlertModalComponent,
     PaginaListaCursosComponent,
@@ -57,13 +56,13 @@ import { DashbaseComponent } from './layouts/base/dashbase/dashbase.component';
     ChartdonutComponent,
     UserperfiltablaComponent,
     DashbaseComponent,
+    DialogAddCursosComponent,
   ],
   exports: [
     DasAdmiBaseComponent,
     PerfilConteoAdmiComponent,
     CardInfoStatusComponent,
     StudentsListBaseComponent,
-    PanelDeCursosComponent,
     DasUserBaseComponent,
     VerCursosUserComponent,
     DetalleCursoDialogComponent,

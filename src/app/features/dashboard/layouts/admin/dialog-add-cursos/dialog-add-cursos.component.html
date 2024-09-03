@@ -1,0 +1,125 @@
+<mat-dialog-content>
+    <div class="dialog-container">
+      <h1 class="dialog-title">{{ isEditMode ? 'Editar Curso' : 'Agregar Curso' }}</h1>
+      <form [formGroup]="cursoForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <mat-form-field class="full-width" *ngIf="!isEditMode">
+            <mat-label>ID</mat-label>
+            <input matInput formControlName="idCurso" type="text">
+            <mat-error *ngIf="cursoForm.get('idCurso')?.hasError('required')">
+              El ID del curso es obligatorio.
+            </mat-error>
+            <mat-error *ngIf="cursoForm.get('idCurso')?.hasError('pattern')">
+              El ID debe contener solo números.
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field class="full-width">
+            <mat-label>Nombre del Curso</mat-label>
+            <input matInput formControlName="nombreCurso">
+            <mat-error *ngIf="cursoForm.get('nombreCurso')?.hasError('required')">
+              El nombre del curso es obligatorio.
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field class="full-width">
+            <mat-label>Nombre del Profesor</mat-label>
+            <input matInput formControlName="nombreProfesor">
+            <mat-error *ngIf="cursoForm.get('nombreProfesor')?.hasError('required')">
+              El nombre del profesor es obligatorio.
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field class="full-width">
+            <mat-label>Género</mat-label>
+            <mat-select formControlName="genero">
+              <mat-option value="hombre">Hombre</mat-option>
+              <mat-option value="mujer">Mujer</mat-option>
+              <mat-option value="otro">Otro</mat-option>
+            </mat-select>
+            <mat-error *ngIf="cursoForm.get('genero')?.hasError('required')">
+              El género es obligatorio.
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field class="full-width">
+            <mat-label>Teléfono</mat-label>
+            <input matInput formControlName="telefono">
+            <mat-error *ngIf="cursoForm.get('telefono')?.hasError('required')">
+              El teléfono es obligatorio.
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field class="full-width">
+            <mat-label>Fecha</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="fecha">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="cursoForm.get('fecha')?.hasError('required')">
+              La fecha es obligatoria.
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field class="full-width">
+            <mat-label>Correo Electrónico</mat-label>
+            <input matInput formControlName="email">
+            <mat-error *ngIf="cursoForm.get('email')?.hasError('required')">
+              El correo electrónico es obligatorio.
+            </mat-error>
+            <mat-error *ngIf="cursoForm.get('email')?.hasError('email')">
+              El correo electrónico debe ser válido.
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field class="full-width">
+            <mat-label>Tiempo</mat-label>
+            <input matInput formControlName="tiempo" placeholder="Ejemplo: 10:00 a 14:00">
+            <mat-error *ngIf="cursoForm.get('tiempo')?.hasError('required')">
+              El tiempo es obligatorio.
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field class="full-width">
+            <mat-label>Precio</mat-label>
+            <input matInput formControlName="precioCurso">
+            <mat-error *ngIf="cursoForm.get('precioCurso')?.hasError('required')">
+              El precio es obligatorio.
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field class="full-width">
+            <mat-label>Tipo de Curso</mat-label>
+            <mat-select formControlName="tipoCurso">
+              <mat-option value="Programación">Programación</mat-option>
+              <mat-option value="Diseño UX/UI">Diseño UX/UI</mat-option>
+              <mat-option value="Data">Data</mat-option>
+            </mat-select>
+            <mat-error *ngIf="cursoForm.get('tipoCurso')?.hasError('required')">
+              El tipo de curso es obligatorio.
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field class="full-width">
+            <mat-label>Salón</mat-label>
+            <input matInput formControlName="salon">
+            <mat-error *ngIf="cursoForm.get('salon')?.hasError('required')">
+              El salón es obligatorio.
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field class="full-width">
+            <mat-label>Descripción</mat-label>
+            <textarea style="max-height: 200px;" matInput formControlName="descripcion" maxlength="1500" rows="6"></textarea>
+            <mat-error *ngIf="cursoForm.get('descripcion')?.hasError('required')">
+              La descripción es obligatoria.
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="dialog-actions">
+          <button mat-button mat-dialog-close>Cancelar</button>
+          <button mat-raised-button color="primary" type="submit">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </mat-dialog-content>
+  

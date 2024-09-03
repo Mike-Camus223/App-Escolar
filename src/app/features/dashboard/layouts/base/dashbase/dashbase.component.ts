@@ -45,7 +45,6 @@ export class DashbaseComponent {
     },
     {
       nombre: 'Clases', Icono: 'book', direction: '', ColorClass: 'Icono3', Sublinks: [
-        { nombre: 'Añadir Nuevo Curso', Icono: 'book', direction: 'PaneldeCursos', ColorClass: 'ColorIcono' },
         { nombre: 'Lista de Cursos', Icono: 'book', direction: 'ListadeCursos', ColorClass: 'ColorIcono' }
       ]
     },
