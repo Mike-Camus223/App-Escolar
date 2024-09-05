@@ -1,4 +1,4 @@
-import { Component, ViewChild, viewChild } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { AuthService } from '../../../../../core/services/auth.service';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Observable } from 'rxjs';
@@ -16,14 +16,13 @@ export class DashbaseComponent {
   entornoNombre = environment.envNombre;
 
   @ViewChild('sidenav') sidenav!: MatSidenav;
-
+  authUser: Observable<User | null>;
 
   MonoLinks = [
     { nombre: 'Perfil', Icono: 'face', direction: 'Perfil', ColorClass: 'ColorIcono' }
   ];
 
   ListaLinks = [
-
     {
       nombre: 'User', Icono: 'book', direction: '', ColorClass: 'Icono3', Sublinks: [
         { nombre: 'Ver Cursos', Icono: 'book', direction: 'VerCursos', ColorClass: 'ColorIcono' },
@@ -34,7 +33,7 @@ export class DashbaseComponent {
 
   monolinkadmin = [
     { nombre: 'Dashboard', Icono: 'dashboard', direction: 'Estado', ColorClass: 'ColorIcono' },
-  ]
+  ];
 
   ListaLinksAdmin = [
     {
@@ -47,21 +46,18 @@ export class DashbaseComponent {
       nombre: 'Clases', Icono: 'book', direction: '', ColorClass: 'Icono3', Sublinks: [
         { nombre: 'Lista de Cursos', Icono: 'book', direction: 'ListadeCursos', ColorClass: 'ColorIcono' }
       ]
-    },
-  ]
-
-
-  authUser: Observable<User | null>;
+    }
+  ];
 
   constructor(private authservice: AuthService) {
     this.authUser = authservice.AcessAuthUser;
-   }
+  }
 
   toggleSidenav() {
     this.sidenav.toggle();
   }
 
   cerrarSesion() {
-    this.authservice.logout();
+    this.authservice.logout(); 
   }
 }

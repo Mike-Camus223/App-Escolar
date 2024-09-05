@@ -12,10 +12,10 @@ import { PaginaListaCursosComponent } from './layouts/admin/pagina-lista-cursos/
 const routes: Routes = [
   {
     path: '', component: DashbaseComponent, children: [
-      { path: 'Estado', component: AdminControlPanelComponent },
-      { path: 'ListadeEstudiantes', component: StudentsListBaseComponent },
-      { path: 'PaneldeInscripciones', component: PanelDeIncripcionesComponent },
-      { path: 'ListadeCursos', component: PaginaListaCursosComponent },
+      { path: 'Estado', canActivate:[adminGuard], component: AdminControlPanelComponent },
+      { path: 'ListadeEstudiantes', canActivate:[adminGuard],  component: StudentsListBaseComponent },
+      { path: 'PaneldeInscripciones', canActivate:[adminGuard],  component: PanelDeIncripcionesComponent },
+      { path: 'ListadeCursos', canActivate:[adminGuard],  component: PaginaListaCursosComponent },
       { path: 'Perfil', component: DasPageUserComponent},
       { path: 'VerCursos', component: VerCursosUserComponent},
     ]

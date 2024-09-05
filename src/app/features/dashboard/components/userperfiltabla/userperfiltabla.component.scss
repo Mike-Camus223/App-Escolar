@@ -1,14 +1,15 @@
-.table {
-    border-collapse: collapse;
-  }
-  
-  .table td, .table th {
-    border: none;
-    background-color: transparent; 
-  }
-  
-  .table th {
-    text-align: left;
-    background-color: transparent;
-  }
-  
+.vertical-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.vertical-table th {
+  text-align: left;
+  padding: 8px;
+  background-color: #f0f0f0;
+  width: 30%;
+}
+
+.vertical-table td {
+  padding: 8px;
+}

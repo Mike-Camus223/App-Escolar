@@ -1,34 +1,40 @@
-import { Component, OnInit } from '@angular/core';
-import { Student } from '../../../../core/models/student.interface'; 
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AuthService } from '../../../../core/services/auth.service';
+import { User } from '../../../../core/models/UserType.interface';
+import { Subscription } from 'rxjs';
 import { DashbaseComponent } from '../../layouts/base/dashbase/dashbase.component';
+import { photoIcon } from '../../../../core/models/student.interface';
 
 @Component({
   selector: 'app-panelloginadmin',
   templateUrl: './panelloginadmin.component.html',
-  styleUrl: './panelloginadmin.component.scss'
+  styleUrls: ['./panelloginadmin.component.scss']
 })
-export class PanelloginadminComponent implements OnInit {
+export class PanelloginadminComponent implements OnInit, OnDestroy {
+  usuarioLoginOn: boolean = false;
+  DatosPageUser: User | null = null;
+  FlechaArriba: boolean = false;
 
-  ngOnInit(): void {
-    
-  }
 
-  constructor(private dashboard: DashbaseComponent){
-
-  }
-
-  usuarioLoginOn: boolean=false;
-
-  DatosPageUser: Student = {
-    id: 1,
-    foto: 'assets/photos/photo1.jpg',
-    nombre: 'Gatito',
-    apellido: 'Naranjoso',
-    fecha: new Date('2003-05-15'),
-    role: "Admin",
+  Perfilphoto: photoIcon | null = {
+    photo:'assets/photos/photo1.jpg'
   };
 
-  FlechaArriba: boolean = false;
+  private authSubscription: Subscription = new Subscription();
+
+  constructor(private authService: AuthService,
+    private dashboard: DashbaseComponent
+  ) { }
+
+ ngOnInit(): void {
+    this.authSubscription = this.authService.AcessAuthUser.subscribe(user => {
+      this.DatosPageUser = user;
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.authSubscription.unsubscribe();
+  }
 
   flechamovimiento() {
     this.FlechaArriba = !this.FlechaArriba;
@@ -38,3 +44,12 @@ export class PanelloginadminComponent implements OnInit {
     this.dashboard.toggleSidenav();
   }
 }
+
+
+
+
+
+
+
+
+

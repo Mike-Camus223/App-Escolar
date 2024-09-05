@@ -7,3 +7,8 @@ export interface Student {
     fecha: Date;
     role: string;
   }
+
+
+  export interface photoIcon {
+    photo: string;
+  }

@@ -4,7 +4,7 @@ import { authGuard } from './core/guards/auth.guard';
 import { adminGuard } from './core/guards/admin.guard';
 
 const routes: Routes = [
-  { path: 'dashboard', loadChildren: () => import('./features/dashboard/dashboard.module').then(m => m.DashboardModule) },
+  { path: 'dashboard', canActivate:[authGuard], loadChildren: () => import('./features/dashboard/dashboard.module').then(m => m.DashboardModule) },
   { path: 'auth', loadChildren: () => import('./features/auth/auth.module').then(m => m.AuthModule) },
   { path: '', loadChildren: () => import('./features/public/public.module').then(m => m.PublicModule) },
 ];

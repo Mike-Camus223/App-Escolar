@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
   
     const credentials = {
       email: this.loginForm.get('email')?.value,
-      contraseña: this.loginForm.get('contraseña')?.value,
+      contraseña: this.loginForm.get('contraseña')?.value, 
     };
   
     this.authservice.login(credentials).subscribe(
@@ -67,5 +67,5 @@ export class LoginComponent implements OnInit {
         });
       }
     );
-  }
+  }  
 }

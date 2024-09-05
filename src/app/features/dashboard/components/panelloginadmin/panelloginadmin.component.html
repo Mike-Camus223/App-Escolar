@@ -1,87 +1,87 @@
 <div class="container-fluid bg-white shadow-bottom navigator">
-    <div class="row">
-        <div class="col-12">
-            <div *ngIf="!usuarioLoginOn" class="d-flex justify-content-end align-items-center gap-over p-4 mx-4">
-              <div>
-                <button mat-icon-button (click)="toggleSidenav();">
-                  <mat-icon>menu</mat-icon>
-                </button>
-              </div>
-                <div class="d-flex gap-3 align-items-center">
-                    <div class="d-flex align-items-center gap-4 dropdown flex-row-reverse" id="profileDropdown">
-                      <div class="rounded-image rounded-circle MargenCircular">
-                        <img [src]="DatosPageUser.foto" alt="Profile Picture" class="imguser">
-                      </div>
-                      <a href="#" class="text-black text-decoration-none d-flex align-items-center ms-3"
-                        id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"
-                        (click)="flechamovimiento()">
-                        <div>
-                            <div class="d-flex">
-                                <h5 *ngIf="DatosPageUser.nombre && DatosPageUser.apellido" class="nunito fs-4 text-black mb-0">
-                                  {{DatosPageUser.nombre}} {{DatosPageUser.apellido}}
-                                </h5>
-                            </div>
-                          <div class="d-flex justify-content-end">
-                              <p *ngIf="DatosPageUser.role" class="nunito fs-4 text-secondary mb-0">
-                                {{DatosPageUser.role}}
-                              </p>
-                          </div>
-                        </div>
-                        <div class="d-flex justify-content-center">
-                            <i [ngClass]="{'fas fa-caret-down': !FlechaArriba, 'fas fa-caret-up': FlechaArriba}" class="ms-3 fs-4"></i>
-                        </div>
-                      </a>
-                      <ul class="dropdown-menu mt-2 border-0 shadow" aria-labelledby="dropdownMenuLink">
-                        <li>
-                          <a class="dropdown-item d-flex align-items-center fs-4 p-4 nunito" href="#">
-                            <i class="fas fa-user me-2"></i> Perfil
-                          </a>
-                        </li>
-                        <li>
-                          <a class="dropdown-item d-flex align-items-center fs-4 p-4 nunito" href="#">
-                            <i class="fas fa-envelope me-2"></i> Mensajes
-                          </a>
-                        </li>
-                        <li>
-                          <a class="dropdown-item d-flex align-items-center fs-4 p-4 nunito" href="#">
-                            <i class="fas fa-cog me-2"></i> Detalles de cuenta
-                          </a>
-                        </li>
-                        <li>
-                          <a class="dropdown-item d-flex align-items-center fs-4 p-4 nunito" href="#">
-                            <i class="fas fa-sign-out-alt me-2"></i> Cerrar Sesión
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>     
-                <nav>
-                    <ul class="d-flex gap-over">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="#" id="bellDropdown" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                <i class="fa-regular fa-envelope fs-2"></i>
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="bellDropdown">
-                                <li><a class="dropdown-item nunito fs-4" href="#">proximamente</a></li>
-                                <li><a class="dropdown-item nunito fs-4" href="#">proximamente</a></li>
-                                <li><a class="dropdown-item nunito fs-4" href="#">proximamente</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link" href="#" id="envelopeDropdown" role="button" data-bs-toggle="dropdown"
-                                aria-expanded="false">
-                                <i class="fa-regular fa-bell fs-2"></i>
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="envelopeDropdown">
-                                <li><a class="dropdown-item nunito fs-4" href="#">proximamente</a></li>
-                                <li><a class="dropdown-item nunito fs-4" href="#">proximamente</a></li>
-                                <li><a class="dropdown-item nunito fs-4" href="#">proximamente</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+  <div class="row">
+    <div class="col-12">
+      <div *ngIf="!usuarioLoginOn" class="d-flex justify-content-end align-items-center gap-over p-4 mx-4">
+        <div>
+          <button mat-icon-button (click)="toggleSidenav();">
+            <mat-icon>menu</mat-icon>
+          </button>
         </div>
+        <div class="d-flex gap-3 align-items-center">
+          <div class="d-flex align-items-center gap-4 dropdown flex-row-reverse" id="profileDropdown">
+            <div class="rounded-image rounded-circle MargenCircular">
+              <img [src]="Perfilphoto?.photo" alt="Profile Picture" class="imguser">
+            </div>
+            <a href="#" class="text-black text-decoration-none d-flex align-items-center ms-3" id="dropdownMenuLink"
+              data-bs-toggle="dropdown" aria-expanded="false" (click)="flechamovimiento()">
+              <div>
+                <div class="d-flex">
+                  <h5 *ngIf="DatosPageUser?.nombre && DatosPageUser?.apellido" class="nunito fs-4 text-black mb-0">
+                    {{DatosPageUser?.nombre}} {{DatosPageUser?.apellido}}
+                  </h5>
+                </div>
+                <div class="d-flex justify-content-end">
+                  <p *ngIf="DatosPageUser?.rol" class="nunito fs-4 text-secondary mb-0">
+                    {{DatosPageUser?.rol}}
+                  </p>
+                </div>
+              </div>
+              <div class="d-flex justify-content-center">
+                <i [ngClass]="{'fas fa-caret-down': !FlechaArriba, 'fas fa-caret-up': FlechaArriba}"
+                  class="ms-3 fs-4"></i>
+              </div>
+            </a>
+            <ul class="dropdown-menu mt-2 border-0 shadow" aria-labelledby="dropdownMenuLink">
+              <li>
+                <a class="dropdown-item d-flex align-items-center fs-4 p-4 nunito" href="#">
+                  <i class="fas fa-user me-2"></i> Perfil
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item d-flex align-items-center fs-4 p-4 nunito" href="#">
+                  <i class="fas fa-envelope me-2"></i> Mensajes
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item d-flex align-items-center fs-4 p-4 nunito" href="#">
+                  <i class="fas fa-cog me-2"></i> Detalles de cuenta
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item d-flex align-items-center fs-4 p-4 nunito" href="#">
+                  <i class="fas fa-sign-out-alt me-2"></i> Cerrar Sesión
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <nav>
+          <ul class="d-flex gap-over">
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="#" id="bellDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <i class="fa-regular fa-envelope fs-2"></i>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="bellDropdown">
+                <li><a class="dropdown-item nunito fs-4" href="#">proximamente</a></li>
+                <li><a class="dropdown-item nunito fs-4" href="#">proximamente</a></li>
+                <li><a class="dropdown-item nunito fs-4" href="#">proximamente</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link" href="#" id="envelopeDropdown" role="button" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <i class="fa-regular fa-bell fs-2"></i>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="envelopeDropdown">
+                <li><a class="dropdown-item nunito fs-4" href="#">proximamente</a></li>
+                <li><a class="dropdown-item nunito fs-4" href="#">proximamente</a></li>
+                <li><a class="dropdown-item nunito fs-4" href="#">proximamente</a></li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
     </div>
+  </div>
 </div>
