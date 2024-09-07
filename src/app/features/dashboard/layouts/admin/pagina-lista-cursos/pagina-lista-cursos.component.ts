@@ -2,13 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { CursoService } from '../../../../../core/services/curso.service';
 import { MatDialog } from '@angular/material/dialog';
 import { confirmAlertsweet, confirmsuccessweet } from '../../../../../core/models/confirmsweet.interface';
-import { SweetAlertOptions, SweetAlertResult } from 'sweetalert2';
+import { SweetAlertResult } from 'sweetalert2';
 import { SweetalertService } from '../../../../../core/services/sweetalert.service';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../../../environments/environment.prod';
 import { Curso } from '../../../../../core/models/curso.interface';
 import { DialogAddCursosComponent } from '../dialog-add-cursos/dialog-add-cursos.component';
-
 
 @Component({
   selector: 'app-pagina-lista-cursos',
@@ -17,7 +16,9 @@ import { DialogAddCursosComponent } from '../dialog-add-cursos/dialog-add-cursos
 })
 export class PaginaListaCursosComponent implements OnInit {
 
-  cursos: any[] = [];
+  estaCargando = false;
+
+  cursos: Curso[] = [];
   columnasMostrar: string[] = [
     'vercurso',
     'idCurso',
@@ -43,40 +44,45 @@ export class PaginaListaCursosComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.actualizarCursos();
+  }
+
+  actualizarCursos(): void {
+    this.estaCargando = true;
     this.cursoService.guardarCursos().subscribe(cursos => {
       this.cursos = cursos;
       console.log(this.cursos); 
       localStorage.setItem('cursos', JSON.stringify(this.cursos));
+      this.estaCargando = false;
+    }, () => {
+      this.estaCargando = false;
     });
   }
 
   agregarCurso(): void {
     const dialogRef = this.dialog.open(DialogAddCursosComponent, {
-      width: '800px',
+      width: '800px'
     });
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.cursos.push(result);
+        this.actualizarCursos(); 
       }
     });
   }
-
 
   openEditDialog(curso: Curso): void {
     const dialogRef = this.dialog.open(DialogAddCursosComponent, {
       width: '800px',
       data: curso
     });
-  
+
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        this.cursos = this.cursos.map(c => c.idCurso === result.idCurso ? result : c);
+        this.actualizarCursos(); 
       }
     });
   }
-  
-
 
   borrarCurso(curso: Curso): void {
     const alertOptions: confirmAlertsweet = {
@@ -93,15 +99,17 @@ export class PaginaListaCursosComponent implements OnInit {
       title: 'Eliminación exitosa',
       text: `El curso ${curso.nombreCurso} ha sido eliminado con éxito.`,
       icon: 'success'
-    }
+    };
 
     this.sweetalertService.ConfirmNotify(alertOptions, secondOption)
       .then((result: SweetAlertResult<any>) => {
         if (result.isConfirmed) {
+          this.estaCargando = true;
           this.httpclient.delete<void>(`${environment.apiUrl}/cursos/${curso.idCurso}`)
             .subscribe({
               next: () => {
                 console.log(`Curso con ID ${curso.idCurso} eliminado`);
+                this.actualizarCursos(); 
               },
               error: (err) => {
                 this.sweetalertService.ErrorNotify({
@@ -110,17 +118,21 @@ export class PaginaListaCursosComponent implements OnInit {
                   icon: 'error',
                   confirmButtonText: 'Confirmar'
                 });
+                this.estaCargando = false;
               }
             });
         }
       })
-      .catch((error) => {
+      .catch(() => {
         this.sweetalertService.ErrorNotify({
           title: 'Error',
           text: 'Error en la confirmación',
           icon: 'error',
           confirmButtonText: 'Confirmar'
         });
+      })
+      .finally(() => {
+        this.estaCargando = false;
       });
   }
 }

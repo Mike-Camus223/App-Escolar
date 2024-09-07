@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, Optional } from '@angular/core';
+import { Component, Inject, OnInit, Optional, EventEmitter, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { SweetalertService } from '../../../../../core/services/sweetalert.service';
@@ -13,7 +13,7 @@ import { Curso } from '../../../../../core/models/curso.interface';
 export class DialogAddCursosComponent implements OnInit {
   cursoForm: FormGroup;
   isEditMode: boolean = false;
-  isEdit: boolean = false;
+  @Output() cursoChanged: EventEmitter<void> = new EventEmitter<void>();
 
   constructor(
     private fb: FormBuilder,
@@ -36,7 +36,6 @@ export class DialogAddCursosComponent implements OnInit {
       salon: ['', Validators.required],
       descripcion: ['', [Validators.required, Validators.maxLength(1500)]]
     });
-
   }
 
   ngOnInit(): void {
@@ -75,6 +74,7 @@ export class DialogAddCursosComponent implements OnInit {
         ).then((result) => {
           if (result.isConfirmed) {
             this.cursoService.updateCurso(cursoData.idCurso, cursoData).subscribe(() => {
+              this.cursoChanged.emit(); // Emit event on update
               this.dialogRef.close(cursoData);
             }, (error) => {
               this.sweetalertService.ErrorNotify({
@@ -105,6 +105,7 @@ export class DialogAddCursosComponent implements OnInit {
         ).then((result) => {
           if (result.isConfirmed) {
             this.cursoService.saveCurso(cursoData).subscribe(() => {
+              this.cursoChanged.emit(); // Emit event on save
               this.dialogRef.close(cursoData);
             }, (error) => {
               this.sweetalertService.ErrorNotify({
@@ -119,7 +120,6 @@ export class DialogAddCursosComponent implements OnInit {
       }
     }
   }
-
 
   onCancel(): void {
     this.dialogRef.close();

@@ -71,7 +71,7 @@
                   "replace": "src/environments/environment.prod.ts",
                   "with": "src/environments/environment.developed.ts"
                 }
-]
+              ]
             }
           },
           "defaultConfiguration": "production"
@@ -117,6 +117,9 @@
     }
   },
   "cli": {
-    "analytics": false
+    "analytics": false,
+    "schematicCollections": [
+      "@ngrx/schematics"
+    ]
   }
 }

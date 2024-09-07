@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -9,6 +9,10 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { provideHttpClient, withFetch } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { rootReducer } from './core/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
 
 @NgModule({
   declarations: [
@@ -19,6 +23,9 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
     AppRoutingModule,
     MatButtonModule,
     MatCardModule,
+    StoreModule.forRoot(rootReducer, {}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    EffectsModule.forRoot([]),
   ],
   providers: [
     provideAnimationsAsync(),

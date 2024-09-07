@@ -20,12 +20,10 @@ export class AppComponent implements OnInit {
             console.log('Usuario recuperado:', user); 
             this.authService.updateAuthUser(user);
           } else {
-            // Si el usuario no se recupera correctamente, redirigir al login
             this.authService.logout();
           }
         });
       } else {
-        // Si el token es inválido o ha expirado, cerrar sesión
         this.authService.logout();
       }
     });

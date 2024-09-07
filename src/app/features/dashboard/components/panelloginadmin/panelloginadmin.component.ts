@@ -43,6 +43,10 @@ export class PanelloginadminComponent implements OnInit, OnDestroy {
   toggleSidenav() {
     this.dashboard.toggleSidenav();
   }
+
+  cerrarSesion() {
+    this.authService.logout(); 
+  }
 }
 
 
