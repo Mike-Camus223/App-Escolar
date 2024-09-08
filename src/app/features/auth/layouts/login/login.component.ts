@@ -26,7 +26,13 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.authservice.AcessAuthUser.subscribe(user => {
+      if (user) {
+        this.router.navigate(['dashboard']);
+      }
+    });
+  }
 
   onSubmit() {
     if (this.loginForm.invalid) {
@@ -38,12 +44,12 @@ export class LoginComponent implements OnInit {
       });
       return;
     }
-  
+
     const credentials = {
       email: this.loginForm.get('email')?.value,
       contraseña: this.loginForm.get('contraseña')?.value, 
     };
-  
+
     this.authservice.login(credentials).subscribe(
       (user) => {
         if (user) {
