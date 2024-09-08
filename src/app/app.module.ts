@@ -10,9 +10,9 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
+import { rootReducer } from './core/store/mainStore'; 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
-import { rootReducer } from './core/store/mainStore';
 
 @NgModule({
   declarations: [

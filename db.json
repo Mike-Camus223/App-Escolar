@@ -135,7 +135,7 @@
             "contraseña": "password123",
             "rol": "Admin",
             "email": "ana.garcia@example.com"
-        },
+          },
         {
             "idUser": 2,
             "nombre": "Carlos",
