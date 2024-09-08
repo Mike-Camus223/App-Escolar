@@ -13,7 +13,6 @@ export class AuthEffects {
 
       ofType(AuthActions.loadAuths),
       concatMap(() =>
-        /** An EMPTY observable only emits completion. Replace with your own observable API request */
         EMPTY.pipe(
           map(data => AuthActions.loadAuthsSuccess({ data })),
           catchError(error => of(AuthActions.loadAuthsFailure({ error }))))
