@@ -6,8 +6,6 @@
   object-fit: cover;
 }
 
-
-
  img {
    object-fit: cover;
    border-radius: 50%;
@@ -32,13 +30,38 @@
 }
 
 .h-85 {
-  height: 850px;
+  height: 753px;
+}
+
+.h-full {
+  height: 100%;
 }
 
 .perfilcontainer2 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  // gap: 1rem;
+}
+
+.card.rounded-3.border-0 {
+  display: flex;
+  flex-direction: column;
+  height: 100%; 
+}
+
+
+.col-xxl-8.col-xl-6.p-0.grid.bg-danger.gapsito {
+  display: flex;
+  flex-direction: column;
+  height: 100%; 
+}
+
+.perfilcontainer2 {
+  flex: 0 1 auto; 
+}
+
+.course-table-container {
+  flex: 1 1 auto; 
+  overflow: auto; 
 }
 
 @media (max-width: 1200px) {

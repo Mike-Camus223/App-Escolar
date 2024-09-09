@@ -1,0 +1,24 @@
+<mat-card class="mat-elevation-z4" style="border-radius: 4px; border: none; box-shadow: none;">
+    <mat-card-header>
+        <h2 class="fs-2 nunito">Calendario</h2>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="button-container">
+            <button class="fs-2 text-white" (click)="addEvent()">+</button>
+            <button *ngIf="selectedEvent" (click)="deleteEvent()">
+                <i class="fa-solid fa-trash text-white fs-4"></i>
+            </button>
+            <button *ngIf="selectedEvent" (click)="openEditDialog()">
+                <i class="fa-solid fa-pencil text-white fs-4"></i>
+            </button>
+          </div>
+          <full-calendar class="fs-5 nunito"
+            id="calendar"
+            [options]="calendarOptions"
+            (eventDrop)="handleEventDrop($event)"
+            (eventClick)="handleEventClick($event)"
+          ></full-calendar>
+    </mat-card-content>
+</mat-card>
+
+  

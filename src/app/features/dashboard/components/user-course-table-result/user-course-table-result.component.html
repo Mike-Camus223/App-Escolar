@@ -1,0 +1,61 @@
+<mat-card class="mat-elevation-z4" style="border-radius: 4px; border: none; box-shadow: none;">
+    <mat-card-header>
+        <h2 class="fs-2 nunito">Todos los resultados de los exámenes</h2>
+    </mat-card-header>
+    <mat-card-content>
+        <div class="table-container">
+            <mat-table class="mat-elevation-z4" [dataSource]="dataSource">
+
+                <ng-container matColumnDef="id">
+                    <mat-header-cell class="nunito fs-4
+                    text-white bg-success border border-light idcelda" *matHeaderCellDef> ID </mat-header-cell>
+                    <mat-cell class="bg-success-subtle nunito fs-4 text-table border-start border-bottom border-top border-light  bg-success-subtle idcelda" *matCellDef="let element"> {{element.id}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="nombreExamen">
+                    <mat-header-cell class="nunito fs-4
+                    text-white bg-success border border-light celdanom " *matHeaderCellDef> Nombre del Examen </mat-header-cell>
+                    <mat-cell class="nunito fs-4 text-table border-bottom border-top border-light bg-success-subtle celdanom" *matCellDef="let element"> {{element.nombreExamen}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="curso">
+                    <mat-header-cell class="nunito fs-4
+                    text-white bg-success border border-light celdanom" *matHeaderCellDef> Curso </mat-header-cell>
+                    <mat-cell class="nunito fs-4 text-table border-bottom border-top border-light bg-success-subtle celdanom" *matCellDef="let element"> {{element.curso}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="aula">
+                    <mat-header-cell class="nunito fs-4
+                    text-white bg-success border border-light idcelda" *matHeaderCellDef> Aula </mat-header-cell>
+                    <mat-cell class="nunito fs-4 text-table border-bottom border-top border-light bg-success-subtle idcelda" *matCellDef="let element"> {{element.aula}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="nota">
+                    <mat-header-cell class="nunito fs-4
+                    text-white bg-success border border-light idcelda" *matHeaderCellDef> Nota </mat-header-cell>
+                    <mat-cell class="nunito fs-4 text-table border-bottom border-top border-light bg-success-subtle idcelda" *matCellDef="let element"> {{element.nota}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="fecha">
+                    <mat-header-cell class="nunito fs-4
+                    text-white bg-success border border-light celdanom" *matHeaderCellDef> Fecha </mat-header-cell>
+                    <mat-cell class="nunito fs-4 text-table border-bottom border-top border-light bg-success-subtle celdanom" *matCellDef="let element"> {{element.fecha}} </mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="acciones">
+                    <mat-header-cell class="nunito fs-4
+                    text-white bg-success border border-light iconcelda" *matHeaderCellDef></mat-header-cell>
+                    <mat-cell class="nunito fs-4 text-table border-bottom border-top border-end border-light bg-success-subtle iconcelda" *matCellDef="let element">
+                        <button mat-icon-button>
+                            <mat-icon style="color: #39685c;">more_horiz</mat-icon>
+                        </button>
+                    </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+            <mat-paginator class="fs-4 nunito" [pageSizeOptions]="[10]"></mat-paginator>
+        </div>
+    </mat-card-content>
+</mat-card>

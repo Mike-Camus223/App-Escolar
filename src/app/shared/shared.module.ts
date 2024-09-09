@@ -26,6 +26,8 @@ import { DivisaArgPipe } from './pipes/divisa-arg.pipe';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatSortModule} from '@angular/material/sort';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { FullCalendarComponent, FullCalendarModule } from '@fullcalendar/angular';
 
 
 @NgModule({
@@ -54,7 +56,9 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
     MatProgressSpinnerModule,
     MatSlideToggleModule,
     MatStepperModule,
-    MatSortModule
+    MatSortModule,
+    MatPaginatorModule,
+    FullCalendarModule,
   ],
   declarations: [
     LimitadorLetrasPipe,
@@ -88,6 +92,9 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
     DivisaArgPipe,
     MatStepperModule,
     MatSortModule,
+    MatPaginatorModule,
+    FullCalendarModule
+    
   ],
   providers: [
     {
@@ -96,4 +103,6 @@ import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
     }
   ]
 })
-export class SharedModule {}
+export class SharedModule {
+ 
+}

@@ -1,9 +1,14 @@
-<div id="chart">
-    <apx-chart
-      [series]="chartOptions.series"
-      [chart]="chartOptions.chart"
-      [labels]="chartOptions.labels"
-      [dataLabels]="chartOptions.dataLabels"
-      [responsive]="chartOptions.responsive"
-    ></apx-chart>
-</div>
+<mat-card style="border-radius: 4px; border: none; box-shadow: none;">
+  <mat-card-content>
+    <div id="chart d-flex justify-content-center align-items-center ">
+      <apx-chart
+        [series]="chartOptions.series"
+        [chart]="chartOptions.chart"
+        [labels]="chartOptions.labels"
+        [dataLabels]="chartOptions.dataLabels"
+        [responsive]="chartOptions.responsive"
+      ></apx-chart>
+  </div>
+  </mat-card-content>
+</mat-card>
+

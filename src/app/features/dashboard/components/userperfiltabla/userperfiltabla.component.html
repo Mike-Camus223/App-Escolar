@@ -1,16 +1,12 @@
 <div class="container mt-4" *ngIf="Usuario">
-  <mat-table [dataSource]="[Usuario]" class="mat-elevation-z8">
-    <ng-container matColumnDef="nombre">
-      <mat-header-cell *matHeaderCellDef> Nombre </mat-header-cell>
-      <mat-cell *matCellDef="let usuario"> {{usuario.nombre}} </mat-cell>
-    </ng-container>
-  
-    <ng-container matColumnDef="email">
-      <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
-      <mat-cell *matCellDef="let usuario"> {{usuario.email}} </mat-cell>
-    </ng-container>
-  
-    <mat-header-row *matHeaderRowDef="columnas"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: columnas;"></mat-row>
-  </mat-table>  
+  <table class="vertical-table shadow-none mat-elevation-z8">
+    <tr>
+      <th class="nunito text-white border-2 fs-4 bg-success border border-light">Nombre</th>
+      <td class="nunito fs-4 border border-2 border-light bg-success-subtle text-table">{{ Usuario.nombre }}</td>
+    </tr>
+    <tr>
+      <th class="nunito text-white border-2 fs-4 bg-success border border-light">Email</th>
+      <td class="nunito fs-4 border border-2 border-light bg-success-subtle text-table">{{ Usuario.email }}</td>
+    </tr>
+  </table>
 </div>

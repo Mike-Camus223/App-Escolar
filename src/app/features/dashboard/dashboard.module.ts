@@ -25,6 +25,10 @@ import { DasUserBaseComponent } from './layouts/user/das-user-base/das-user-base
 import { VerCursosUserComponent } from './layouts/user/ver-cursos-user/ver-cursos-user.component';
 import { DashbaseComponent } from './layouts/base/dashbase/dashbase.component';
 import { DialogAddCursosComponent } from './layouts/admin/dialog-add-cursos/dialog-add-cursos.component';
+import { UserCourseTableResultComponent } from './components/user-course-table-result/user-course-table-result.component';
+import { NewchartdonutComponent } from './components/newchartdonut/newchartdonut.component';
+import { UserPageCalendarComponent } from './components/user-page-calendar/user-page-calendar.component';
+import { DialoCalendarComponent } from './components/dialo-calendar/dialo-calendar.component';
 
 
 @NgModule({
@@ -57,6 +61,10 @@ import { DialogAddCursosComponent } from './layouts/admin/dialog-add-cursos/dial
     UserperfiltablaComponent,
     DashbaseComponent,
     DialogAddCursosComponent,
+    UserCourseTableResultComponent,
+    NewchartdonutComponent,
+    UserPageCalendarComponent,
+    DialoCalendarComponent,
   ],
   exports: [
     DasAdmiBaseComponent,

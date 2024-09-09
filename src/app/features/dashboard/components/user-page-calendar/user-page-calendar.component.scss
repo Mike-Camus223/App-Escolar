@@ -1,0 +1,50 @@
+.fc .fc-button-primary {
+  background-color: #004d00; 
+  border-color: #004d00; 
+}
+.fc .fc-button-primary:hover {
+  background-color: #003300; 
+  border-color: #003300; 
+}
+.fc .fc-button-primary:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 77, 0, 0.5); 
+}
+
+.button-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+button {
+  background-color: #198754; 
+  color: white;
+  border: none;
+  width: 3.5rem;
+  height: 3.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: 0.25s ease-in;
+
+  &:hover {
+    background-color: #003300; 
+  }
+}
+
+.fc-event {
+  border: none !important; 
+  color: white !important; 
+  font-size: 2rem;
+}
+
+.fc-event.selected {
+  border: 2px solid green !important; 
+}
+
+.selected {
+  border: 2px solid green !important; 
+}

@@ -1,0 +1,11 @@
+<h1 lass="fs-1 nunito" mat-dialog-title>Editar Evento</h1>
+<div mat-dialog-content>
+  <mat-form-field class="pt-2">
+    <mat-label class="fs-4 nunito">Añade un título</mat-label>
+    <input lass="fs-4 nunito" matInput [(ngModel)]="data.title">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button lass="fs-4 nunito" mat-button (click)="onNoClick()"><span class="fs-4 nunito">Cancelar</span></button>
+  <button lass="fs-4 nunito" mat-button color="primary" (click)="onConfirmClick()"><span class="fs-4 nunito">Confirmar</span></button>
+</div>

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Student } from '../../../../../core/models/student.interface';
 import { Observable, Subscriber } from 'rxjs';
 import { OnDestroy } from '@angular/core';
 import { isSubscription, Subscription } from 'rxjs/internal/Subscription';
+import { AuthService } from '../../../../../core/services/auth.service';
+import { User } from '../../../../../core/models/UserType.interface';
+import { photoIcon } from '../../../../../core/models/student.interface';
 
 @Component({
   selector: 'app-das-page-user',
@@ -11,13 +13,10 @@ import { isSubscription, Subscription } from 'rxjs/internal/Subscription';
 })
 export class DasPageUserComponent implements OnInit {
 
-  DatosPageUser: Student = {
-    id: 1,
-    foto: 'assets/photos/photo1.jpg',
-    nombre: 'Gatito',
-    apellido: 'Naranjoso',
-    fecha: new Date('2003-05-15'),
-    role: "user"
+  DatosUsuarioAuth: User | null = null;
+
+  Perfilphoto: photoIcon | null = {
+    photo:'assets/photos/user.jpg'
   };
 
   UserInfoCards = [
@@ -47,33 +46,21 @@ export class DasPageUserComponent implements OnInit {
     },
   ];
 
-  myrandomnumbersubscription?: Subscription;
+  private authsubscription: Subscription = new Subscription();
 
-  constructor() {
-    // this.myrandomnumbersubscription = this.myrandomnumber$.pipe().subscribe({
-    //   next: (randomNumber) => {
-    //     console.log(randomNumber);
-    //   },
-    //   error: () => {},
-    //   complete: () => {},
-    // });
+  constructor(private auth:AuthService) {
+    
   }
 
   ngOnInit(): void {
+    this.authsubscription = this.auth.AcessAuthUser.subscribe(user => {
+      this.DatosUsuarioAuth = user;
+    });
   }
-
-  OnDestroy(): void {
-    this.myrandomnumbersubscription?.unsubscribe();
+  ngOnDestroy(): void {
+    this.authsubscription.unsubscribe();
   }
-
-
-
-  // myrandomnumber$= new Observable ((Subscriber)=> {
-  //   setInterval(() =>{
-  //     Subscriber.next(Math.random());
-  //   },20000);
-  // });
-
+ 
 }
 
 

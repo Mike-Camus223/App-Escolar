@@ -17,7 +17,7 @@ export class PanelloginadminComponent implements OnInit, OnDestroy {
 
 
   Perfilphoto: photoIcon | null = {
-    photo:'assets/photos/photo1.jpg'
+    photo:'assets/photos/user.jpg'
   };
 
   private authSubscription: Subscription = new Subscription();

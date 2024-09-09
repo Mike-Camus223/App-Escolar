@@ -156,6 +156,14 @@
       "contraseña": "123",
       "rol": "User",
       "email": "mauro@com"
+    },
+    {
+      "idUser": 4,
+      "nombre": "Pepe",
+      "apellido": "Person",
+      "contraseña": "123",
+      "rol": "User",
+      "email": "pepe@com"
     }
   ]
 }
