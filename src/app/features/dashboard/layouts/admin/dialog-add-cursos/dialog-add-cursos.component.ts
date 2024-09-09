@@ -74,7 +74,7 @@ export class DialogAddCursosComponent implements OnInit {
         ).then((result) => {
           if (result.isConfirmed) {
             this.cursoService.updateCurso(cursoData.idCurso, cursoData).subscribe(() => {
-              this.cursoChanged.emit(); // Emit event on update
+              this.cursoChanged.emit(); 
               this.dialogRef.close(cursoData);
             }, (error) => {
               this.sweetalertService.ErrorNotify({
@@ -105,7 +105,7 @@ export class DialogAddCursosComponent implements OnInit {
         ).then((result) => {
           if (result.isConfirmed) {
             this.cursoService.saveCurso(cursoData).subscribe(() => {
-              this.cursoChanged.emit(); // Emit event on save
+              this.cursoChanged.emit(); 
               this.dialogRef.close(cursoData);
             }, (error) => {
               this.sweetalertService.ErrorNotify({

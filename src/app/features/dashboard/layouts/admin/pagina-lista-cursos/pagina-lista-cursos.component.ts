@@ -51,7 +51,6 @@ export class PaginaListaCursosComponent implements OnInit {
     this.estaCargando = true;
     this.cursoService.guardarCursos().subscribe(cursos => {
       this.cursos = cursos;
-      console.log(this.cursos); 
       localStorage.setItem('cursos', JSON.stringify(this.cursos));
       this.estaCargando = false;
     }, () => {
@@ -108,7 +107,6 @@ export class PaginaListaCursosComponent implements OnInit {
           this.httpclient.delete<void>(`${environment.apiUrl}/cursos/${curso.idCurso}`)
             .subscribe({
               next: () => {
-                console.log(`Curso con ID ${curso.idCurso} eliminado`);
                 this.actualizarCursos(); 
               },
               error: (err) => {

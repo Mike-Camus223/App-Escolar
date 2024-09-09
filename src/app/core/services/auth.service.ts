@@ -32,7 +32,6 @@ export class AuthService {
     return this.httpclient.post<LoginResponse>(`${this.apiUrl}/login`, credentials).pipe(
       tap(response => {
         if (response && response.token) {
-          console.log('Token recibido:', response.token);
           localStorage.setItem('token', response.token);
           this.updateAuthUser(response.usuario);
         }
@@ -78,7 +77,6 @@ export class AuthService {
 
   verificarToken(): Observable<boolean> {
     const token = localStorage.getItem('token');
-    console.log('Token en verificarToken:', token);
     if (!token) {
       return of(false);
     }

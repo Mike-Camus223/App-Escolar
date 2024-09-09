@@ -31,7 +31,7 @@ export class UserPageCalendarComponent implements AfterViewInit {
     timeZone: 'America/Argentina/Buenos_Aires',
     editable: true,
     droppable: true, 
-    events: [], // Aquí podrías cargar eventos desde el store si es necesario
+    events: [],
     eventClick: (info) => this.handleEventClick(info),
     eventDrop: (info) => this.handleEventDrop(info)
   };
@@ -63,9 +63,7 @@ export class UserPageCalendarComponent implements AfterViewInit {
   }
 
   handleEventClick(event: any) {
-    console.log('Evento clickeado:', event);
-    console.log('Elemento del evento:', event.el); 
-    
+  
     if (this.selectedEvent) {
       const previousEl = this.selectedEvent.el;
       if (previousEl) {
@@ -82,7 +80,6 @@ export class UserPageCalendarComponent implements AfterViewInit {
   
 
   handleEventDrop(event: any) {
-    console.log('Evento arrastrado:', event);
   }
 
   deleteEvent() {

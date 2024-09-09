@@ -20,7 +20,6 @@ export class UserperfiltablaComponent implements OnInit {
 
   ngOnInit(): void {
     this.authservice.ObtenerUsuarioAutenticado().subscribe(user => {
-      console.log('Usuario autenticado:', user);  
       this.Usuario = user;
     });
   }
