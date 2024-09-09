@@ -146,6 +146,44 @@ app.put('/cursos/:idCurso', (req, res) => {
   }
 });
 
+// Endpoint para obtener eventos
+app.get('/eventos', authenticateToken, (req, res) => {
+  const db = readData();
+  res.json(db.eventos || []);
+});
+
+// Endpoint para agregar un nuevo evento
+app.post('/eventos', authenticateToken, (req, res) => {
+  const db = readData();
+  const newEvent = req.body;
+  db.eventos = db.eventos || [];
+  db.eventos.push(newEvent);
+  writeData(db);
+  res.status(201).json({ message: 'Evento creado exitosamente' });
+});
+
+// Endpoint para actualizar un evento
+app.put('/eventos/:eventId', authenticateToken, (req, res) => {
+  const db = readData();
+  const eventIndex = db.eventos.findIndex(e => e.id === req.params.eventId);
+  if (eventIndex !== -1) {
+    db.eventos[eventIndex] = req.body;
+    writeData(db);
+    res.status(200).json({ message: 'Evento actualizado exitosamente' });
+  } else {
+    res.status(404).json({ error: 'Evento no encontrado' });
+  }
+});
+
+// Endpoint para eliminar un evento
+app.delete('/eventos/:eventId', authenticateToken, (req, res) => {
+  const db = readData();
+  db.eventos = db.eventos.filter(e => e.id !== req.params.eventId);
+  writeData(db);
+  res.status(200).json({ message: 'Evento eliminado exitosamente' });
+});
+
+
 app.listen(port, () => {
   console.log(`Servidor corriendo en http://localhost:${port}`);
 });

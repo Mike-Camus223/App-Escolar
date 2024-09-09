@@ -1,5 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { Store } from '@ngrx/store';
+import { updateEvent } from '../../../../core/store/calendario.actions';
+import { CalendarEvent } from '../../../../core/models/event.interface'; 
 
 @Component({
   selector: 'app-dialo-calendar',
@@ -9,7 +12,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 export class DialoCalendarComponent {
   constructor(
     public dialogRef: MatDialogRef<DialoCalendarComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: { event: CalendarEvent; title: string },
+    private store: Store
   ) {}
 
   onNoClick(): void {
@@ -17,6 +21,8 @@ export class DialoCalendarComponent {
   }
 
   onConfirmClick(): void {
-    this.dialogRef.close(this.data.title);
+    const updatedEvent: CalendarEvent = { ...this.data.event, title: this.data.title };
+    this.store.dispatch(updateEvent({ event: updatedEvent }));
+    this.dialogRef.close();
   }
 }

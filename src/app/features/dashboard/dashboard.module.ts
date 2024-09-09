@@ -29,13 +29,16 @@ import { UserCourseTableResultComponent } from './components/user-course-table-r
 import { NewchartdonutComponent } from './components/newchartdonut/newchartdonut.component';
 import { UserPageCalendarComponent } from './components/user-page-calendar/user-page-calendar.component';
 import { DialoCalendarComponent } from './components/dialo-calendar/dialo-calendar.component';
+import { EffectsModule } from '@ngrx/effects';
+import { CalendarioEffects } from '../../core/store/calendario.effects';
 
 
 @NgModule({
   imports: [
     CommonModule,
     DashboardRoutingModule,
-    SharedModule
+    SharedModule,
+    // EffectsModule.forFeature([CalendarioEffects])
   ],
   declarations: [
     DasAdmiBaseComponent,

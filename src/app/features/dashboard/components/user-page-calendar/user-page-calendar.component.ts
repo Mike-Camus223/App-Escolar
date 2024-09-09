@@ -20,7 +20,6 @@ export class UserPageCalendarComponent implements AfterViewInit {
   constructor(public dialog: MatDialog) {}
 
   calendarOptions: CalendarOptions = {
-    themeSystem: 'bootstrap',
     plugins: [dayGridPlugin, interactionPlugin],
     initialView: 'dayGridMonth',
     headerToolbar: {
@@ -32,8 +31,9 @@ export class UserPageCalendarComponent implements AfterViewInit {
     timeZone: 'America/Argentina/Buenos_Aires',
     editable: true,
     droppable: true, 
-    events: [],
+    events: [], // Aquí podrías cargar eventos desde el store si es necesario
     eventClick: (info) => this.handleEventClick(info),
+    eventDrop: (info) => this.handleEventDrop(info)
   };
 
   ngAfterViewInit() {

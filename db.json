@@ -164,6 +164,16 @@
       "contraseña": "123",
       "rol": "User",
       "email": "pepe@com"
+    },
+    {
+      "idUser": 5,
+      "nombre": "Mike",
+      "apellido": "champs",
+      "contraseña": "123",
+      "rol": "Admin",
+      "email": "mike@example.com",
+      "token": "1234567890",
+      "id": "65f5"
     }
   ]
 }
