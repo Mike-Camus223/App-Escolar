@@ -146,13 +146,11 @@ app.put('/cursos/:idCurso', (req, res) => {
   }
 });
 
-// Endpoint para obtener eventos
 app.get('/eventos', authenticateToken, (req, res) => {
   const db = readData();
   res.json(db.eventos || []);
 });
 
-// Endpoint para agregar un nuevo evento
 app.post('/eventos', authenticateToken, (req, res) => {
   const db = readData();
   const newEvent = req.body;
@@ -162,7 +160,6 @@ app.post('/eventos', authenticateToken, (req, res) => {
   res.status(201).json({ message: 'Evento creado exitosamente' });
 });
 
-// Endpoint para actualizar un evento
 app.put('/eventos/:eventId', authenticateToken, (req, res) => {
   const db = readData();
   const eventIndex = db.eventos.findIndex(e => e.id === req.params.eventId);
@@ -175,7 +172,6 @@ app.put('/eventos/:eventId', authenticateToken, (req, res) => {
   }
 });
 
-// Endpoint para eliminar un evento
 app.delete('/eventos/:eventId', authenticateToken, (req, res) => {
   const db = readData();
   db.eventos = db.eventos.filter(e => e.id !== req.params.eventId);
