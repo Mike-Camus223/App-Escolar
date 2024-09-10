@@ -1,6 +1,10 @@
 import { ActionReducerMap } from '@ngrx/store';
-import { calendarioReducer } from './calendario.reducer';
+import { calendarioReducer } from '../store/reducers/calendario/calendario.reducer';
 
-export const rootReducer: ActionReducerMap<any> = {
+export interface RootState {
+  calendario: any; 
+}
+
+export const rootReducer: ActionReducerMap<RootState> = {
   calendario: calendarioReducer,
 };

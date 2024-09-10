@@ -17,7 +17,6 @@ export class AppComponent implements OnInit {
       if (isAuthenticated) {
         this.authService.ObtenerUsuarioAutenticado().subscribe(user => {
           if (user) {
-            console.log('Usuario recuperado:', user); 
             this.authService.updateAuthUser(user);
           } else {
             this.authService.logout();

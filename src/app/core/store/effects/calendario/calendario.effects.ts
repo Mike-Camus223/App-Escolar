@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { catchError, map, mergeMap } from 'rxjs/operators';
-import { CalendarService } from '../services/calendario.service';
-import { addEvent, addEventSuccess, addEventFailure, loadCalendarioEvents, loadCalendarioEventsSuccess, loadCalendarioEventsFailure, updateEvent } from './calendario.actions';
-import { CalendarEvent } from '../models/event.interface';
+import { CalendarService } from '../../../services/calendario.service';
+import { addEvent, addEventSuccess, addEventFailure, loadCalendarioEvents, loadCalendarioEventsSuccess, loadCalendarioEventsFailure, updateEvent } from '../../actions/calendario/calendario.actions';
+import { CalendarEvent } from '../../../models/event.interface';
 
 @Injectable()
 export class CalendarioEffects {

@@ -10,9 +10,13 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { CalendarService } from './core/services/calendario.service';
+import { AuthService } from './core/services/auth.service';
+import { CursoService } from './core/services/curso.service';
 import { rootReducer } from './core/store/mainStore';
+
 
 @NgModule({
   declarations: [
@@ -26,12 +30,16 @@ import { rootReducer } from './core/store/mainStore';
     StoreModule.forRoot(rootReducer, {}),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
     EffectsModule.forRoot([]), 
+    
   ],
   providers: [
     provideAnimationsAsync(),
     provideNativeDateAdapter(),
-    {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,useValue: {appearance: 'outline'}},
+    { provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline' } },
     provideHttpClient(withFetch()),
+    CalendarService,
+    AuthService,
+    CursoService
   ],
   bootstrap: [AppComponent]
 })

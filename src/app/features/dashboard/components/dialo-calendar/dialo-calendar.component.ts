@@ -1,8 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { Store } from '@ngrx/store';
-import { updateEvent } from '../../../../core/store/calendario.actions';
-import { CalendarEvent } from '../../../../core/models/event.interface'; 
+import { updateEvent } from '../../../../core/store/actions/calendario/calendario.actions';
+import { CalendarEvent } from '../../../../core/models/event.interface';
 
 @Component({
   selector: 'app-dialo-calendar',
@@ -21,7 +21,12 @@ export class DialoCalendarComponent {
   }
 
   onConfirmClick(): void {
-    const updatedEvent: CalendarEvent = { ...this.data.event, title: this.data.title };
+    const updatedEvent: CalendarEvent = { 
+      ...this.data.event, 
+      title: this.data.title 
+    };
+    
+    console.log('Despachando evento actualizado:', updatedEvent);
     this.store.dispatch(updateEvent({ event: updatedEvent }));
     this.dialogRef.close();
   }

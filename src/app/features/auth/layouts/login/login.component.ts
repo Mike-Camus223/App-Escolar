@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../../core/services/auth.service';
 import { SweetalertService } from '../../../../core/services/sweetalert.service';
+import { Store } from '@ngrx/store';
+import { loadCalendarioEvents } from '../../../../core/store/actions/calendario/calendario.actions';
 
 @Component({
   selector: 'app-login',
@@ -18,7 +20,8 @@ export class LoginComponent implements OnInit {
     private fb: FormBuilder,
     private router: Router,
     private authservice: AuthService,
-    private sweetalert: SweetalertService
+    private sweetalert: SweetalertService,
+    private store: Store
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -27,6 +30,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.store.dispatch(loadCalendarioEvents());
     this.authservice.AcessAuthUser.subscribe(user => {
       if (user) {
         this.router.navigate(['dashboard']);
