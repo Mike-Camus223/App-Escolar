@@ -2,9 +2,8 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { CalendarService } from '../../../services/calendario.service';
 import * as CalendarActions from '../../actions/calendario/calendario.actions';
-import { catchError, map, mergeMap } from 'rxjs/operators';
+import { catchError, map, mergeMap, tap } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { CalendarEvent } from '../../../models/event.interface';
 
 @Injectable()
 export class CalendarEffects {
@@ -25,10 +24,25 @@ export class CalendarEffects {
     )
   );
 
+  saveEventsAfterChange$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(
+        CalendarActions.addEventSuccess,
+        CalendarActions.updateEventSuccess,
+        CalendarActions.deleteEventSuccess
+      ),
+      tap(() => {
+        this.calendarService.getEvents().subscribe(events => {
+          this.calendarService.saveEvents(events);
+        });
+      })
+    ), { dispatch: false }
+  );
+
   createEvent$ = createEffect(() =>
     this.actions$.pipe(
       ofType(CalendarActions.createEvent),
-      mergeMap(({ event }: { event: CalendarEvent }) =>
+      mergeMap(({ event }) =>
         this.calendarService.createEvent(event).pipe(
           map(createdEvent => CalendarActions.createEventSuccess({ event: createdEvent })),
           catchError(error => of(CalendarActions.createEventFailure({ error })))
@@ -40,7 +54,7 @@ export class CalendarEffects {
   updateEvent$ = createEffect(() =>
     this.actions$.pipe(
       ofType(CalendarActions.updateEvent),
-      mergeMap(({ event }: { event: CalendarEvent }) =>
+      mergeMap(({ event }) =>
         this.calendarService.updateEvent(event).pipe(
           map(updatedEvent => CalendarActions.updateEventSuccess({ event: updatedEvent })),
           catchError(error => of(CalendarActions.updateEventFailure({ error })))
@@ -48,17 +62,16 @@ export class CalendarEffects {
       )
     )
   );
-  
 
   deleteEvent$ = createEffect(() =>
     this.actions$.pipe(
       ofType(CalendarActions.deleteEvent),
-      mergeMap(({ eventId }: { eventId: string }) =>
+      mergeMap(({ eventId }) =>
         this.calendarService.deleteEvent(eventId).pipe(
           map(() => CalendarActions.deleteEventSuccess({ eventId })),
           catchError(error => of(CalendarActions.deleteEventFailure({ error })))
         )
       )
     )
-  );  
+  );
 }

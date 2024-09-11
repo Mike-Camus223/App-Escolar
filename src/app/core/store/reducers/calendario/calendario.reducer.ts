@@ -13,7 +13,6 @@ export const initialState: State = {
 export const calendarReducer = createReducer(
   initialState,
   on(addEvent, (state, { event }) => {
-    console.log('Reducer handling addEvent:', event); 
     return {
       ...state,
       events: [...state.events, event]

@@ -33,6 +33,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { CalendarEffects } from '../../core/store/effects/calendario/calendario.effects';
 import { State } from '../../core/store/reducers/calendario/calendario.reducer';
+import { NotifyBoxComponent } from './components/notify-box/notify-box.component';
 
 
 @NgModule({
@@ -70,6 +71,7 @@ import { State } from '../../core/store/reducers/calendario/calendario.reducer';
     NewchartdonutComponent,
     UserPageCalendarComponent,
     DialoCalendarComponent,
+    NotifyBoxComponent,
   ],
   exports: [
     DasAdmiBaseComponent,

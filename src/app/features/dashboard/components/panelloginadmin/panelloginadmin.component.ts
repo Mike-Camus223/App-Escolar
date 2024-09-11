@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { AuthService } from '../../../../core/services/auth.service';
-import { User } from '../../../../core/models/UserType.interface';
-import { Subscription } from 'rxjs';
+import { User, UserRole } from '../../../../core/models/UserType.interface';
+import { Observable, Subscription } from 'rxjs';
 import { DashbaseComponent } from '../../layouts/base/dashbase/dashbase.component';
 import { photoIcon } from '../../../../core/models/student.interface';
 
@@ -24,6 +24,22 @@ export class PanelloginadminComponent implements OnInit, OnDestroy {
 
   constructor(private authService: AuthService,
   ) { }
+
+
+  ObtenerRoles(rol: UserRole | undefined): string {
+    switch (rol) {
+      case 'Admin':
+        return 'Admin';
+      case 'User':
+        return 'Usuario';
+      case 'Teacher':
+        return 'Profesor';
+      case 'Parent':
+        return 'Padres';
+      default:
+        return 'Desconocido';
+    }
+  }
 
  ngOnInit(): void {
     this.authSubscription = this.authService.AcessAuthUser.subscribe(user => {

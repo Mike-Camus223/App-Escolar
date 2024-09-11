@@ -46,19 +46,26 @@ export class AuthService {
 
   ObtenerUsuarioAutenticado(): Observable<User | null> {
     const token = localStorage.getItem('token');
+    
     if (!token) {
-      return of(null);
+      return of(null); 
     }
+  
+    const currentUser = this.authUser.getValue();
+    if (currentUser) {
+      return of(currentUser); 
+    }
+  
     return this.httpclient.get<User>(`${this.apiUrl}/usuarios/me`, {
       headers: {
         Authorization: `Bearer ${token}`
       }
     }).pipe(
       tap(user => {
-        if (!user) {
-          this.logout();
+        if (user) {
+          this.updateAuthUser(user); 
         } else {
-          this.updateAuthUser(user);
+          this.logout();
         }
       }),
       map(user => user || null)

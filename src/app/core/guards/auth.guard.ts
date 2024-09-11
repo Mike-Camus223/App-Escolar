@@ -12,7 +12,6 @@ export const authGuard: CanActivateFn = (route, state) => {
       if (isAuthenticated) {
         return true;
       } else {
-        console.log('Token no válido o expirado'); 
         return router.createUrlTree(['auth', 'login']);
       }
     }),

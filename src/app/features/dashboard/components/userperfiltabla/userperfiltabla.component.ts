@@ -11,17 +11,14 @@ export class UserperfiltablaComponent implements OnInit {
 
 
   Usuario: User | null = null;
-  columnas: string[] = [
-    'nombre',
-    'apellido', 
-    'email'
-  ];
+  columnas: string[] = ['nombre', 'apellido', 'email'];
 
-  constructor(private authservice: AuthService ,private cd: ChangeDetectorRef) {}  
+  constructor(private authservice: AuthService, private cd: ChangeDetectorRef) {}
 
   ngOnInit(): void {
-    this.authservice.ObtenerUsuarioAutenticado().subscribe(user => {
+    this.authservice.AcessAuthUser.subscribe(user => {
       this.Usuario = user;
+      this.cd.detectChanges(); 
     });
   }
 }

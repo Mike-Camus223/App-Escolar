@@ -1,57 +1,56 @@
-import { Component, AfterViewInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, AfterViewInit, OnDestroy, ViewChild, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { FullCalendarComponent } from '@fullcalendar/angular';
-import { CalendarOptions } from '@fullcalendar/core';
+import { CalendarOptions, EventClickArg } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import esLocale from '@fullcalendar/core/locales/es';
 import { DialoCalendarComponent } from '../dialo-calendar/dialo-calendar.component';
 import { Store, select } from '@ngrx/store';
-import { Observable, of, Subscription, switchMap, catchError, throwError } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { CalendarEvent } from '../../../../core/models/event.interface';
+import * as CalendarActions from '../../../../core/store/actions/calendario/calendario.actions';
 import { selectAllEvents } from '../../../../core/store/selectors/calendario/calendario.selectors';
-import { addEvent, updateEvent, deleteEvent } from '../../../../core/store/actions/calendario/calendario.actions';
-import { State } from '../../../../core/store/reducers/calendario/calendario.reducer';
-import { EventClickArg } from '@fullcalendar/core';
+import { RootState } from '../../../../core/store/mainStore';
 import { AuthService } from '../../../../core/services/auth.service';
-import { CalendarService } from '../../../../core/services/calendario.service'; 
+import { CalendarService } from '../../../../core/services/calendario.service';
 
 @Component({
   selector: 'app-user-page-calendar',
   templateUrl: './user-page-calendar.component.html',
   styleUrls: ['./user-page-calendar.component.scss']
 })
-export class UserPageCalendarComponent implements AfterViewInit, OnDestroy {
+export class UserPageCalendarComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('fullCalendar') fullCalendar!: FullCalendarComponent;
   selectedEvent: CalendarEvent | null = null;
-  events$: Observable<CalendarEvent[]>;
+  events$: Observable<CalendarEvent[]> = this.store.pipe(select(selectAllEvents));
   eventsSubscription!: Subscription;
 
-  events: any[] = [];
+  calendarOptions: CalendarOptions = {
+    plugins: [dayGridPlugin, interactionPlugin],
+    initialView: 'dayGridMonth',
+    headerToolbar: { left: 'prev,next today', center: 'title', right: 'dayGridMonth,dayGridWeek,dayGridDay' },
+    locale: esLocale,
+    editable: true,
+    events: (fetchInfo, successCallback, failureCallback) => {
+      this.events$.subscribe(events => {
+        successCallback(events);
+      });
+    },
+    eventClick: (info: EventClickArg) => this.handleEventClick(info),
+    eventDrop: (info) => this.handleEventDrop(info)
+  };
 
   constructor(
     public dialog: MatDialog,
     private authService: AuthService,
     private calendarService: CalendarService,
-    private store: Store<{ calendario: State }>
-  ) {
-    this.events$ = this.store.pipe(select(selectAllEvents));
-  }
+    private store: Store<RootState>
+  ) { }
 
-  calendarOptions: CalendarOptions = {
-    plugins: [dayGridPlugin, interactionPlugin],
-    initialView: 'dayGridMonth',
-    headerToolbar: {
-      left: 'prev,next today',
-      center: 'title',
-      right: 'dayGridMonth,dayGridWeek,dayGridDay'
-    },
-    locale: esLocale,
-    editable: true,
-    events: [],
-    eventClick: (info: EventClickArg) => this.handleEventClick(info),
-    eventDrop: (info) => this.handleEventDrop(info)
-  };
+  ngOnInit(): void {
+    this.loadEvents();
+  }
 
   ngAfterViewInit() {
     this.eventsSubscription = this.events$.subscribe(events => {
@@ -69,6 +68,10 @@ export class UserPageCalendarComponent implements AfterViewInit, OnDestroy {
     }
   }
 
+  loadEvents(): void {
+    this.store.dispatch(CalendarActions.loadEvents());
+  }
+
   handleEventClick(info: EventClickArg) {
     this.selectedEvent = {
       id: info.event.id,
@@ -76,7 +79,6 @@ export class UserPageCalendarComponent implements AfterViewInit, OnDestroy {
       start: info.event.startStr,
       end: info.event.endStr
     };
-    console.log('Event selected:', this.selectedEvent);
   }
 
   handleEventDrop(event: any) {
@@ -86,26 +88,15 @@ export class UserPageCalendarComponent implements AfterViewInit, OnDestroy {
       start: event.event.startStr,
       end: event.event.endStr
     };
-    this.store.dispatch(updateEvent({ event: updatedEvent }));
+    this.store.dispatch(CalendarActions.updateEvent({ event: updatedEvent }));
   }
 
   deleteEvent() {
     if (this.selectedEvent) {
-      const selectedEventId = this.selectedEvent.id; 
-  
-      this.calendarService.deleteEvent(selectedEventId).pipe(
-        catchError(error => {
-          console.error('Error deleting event:', error);
-          return throwError(error);
-        })
-      ).subscribe(() => {
-        const calendarApi = this.fullCalendar.getApi();
-        calendarApi.getEventById(selectedEventId)?.remove(); 
-        this.selectedEvent = null;
-      });
+      const selectedEventId = this.selectedEvent.id;
+      this.store.dispatch(CalendarActions.deleteEvent({ eventId: selectedEventId }));
     }
   }
-  
 
   openEditDialog() {
     if (this.selectedEvent) {
@@ -113,33 +104,19 @@ export class UserPageCalendarComponent implements AfterViewInit, OnDestroy {
         width: '250px',
         data: { event: { ...this.selectedEvent }, title: this.selectedEvent.title }
       });
-  
+
       dialogRef.afterClosed().subscribe(result => {
         if (result) {
           const updatedEvent: CalendarEvent = {
-            id: this.selectedEvent?.id ?? '', 
+            id: this.selectedEvent?.id ?? '',
             title: result,
-            start: this.selectedEvent?.start ?? '', 
-            end: this.selectedEvent?.end ?? '' 
+            start: this.selectedEvent?.start ?? '',
+            end: this.selectedEvent?.end ?? ''
           };
-          this.store.dispatch(updateEvent({ event: updatedEvent }));
+          this.store.dispatch(CalendarActions.updateEvent({ event: updatedEvent }));
         }
       });
     }
-  }
-
-  ngOnInit(): void {
-    this.authService.ObtenerUsuarioAutenticado().pipe(
-      switchMap(user => {
-        if (user) {
-          return this.calendarService.getEvents(); 
-        } else {
-          return of([]); 
-        }
-      })
-    ).subscribe(events => {
-      this.events = events;
-    });
   }
 
   addEvent() {
@@ -150,6 +127,6 @@ export class UserPageCalendarComponent implements AfterViewInit, OnDestroy {
       end: new Date().toISOString()
     };
 
-    this.store.dispatch(addEvent({ event: newEvent }));
+    this.store.dispatch(CalendarActions.addEvent({ event: newEvent }));
   }
 }
