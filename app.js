@@ -154,7 +154,7 @@ app.get('/eventos', authenticateToken, (req, res) => {
 
 app.post('/eventos', authenticateToken, (req, res) => {
   const db = readData();
-  const newEvent = { ...req.body, userId: req.user.id }; // Asigna el userId
+  const newEvent = { ...req.body, userId: req.user.id }; 
   db.eventos = db.eventos || [];
   db.eventos.push(newEvent);
   writeData(db);
