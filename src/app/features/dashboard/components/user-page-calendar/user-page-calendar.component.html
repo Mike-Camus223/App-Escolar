@@ -11,14 +11,8 @@
             <button *ngIf="selectedEvent" (click)="openEditDialog()">
                 <i class="fa-solid fa-pencil text-white fs-4"></i>
             </button>
-          </div>
-          <full-calendar class="fs-5 nunito"
-            id="calendar"
-            [options]="calendarOptions"
-            (eventDrop)="handleEventDrop($event)"
-            (eventClick)="handleEventClick($event)"
-          ></full-calendar>
+        </div>
+        <full-calendar #fullCalendar id="calendar" [options]="calendarOptions">
+        </full-calendar>
     </mat-card-content>
 </mat-card>
-
-  

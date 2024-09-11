@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, HostListener, ViewChild } from '@angular/core';
 import { AuthService } from '../../../../../core/services/auth.service';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Observable } from 'rxjs';
@@ -14,6 +14,11 @@ export class DashbaseComponent {
   title = 'Mi Sidenav';
 
   entornoNombre = environment.envNombre;
+  isSidebarCollapsed = false;
+  isMobileView = false;
+  subLink: any;
+  link: any;
+
 
   @ViewChild('sidenav') sidenav!: MatSidenav;
   authUser: Observable<User | null>;
@@ -51,6 +56,25 @@ export class DashbaseComponent {
 
   constructor(private authservice: AuthService) {
     this.authUser = authservice.AcessAuthUser;
+    this.checkViewport();
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    this.checkViewport();
+  }
+
+  checkViewport() {
+    this.isMobileView = window.innerWidth <= 768;
+    if (this.isMobileView) {
+      this.isSidebarCollapsed = true;
+    } else {
+      this.isSidebarCollapsed = false;
+    }
+  }
+
+  toggleSidebar() {
+    this.isSidebarCollapsed = !this.isSidebarCollapsed;
   }
 
   toggleSidenav() {

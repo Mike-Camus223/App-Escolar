@@ -12,7 +12,8 @@ export class UserperfiltablaComponent implements OnInit {
 
   Usuario: User | null = null;
   columnas: string[] = [
-    'nombre', 
+    'nombre',
+    'apellido', 
     'email'
   ];
 

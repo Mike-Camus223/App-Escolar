@@ -30,4 +30,5 @@ export class DialoCalendarComponent {
     this.store.dispatch(updateEvent({ event: updatedEvent }));
     this.dialogRef.close();
   }
+  
 }

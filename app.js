@@ -148,17 +148,20 @@ app.put('/cursos/:idCurso', (req, res) => {
 
 app.get('/eventos', authenticateToken, (req, res) => {
   const db = readData();
-  res.json(db.eventos || []);
+  const userEvents = db.eventos.filter(e => e.userId === req.user.id);
+  res.json(userEvents);
 });
 
 app.post('/eventos', authenticateToken, (req, res) => {
   const db = readData();
-  const newEvent = req.body;
+  const newEvent = { ...req.body, userId: req.user.id }; // Asigna el userId
   db.eventos = db.eventos || [];
   db.eventos.push(newEvent);
   writeData(db);
   res.status(201).json({ message: 'Evento creado exitosamente' });
 });
+
+
 
 app.put('/eventos/:eventId', authenticateToken, (req, res) => {
   const db = readData();
@@ -172,12 +175,14 @@ app.put('/eventos/:eventId', authenticateToken, (req, res) => {
   }
 });
 
+
 app.delete('/eventos/:eventId', authenticateToken, (req, res) => {
   const db = readData();
   db.eventos = db.eventos.filter(e => e.id !== req.params.eventId);
   writeData(db);
   res.status(200).json({ message: 'Evento eliminado exitosamente' });
 });
+
 
 
 app.listen(port, () => {

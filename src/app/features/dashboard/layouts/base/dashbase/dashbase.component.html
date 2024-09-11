@@ -1,97 +1,74 @@
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav
-    style="background-color: #1A3636; border-top-right-radius: 0; border-bottom-right-radius: 0;"
-    [opened]="true"
-    #sidenav
-    mode="side">
-    <mat-nav-list class="d-flex flex-column justify-content-between h-100">
-      <div>
-        <ng-container *ngFor="let link of MonoLinks">
-          <a
-            mat-list-item
-            class="fs-4"
-            [routerLink]="link.direction"
-            routerLinkActive="active">
-            <mat-icon class="icono" [ngClass]="link.ColorClass">{{ link.Icono }}</mat-icon>
-            <span class="fs-4 text-login">{{ link.nombre }}</span>
-          </a>
-        </ng-container>
-        <div *ngIf="(authUser | async)?.rol === 'Admin'">
-          <ng-container *ngFor="let link of monolinkadmin">
-            <a
-              mat-list-item
-              class="fs-4"
-              [routerLink]="link.direction"
-              routerLinkActive="active">
-              <mat-icon class="icono" [ngClass]="link.ColorClass">{{ link.Icono }}</mat-icon>
-              <span class="fs-4 text-login">{{ link.nombre }}</span>
+
+
+
+
+
+
+
+<div id="sidebar" class="text-white p-3" [ngClass]="{'collapsed': isSidebarCollapsed}">
+  <button class="btn bg-dash-button text-white" (click)="toggleSidebar()">
+      <i class="bi bi-list"></i>
+  </button>
+  <ul class="nav flex-column gap-3 mt-3">
+    <li class="nav-item monlink" *ngFor="let link of MonoLinks">
+      <a class="nav-link text-white linkactivetion" [routerLink]="link.direction" routerLinkActive="active">
+        <mat-icon [ngClass]="link.ColorClass">{{ link.Icono }}</mat-icon>
+        <span class="sidebar-text nunito fs-4" *ngIf="!isSidebarCollapsed || isMobileView">{{ link.nombre }}</span>
+      </a>
+    </li>
+    <li class="nav-item monlink" *ngFor="let link of ListaLinks">
+      <a class="nav-link text-white linkactivetion" data-bs-toggle="collapse" [attr.href]="'#' + link.nombre + 'Collapse'" role="button" aria-expanded="false" [attr.aria-controls]="link.nombre + 'Collapse'">
+        <mat-icon [ngClass]="link.ColorClass">{{ link.Icono }}</mat-icon>
+        <span class="sidebar-text nunito fs-4 " *ngIf="!isSidebarCollapsed || isMobileView">{{ link.nombre }}</span>
+      </a>
+      <div class="collapse" [id]="link.nombre + 'Collapse'">
+        <ul class="nav flex-column gap-2">
+          <li class="nav-item" *ngFor="let sublink of link.Sublinks">
+            <a class="nav-link text-white linkactivetion linkhoversecond" [routerLink]="sublink.direction" routerLinkActive="active">
+              <mat-icon>{{ sublink.Icono }}</mat-icon>
+              <span class="sidebar-text nunito fs-4" *ngIf="!isSidebarCollapsed || isMobileView">{{ sublink.nombre }}</span>
             </a>
-          </ng-container>
-        </div>
-        <div *ngIf="(authUser | async)?.rol === 'Admin'">
-          <ng-container *ngFor="let link of ListaLinksAdmin">
-            <mat-expansion-panel
-              style="background-color: transparent; box-shadow: none;">
-              <mat-expansion-panel-header
-                style="background-color: transparent; box-shadow: none;">
-                <mat-icon class="icono" [ngClass]="link.ColorClass">{{ link.Icono }}</mat-icon>
-                <span class="fs-4 text-login">{{ link.nombre }}</span>
-              </mat-expansion-panel-header>
-              <ng-container *ngFor="let sublink of link.Sublinks">
-                <a
-                  mat-list-item
-                  style="display: flex; align-items: center;"
-                  [routerLink]="sublink.direction"
-                  routerLinkActive="active">
-                  <div class="d-flex">
-                    <mat-icon [ngClass]="sublink.ColorClass">{{ sublink.Icono }}</mat-icon>
-                    <span class="fs-4 listalinks text-login">{{ sublink.nombre }}</span>
-                  </div>
-                </a>
-              </ng-container>
-            </mat-expansion-panel>
-          </ng-container>
-        </div>
-        <ng-container *ngFor="let link of ListaLinks">
-          <mat-expansion-panel
-            style="background-color: transparent; box-shadow: none;">
-            <mat-expansion-panel-header
-              style="background-color: transparent; box-shadow: none;">
-              <mat-icon class="icono" [ngClass]="link.ColorClass">{{ link.Icono }}</mat-icon>
-              <span class="fs-4 text-login">{{ link.nombre }}</span>
-            </mat-expansion-panel-header>
-            <ng-container *ngFor="let sublink of link.Sublinks">
-              <a
-                mat-list-item
-                style="display: flex; align-items: center;"
-                [routerLink]="sublink.direction"
-                routerLinkActive="active">
-                <div class="d-flex">
-                  <mat-icon [ngClass]="sublink.ColorClass">{{ sublink.Icono }}</mat-icon>
-                  <span class="fs-4 listalinks text-login">{{ sublink.nombre }}</span>
-                </div>
-              </a>
-            </ng-container>
-          </mat-expansion-panel>
-        </ng-container>
+          </li>
+        </ul>
       </div>
-      <div>
-        <a
-          mat-list-item
-          class="fs-4"
-          (click)="cerrarSesion();"
-          style="display: flex; align-items: center;">
-          <mat-icon class="icono">logout</mat-icon>
-          <span class="fs-4 text-login">Cerrar Sesión</span>
-        </a>
+    </li>
+  </ul>
+  <ul *ngIf="(authUser | async)?.rol === 'Admin'" class="nav flex-column gap-3 mt-3">
+    <li class="nav-item monlink" *ngFor="let link of monolinkadmin">
+      <a class="nav-link text-white linkactivetion" [routerLink]="link.direction" routerLinkActive="active">
+        <mat-icon [ngClass]="link.ColorClass">{{ link.Icono }}</mat-icon>
+        <span class="sidebar-text nunito fs-4" *ngIf="!isSidebarCollapsed || isMobileView">{{ link.nombre }}</span>
+      </a>
+    </li>
+    <li class="nav-item monlink" *ngFor="let link of ListaLinksAdmin">
+      <a class="nav-link text-white linkactivetion" data-bs-toggle="collapse" [attr.href]="'#' + link.nombre + 'Collapse'" role="button" aria-expanded="false" [attr.aria-controls]="link.nombre + 'Collapse'">
+        <mat-icon [ngClass]="link.ColorClass">{{ link.Icono }}</mat-icon>
+        <span class="sidebar-text nunito fs-4 " *ngIf="!isSidebarCollapsed || isMobileView">{{ link.nombre }}</span>
+      </a>
+      <div class="collapse" [id]="link.nombre + 'Collapse'">
+        <ul class="nav flex-column gap-2">
+          <li class="nav-item" *ngFor="let sublink of link.Sublinks">
+            <a class="nav-link text-white linkactivetion linkhoversecond" [routerLink]="sublink.direction" routerLinkActive="active">
+              <mat-icon>{{ sublink.Icono }}</mat-icon>
+              <span class="sidebar-text nunito fs-4" *ngIf="!isSidebarCollapsed || isMobileView">{{ sublink.nombre }}</span>
+            </a>
+          </li>
+        </ul>
       </div>
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
+    </li>
+  </ul>
+  <ul class="nav flex-column gap-3 mt-3 w-100 logout-section">
+    <li class="nav-item monlink">
+      <a (click)="cerrarSesion()" class=" nav-link text-white linkactivetion cerrarsesion">
+        <mat-icon>logout</mat-icon>
+        <span class="sidebar-text nunito fs-4 ms-2" *ngIf="!isSidebarCollapsed || isMobileView">Cerrar Sesión</span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+<div id="content" [ngClass]="{'sidebar-collapsed': isSidebarCollapsed}">
+  <div class="block-70"></div>
     <app-panelloginadmin></app-panelloginadmin>
-    <div class="main-content">
-      <div class="block-70"></div>
-      <router-outlet></router-outlet>
-    </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+    <router-outlet></router-outlet>
+</div>

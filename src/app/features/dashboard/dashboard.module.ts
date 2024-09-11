@@ -30,15 +30,17 @@ import { NewchartdonutComponent } from './components/newchartdonut/newchartdonut
 import { UserPageCalendarComponent } from './components/user-page-calendar/user-page-calendar.component';
 import { DialoCalendarComponent } from './components/dialo-calendar/dialo-calendar.component';
 import { EffectsModule } from '@ngrx/effects';
-import { CalendarioEffects } from '../../core/store/effects/calendario/calendario.effects';
 import { StoreModule } from '@ngrx/store';
+import { CalendarEffects } from '../../core/store/effects/calendario/calendario.effects';
+import { State } from '../../core/store/reducers/calendario/calendario.reducer';
+
 
 @NgModule({
   imports: [
     CommonModule,
     DashboardRoutingModule,
     SharedModule,
-    EffectsModule.forFeature([CalendarioEffects]),
+    EffectsModule.forFeature([CalendarEffects]),
   ],
   declarations: [
     DasAdmiBaseComponent,

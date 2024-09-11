@@ -23,7 +23,6 @@ export class PanelloginadminComponent implements OnInit, OnDestroy {
   private authSubscription: Subscription = new Subscription();
 
   constructor(private authService: AuthService,
-    private dashboard: DashbaseComponent
   ) { }
 
  ngOnInit(): void {
@@ -38,10 +37,6 @@ export class PanelloginadminComponent implements OnInit, OnDestroy {
 
   flechamovimiento() {
     this.FlechaArriba = !this.FlechaArriba;
-  }
-
-  toggleSidenav() {
-    this.dashboard.toggleSidenav();
   }
 
   cerrarSesion() {

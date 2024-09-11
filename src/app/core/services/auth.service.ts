@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, merge, Observable, of } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { BehaviorSubject, merge, Observable, of, throwError } from 'rxjs';
 import { environment } from '../../../environments/environment.prod';
 import { User } from '../models/UserType.interface';
 import { Router } from '@angular/router';
-import { tap, map } from 'rxjs/operators';
+import { tap, map, catchError } from 'rxjs/operators';
 import {jwtDecode} from 'jwt-decode';
 
 interface LoginCredentials {
@@ -63,6 +63,10 @@ export class AuthService {
       }),
       map(user => user || null)
     );
+  }
+
+  getToken(): string | null {
+    return localStorage.getItem('token');
   }
 
   logout() {

@@ -27,20 +27,6 @@
       "tipoCurso": "Data",
       "salon": "Aula 200",
       "descripcion": "Un curso de Mysql workbench"
-    },
-    {
-      "idCurso": 3,
-      "nombreProfesor": "Emiliano Martinez",
-      "genero": "hombre",
-      "telefono": "123131231231",
-      "nombreCurso": "Diseño  UX/UI",
-      "fecha": "2024-09-19",
-      "email": "Emi@example.com",
-      "tiempo": "16:00 a 18:00",
-      "precioCurso": "120000",
-      "tipoCurso": "Diseño UX/UI",
-      "salon": "Aula 140",
-      "descripcion": "Vamo argentinaaaaaa"
     }
   ],
   "usuarios": [
@@ -50,9 +36,7 @@
       "apellido": "García",
       "contraseña": "password123",
       "rol": "Admin",
-      "email": "ana.garcia@example.com",
-      "token": "1234567890",
-      "id": "65f5"
+      "email": "ana.garcia@example.com"
     },
     {
       "idUser": 2,
@@ -60,8 +44,7 @@
       "apellido": "García",
       "contraseña": "123",
       "rol": "Admin",
-      "email": "bob@com",
-      "token": "1245678943"
+      "email": "bob@com"
     },
     {
       "idUser": 3,
@@ -85,9 +68,24 @@
       "apellido": "champs",
       "contraseña": "123",
       "rol": "Admin",
-      "email": "mike@example.com",
-      "token": "1234567890",
-      "id": "65f5"
+      "email": "mike@example.com"
+    },
+    {
+      "idUser": 6,
+      "nombre": "Allendev",
+      "apellido": "Dev",
+      "contraseña": "123",
+      "rol": "Admin",
+      "email": "Allen@com"
+    }
+  ],
+  "eventos": [
+    {
+      "id": "1",
+      "title": "Evento de prueba",
+      "start": "2024-09-15T10:00:00",
+      "end": "2024-09-15T12:00:00",
+      "userId": 1
     }
   ]
 }

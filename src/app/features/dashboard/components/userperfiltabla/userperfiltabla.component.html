@@ -1,12 +1,12 @@
 <div class="container mt-4" *ngIf="Usuario">
   <table class="vertical-table shadow-none mat-elevation-z8">
     <tr>
-      <th class="nunito text-white border-2 fs-4 bg-success border border-light">Nombre</th>
-      <td class="nunito fs-4 border border-2 border-light bg-success-subtle text-table">{{ Usuario.nombre }}</td>
+      <th class="mitad nunito text-white border-2 fs-4 bg-success border border-light">Nombre y Apellido</th>
+      <td class="sigue nunito fs-4 border border-2 border-light bg-success-subtle text-table">{{ Usuario.nombre }} {{Usuario.apellido}} </td>
     </tr>
     <tr>
-      <th class="nunito text-white border-2 fs-4 bg-success border border-light">Email</th>
-      <td class="nunito fs-4 border border-2 border-light bg-success-subtle text-table">{{ Usuario.email }}</td>
+      <th class="mitad nunito text-white border-2 fs-4 bg-success border border-light">Email</th>
+      <td class="sigue nunito fs-4 border border-2 border-light bg-success-subtle text-table">{{ Usuario.email }}</td>
     </tr>
   </table>
 </div>

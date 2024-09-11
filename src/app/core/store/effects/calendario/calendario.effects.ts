@@ -1,37 +1,37 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { of } from 'rxjs';
-import { catchError, map, mergeMap } from 'rxjs/operators';
 import { CalendarService } from '../../../services/calendario.service';
-import { addEvent, addEventSuccess, addEventFailure, loadCalendarioEvents, loadCalendarioEventsSuccess, loadCalendarioEventsFailure, updateEvent } from '../../actions/calendario/calendario.actions';
+import * as CalendarActions from '../../actions/calendario/calendario.actions';
+import { catchError, map, mergeMap } from 'rxjs/operators';
+import { of } from 'rxjs';
 import { CalendarEvent } from '../../../models/event.interface';
 
 @Injectable()
-export class CalendarioEffects {
+export class CalendarEffects {
   constructor(
     private actions$: Actions,
     private calendarService: CalendarService
   ) {}
 
-  loadCalendarioEvents$ = createEffect(() =>
+  loadEvents$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(loadCalendarioEvents),
+      ofType(CalendarActions.loadEvents),
       mergeMap(() =>
         this.calendarService.getEvents().pipe(
-          map((events: CalendarEvent[]) => loadCalendarioEventsSuccess({ events })),
-          catchError(error => of(loadCalendarioEventsFailure({ error })))
+          map(events => CalendarActions.loadEventsSuccess({ events })),
+          catchError(error => of(CalendarActions.loadEventsFailure({ error })))
         )
       )
     )
   );
 
-  addEvent$ = createEffect(() =>
+  createEvent$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(addEvent),
-      mergeMap(action =>
-        this.calendarService.addEvent(action.event).pipe(
-          map(() => addEventSuccess({ event: action.event })),
-          catchError(error => of(addEventFailure({ error })))
+      ofType(CalendarActions.createEvent),
+      mergeMap(({ event }: { event: CalendarEvent }) =>
+        this.calendarService.createEvent(event).pipe(
+          map(createdEvent => CalendarActions.createEventSuccess({ event: createdEvent })),
+          catchError(error => of(CalendarActions.createEventFailure({ error })))
         )
       )
     )
@@ -39,13 +39,26 @@ export class CalendarioEffects {
 
   updateEvent$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(updateEvent),
-      mergeMap(action =>
-        this.calendarService.updateEvent(action.event).pipe(
-          map(() => addEventSuccess({ event: action.event })),
-          catchError(error => of(addEventFailure({ error })))
+      ofType(CalendarActions.updateEvent),
+      mergeMap(({ event }: { event: CalendarEvent }) =>
+        this.calendarService.updateEvent(event).pipe(
+          map(updatedEvent => CalendarActions.updateEventSuccess({ event: updatedEvent })),
+          catchError(error => of(CalendarActions.updateEventFailure({ error })))
         )
       )
     )
   );
+  
+
+  deleteEvent$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(CalendarActions.deleteEvent),
+      mergeMap(({ eventId }: { eventId: string }) =>
+        this.calendarService.deleteEvent(eventId).pipe(
+          map(() => CalendarActions.deleteEventSuccess({ eventId })),
+          catchError(error => of(CalendarActions.deleteEventFailure({ error })))
+        )
+      )
+    )
+  );  
 }

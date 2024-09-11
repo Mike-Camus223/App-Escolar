@@ -1,31 +1,30 @@
 import { createReducer, on } from '@ngrx/store';
-import { addEvent, addEventSuccess, addEventFailure, deleteEvent, deleteEventSuccess, deleteEventFailure, loadCalendarioEvents, loadCalendarioEventsSuccess, loadCalendarioEventsFailure, updateEvent, updateEventSuccess, updateEventFailure } from '../../actions/calendario/calendario.actions';
 import { CalendarEvent } from '../../../models/event.interface';
+import { addEvent, updateEvent, deleteEvent } from '../../actions/calendario/calendario.actions';
 
 export interface State {
   events: CalendarEvent[];
-  error: any;
 }
 
 export const initialState: State = {
-  events: [],
-  error: null
+  events: []
 };
 
-export const calendarioReducer = createReducer(
+export const calendarReducer = createReducer(
   initialState,
-  on(loadCalendarioEventsSuccess, (state, { events 
-
-  }) => ({ ...state, events })),
-  on(addEventSuccess, (state, { event }) => ({ 
-    ...state, events: [...state.events, event] 
-  })),
-  on(deleteEventSuccess, (state, { id }) => ({
-    ...state,
-    events: state.events.filter(event => event.id !== id)
-  })),
-  on(updateEventSuccess, (state, { event }) => ({
+  on(addEvent, (state, { event }) => {
+    console.log('Reducer handling addEvent:', event); 
+    return {
+      ...state,
+      events: [...state.events, event]
+    };
+  }),
+  on(updateEvent, (state, { event }) => ({
     ...state,
     events: state.events.map(e => e.id === event.id ? event : e)
+  })),
+  on(deleteEvent, (state, { eventId }) => ({
+    ...state,
+    events: state.events.filter(e => e.id !== eventId)
   }))
 );
