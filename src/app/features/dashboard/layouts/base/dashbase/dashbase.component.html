@@ -9,30 +9,6 @@
   <button class="btn bg-dash-button text-white" (click)="toggleSidebar()">
       <i class="bi bi-list"></i>
   </button>
-  <ul class="nav flex-column gap-3 mt-3">
-    <li class="nav-item monlink" *ngFor="let link of MonoLinks">
-      <a class="nav-link text-white linkactivetion" [routerLink]="link.direction" routerLinkActive="active">
-        <mat-icon [ngClass]="link.ColorClass">{{ link.Icono }}</mat-icon>
-        <span class="sidebar-text nunito fs-4" *ngIf="!isSidebarCollapsed || isMobileView">{{ link.nombre }}</span>
-      </a>
-    </li>
-    <li class="nav-item monlink" *ngFor="let link of ListaLinks">
-      <a class="nav-link text-white linkactivetion" data-bs-toggle="collapse" [attr.href]="'#' + link.nombre + 'Collapse'" role="button" aria-expanded="false" [attr.aria-controls]="link.nombre + 'Collapse'">
-        <mat-icon [ngClass]="link.ColorClass">{{ link.Icono }}</mat-icon>
-        <span class="sidebar-text nunito fs-4 " *ngIf="!isSidebarCollapsed || isMobileView">{{ link.nombre }}</span>
-      </a>
-      <div class="collapse" [id]="link.nombre + 'Collapse'">
-        <ul class="nav flex-column gap-2">
-          <li class="nav-item" *ngFor="let sublink of link.Sublinks">
-            <a class="nav-link text-white linkactivetion linkhoversecond" [routerLink]="sublink.direction" routerLinkActive="active">
-              <mat-icon>{{ sublink.Icono }}</mat-icon>
-              <span class="sidebar-text nunito fs-4" *ngIf="!isSidebarCollapsed || isMobileView">{{ sublink.nombre }}</span>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </li>
-  </ul>
   <ul *ngIf="(authUser | async)?.rol === 'Admin'" class="nav flex-column gap-3 mt-3">
     <li class="nav-item monlink" *ngFor="let link of monolinkadmin">
       <a class="nav-link text-white linkactivetion" [routerLink]="link.direction" routerLinkActive="active">
@@ -48,9 +24,37 @@
       <div class="collapse" [id]="link.nombre + 'Collapse'">
         <ul class="nav flex-column gap-2">
           <li class="nav-item" *ngFor="let sublink of link.Sublinks">
-            <a class="nav-link text-white linkactivetion linkhoversecond" [routerLink]="sublink.direction" routerLinkActive="active">
-              <mat-icon>{{ sublink.Icono }}</mat-icon>
-              <span class="sidebar-text nunito fs-4" *ngIf="!isSidebarCollapsed || isMobileView">{{ sublink.nombre }}</span>
+            <a class="nav-link text-white linkactivetion linkhoversecond w-100" [routerLink]="sublink.direction" routerLinkActive="active">
+              <div class="espa">
+                <mat-icon>{{ sublink.Icono }}</mat-icon>
+                <span class="sidebar-text nunito fs-4" *ngIf="!isSidebarCollapsed || isMobileView">{{ sublink.nombre }}</span>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </li>
+  </ul>
+  <ul class="nav flex-column gap-3 mt-3">
+    <li class="nav-item monlink" *ngFor="let link of MonoLinks">
+      <a class="nav-link text-white linkactivetion" [routerLink]="link.direction" routerLinkActive="active">
+        <mat-icon [ngClass]="link.ColorClass">{{ link.Icono }}</mat-icon>
+        <span class="sidebar-text nunito fs-4" *ngIf="!isSidebarCollapsed || isMobileView">{{ link.nombre }}</span>
+      </a>
+    </li>
+    <li class="nav-item monlink" *ngFor="let link of ListaLinks">
+      <a class="nav-link text-white linkactivetion" data-bs-toggle="collapse" [attr.href]="'#' + link.nombre + 'Collapse'" role="button" aria-expanded="false" [attr.aria-controls]="link.nombre + 'Collapse'">
+        <mat-icon [ngClass]="link.ColorClass">{{ link.Icono }}</mat-icon>
+        <span class="sidebar-text nunito fs-4 " *ngIf="!isSidebarCollapsed || isMobileView">{{ link.nombre }}</span>
+      </a>
+      <div class="collapse" [id]="link.nombre + 'Collapse'">
+        <ul class="nav flex-column gap-2">
+          <li class="nav-item" *ngFor="let sublink of link.Sublinks">
+            <a class="nav-link text-white linkactivetion linkhoversecond w-100" [routerLink]="sublink.direction" routerLinkActive="active">
+              <div class="espa">
+                <mat-icon>{{ sublink.Icono }}</mat-icon>
+                <span class="sidebar-text nunito fs-4" *ngIf="!isSidebarCollapsed || isMobileView">{{ sublink.nombre }}</span>
+              </div>
             </a>
           </li>
         </ul>

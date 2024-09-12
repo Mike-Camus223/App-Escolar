@@ -1,31 +1,31 @@
-
 .nav-icon {
-  margin-right: 10px;
   color: #fff;
 }
 
+.espa {
+  padding-left: 20px;
+  display: flex;
+  align-items: center;
+
+  #sidebar.collapsed & {
+    padding-left: 0;
+  }
+}
+
 .ColorIcono {
-  background: linear-gradient(45deg,
-      rgb(241, 81, 81) 50%,
-      rgb(194, 85, 194) 50% 100%,
-      rgb(89, 58, 199) 50% 75%,
-      rgb(101, 166, 196) 75% 100%);
-  background-position: 0 0, 0 50%, 50% 0, 50% 50%;
-  background-repeat: no-repeat;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: #fff;
 }
 
 .Icono2 {
-  color: rgb(255, 82, 14);
+  color: #fff;
 }
 
 .Icono3 {
-  color: rgb(197, 36, 36);
+  color: #fff;
 }
 
 .Icono4 {
-  color: #14c431;
+  color: #fff;
 }
 
 .bg-trans {
@@ -35,6 +35,7 @@
 
 
 .monlink {
+  border-radius: 10px;
 
   transition: .15s ease-in-out;
 
@@ -44,19 +45,10 @@
 }
 
 .linkactivetion {
-
+  border-radius: 10px;
   transition: .15s ease-in-out;
 
   &:active {
-    background-color: #184636;
-  }
-}
-
-.linkhoversecond {
-  transition: .15s ease-in-out;
-
-  &:hover {
-    overflow: hidden;
     background-color: #184636;
   }
 }
@@ -184,4 +176,23 @@
 
 .block-70 {
   height: 70px;
+}
+
+
+
+.collapse .nav-item {
+  display: flex;
+  align-items: center;
+}
+
+.sidebar-collapsed {
+  @media (max-width: 768px) {
+    .espa {
+      padding-left: 0;
+    }
+
+    .nav-link {
+      padding-left: 15px;
+    }
+  }
 }

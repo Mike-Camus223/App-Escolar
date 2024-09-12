@@ -1,7 +1,7 @@
-<div class="container-fluid bg-danger p-4">
-    <div class="d-flex align-items-center p-3" *ngFor="let admiuser of AdminWelcome">
-        <h1 class="nunito fs-2 text-white fw-medium mb-0 me-3 text-uppercase">Panel Administrativo</h1>
-        <p class="nunito text-white fs-4 mb-0 padd fw-medium">Bienvenido, {{admiuser.AdminUser}}</p>
+<div class="container-fluid p-4">
+    <div class="d-flex align-items-center p-3">
+        <h1 class="nunito fs-2 text-black fw-medium mb-0 me-3 text-uppercase">Panel Administrativo</h1>
+        <h2 *ngIf="DatosPageUser?.nombre" class="nunito text-black fs-4 mb-0 fw-medium">Bienvenido, {{DatosPageUser?.nombre}} {{DatosPageUser?.apellido}} </h2>
     </div>
     <div>
         <div class="container-fluid mt-4">

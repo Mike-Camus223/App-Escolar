@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { PerfilAdminModel } from '../../../../../core/models/PerfilAdminModel.interface';
+import { User } from '../../../../../core/models/UserType.interface';
+import { AuthService } from '../../../../../core/services/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-perfil-conteo-admi',
@@ -8,13 +11,12 @@ import { PerfilAdminModel } from '../../../../../core/models/PerfilAdminModel.in
 })
 export class PerfilConteoAdmiComponent implements OnInit {
 
-  AdminWelcome: PerfilAdminModel[] = [
-    {
-      AdminUser: 'William',
-      AdminPhoto: 'images/cat.jpg',
-    }
-  ]
+  DatosPageUser: User | null = null;
 
+  private authSubscription: Subscription = new Subscription();
+
+  constructor (private authservice: AuthService) {}
+    
   Infocards = [
     {
       Icono: 'fa-solid fa-children',
@@ -50,10 +52,13 @@ export class PerfilConteoAdmiComponent implements OnInit {
     }
   ];
 
-  constructor() { 
-
+  ngOnInit(): void {
+    this.authSubscription = this.authservice.AcessAuthUser.subscribe(user => {
+      this.DatosPageUser = user;
+    });
   }
 
-  ngOnInit(): void {
+  ngOnDestroy(): void {
+    this.authSubscription.unsubscribe();
   }
 }
